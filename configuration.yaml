@@ -1,0 +1,149 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 47.2136
+  longitude: 7.4992
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 450
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Zurich
+  # Customization file
+  customize: !include customize.yaml
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+apcupsd:
+  host: 192.168.1.8
+
+# Weather prediction
+sensor:
+  - platform: yr
+  - platform: apcupsd
+    resources:
+      - status
+      - bcharge
+      - timeleft
+      - battv
+      - nombattv
+  - platform: bitcoin
+    display_options:
+      - exchangerate
+  - platform: mqtt
+    name: "PC Room Temperature"
+    state_topic: "tele/sonoff/plants/SENSOR"
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+  - platform: mqtt
+    name: "PC Room Humidity"
+    state_topic: "tele/sonoff/plants/SENSOR"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+  - platform: mqtt
+    name: "Bedroom Temperature"
+    state_topic: "tele/sonoff/bed/SENSOR"
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+  - platform: mqtt
+    name: "Bedroom Humidity"
+    state_topic: "tele/sonoff/bed/SENSOR"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+
+
+# Text to speech
+tts:
+  - platform: google
+
+media_player:
+  - platform: plex
+  - platform: spotify
+    client_id: 521b6f020f9d4923a98c8bdb39889d03
+    client_secret: !secret spotify_client_secret
+  - platform: webostv
+    name: LG 4K
+
+mqtt:
+  broker: localhost
+
+device_tracker:
+  - platform: asuswrt
+    host: 192.168.1.3
+    username: admin
+    password: !secret router_password
+
+notify:
+  - name: pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key
+
+light:
+  - platform: mqtt
+    name: Plants
+    state_topic: "stat/sonoff/plants/POWER"
+    command_topic: "cmnd/sonoff/plants/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+  - platform: mqtt
+    name: Bedroom Bed
+    state_topic: "stat/sonoff/bed/POWER"
+    command_topic: "cmnd/sonoff/bed/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+switch:
+  - platform: mqtt
+    name: "3D Printer"
+    state_topic: "stat/sonoff/3dprinter/POWER"
+    command_topic: "cmnd/sonoff/3dprinter/POWER"
+
+device_sun_light_trigger:
+  light_group: group.pc_room_lights
+  device_group: group.milan_portable_devices
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

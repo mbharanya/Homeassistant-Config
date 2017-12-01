@@ -1,0 +1,86 @@
+- action:
+  - alias: Bedroom Lights on
+    data:
+      brightness_pct: 25
+      entity_id: light.bedroom_ceiling
+    service: light.turn_on
+  alias: Bedroom light alarm clock
+  condition: []
+  id: '1509790646674'
+  trigger:
+  - platform: mqtt
+    topic: alarm_clock
+- action:
+  - alias: Bedroom light on
+    data:
+      entity_id: light.bedroom_bed
+    service: light.turn_on
+  alias: Bedroom Tradfri on
+  condition: []
+  id: '1509791350748'
+  trigger:
+  - entity_id: light.bedroom_ceiling
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - alias: Bedroom light off
+    data:
+      entity_id: light.bedroom_bed
+    service: light.turn_off
+  alias: Bedroom Tradfri off
+  condition: []
+  id: '1509791350747'
+  trigger:
+  - entity_id: light.bedroom_ceiling
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - alias: Plant Light on
+    data:
+      entity_id: light.plants
+    service: light.turn_on
+  alias: Sunrise Plants on
+  condition: []
+  id: '1509791350740'
+  trigger:
+  - event: sunrise
+    platform: sun
+- action:
+  - alias: Plant Light off
+    data:
+      entity_id: light.plants
+    service: light.turn_off
+  alias: Sunset Plants off
+  condition: []
+  id: '1509791350741'
+  trigger:
+  - event: sunset
+    platform: sun
+- action:
+  - alias: PC Room Light Off
+    data:
+      entity_id: group.pc_room_lights
+    service: light.turn_off
+  alias: PC Off Lights Off
+  condition:
+  - after: sunset
+    condition: sun
+  id: '1509918759411'
+  trigger:
+  - entity_id: device_tracker.xmbombpc
+    from: home
+    platform: state
+    to: not_home
+- action:
+  - data:
+      message: UPS DOWN!
+    service: notify.pushbullet
+  alias: UPS On Battery Notification
+  condition: []
+  id: '1511111478419'
+  trigger:
+  - entity_id: sensor.ups_status
+    from: ONLINE
+    platform: state
