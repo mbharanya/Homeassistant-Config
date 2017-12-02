@@ -9,82 +9,93 @@ default_view:
     - group.pc_room_sensors
     - group.bedroom_lights
     - group.bedroom_sensors
-    - group.milan_portable_devices
-    - group.milan_devices
-    - group.lis_devices
     - group.homelab_sensors
     - group.tradfri_remotes
     - media_player.plex
     - media_player.spotify
 
+people_view:
+  view: yes
+  icon: mdi:account-multiple
+  entities:
+    - group.milan_portable_devices
+    - group.milan_devices
+    - group.lis_devices
+
+automation_view:
+  view: yes
+  name: Automations
+  entities:
+    - group.all_automations
+
 pc_room_lights:
-    name: PC Room Lights
-    entities:
-        - light.pc_room_3d_printer
-        - light.pc_room_monitors
-        - light.pc_room_panel
+  name: PC Room Lights
+  entities:
+    - light.pc_room_3d_printer
+    - light.pc_room_monitors
+    - light.pc_room_panel
 
 pc_room_sensors:
-    name: PC Room Sensors
-    entities:
-        - sensor.pc_room_humidity
-        - sensor.pc_room_temperature
-        - switch.3d_printer
-        - switch.tv
-        - light.plants
+  name: PC Room Sensors
+  entities:
+    - sensor.pc_room_humidity
+    - sensor.pc_room_temperature
+    - switch.3d_printer
+    - switch.tv
+    - light.plants
 
 bedroom_lights:
-    name: Bedroom Lights
-    entities:
-        - light.bedroom_ceiling
-        - light.bedroom_bed
+  name: Bedroom Lights
+  entities:
+    - light.bedroom_ceiling
+    - light.bedroom_bed
 
 bedroom_sensors:
-    name: Bedroom Sensors
-    entities:
-        - sensor.bedroom_humidity
-        - sensor.bedroom_temperature
+  name: Bedroom Sensors
+  entities:
+    - sensor.bedroom_humidity
+    - sensor.bedroom_temperature
 
 homelab_sensors:
-    name: Homelab Sensors
-    entities:
-        - sensor.ups_battery 
-        - sensor.ups_battery_nominal_voltage
-        - sensor.ups_battery_voltage
-        - sensor.ups_status
-        - sensor.ups_time_left
+  name: Homelab Sensors
+  entities:
+    - sensor.ups_battery 
+    - sensor.ups_battery_nominal_voltage
+    - sensor.ups_battery_voltage
+    - sensor.ups_status
+    - sensor.ups_time_left
 
 ups:
-    entities: 
-        - sensor.ups_battery 
-        - sensor.ups_battery_nominal_voltage
-        - sensor.ups_battery_voltage
-        - sensor.ups_status
-        - sensor.ups_time_left
+entities: 
+    - sensor.ups_battery 
+    - sensor.ups_battery_nominal_voltage
+    - sensor.ups_battery_voltage
+    - sensor.ups_status
+    - sensor.ups_time_left
 
 tradfri_remotes:
-    name: TRADFRI Remotes
-    entities:
-        - sensor.tradfri_remote_control
-        - sensor.tradfri_remote_control_2
+  name: TRADFRI Remotes
+  entities:
+    - sensor.tradfri_remote_control
+    - sensor.tradfri_remote_control_2
 
 milan_portable_devices:
-    name: Milan Portable Devices
-    entities:
-        - device_tracker.galaxynote8
+  name: Milan Portable Devices
+  entities:
+    - device_tracker.galaxynote8
 
 milan_devices:
-    name: Milan Devices
-    entities:
-        - device_tracker.android5d2ef70c71723cc8
-        - device_tracker.mbhlap1705
-        - device_tracker.slimtop
-        - device_tracker.xmbombpc
+  name: Milan Devices
+  entities:
+    - device_tracker.android5d2ef70c71723cc8
+    - device_tracker.mbhlap1705
+    - device_tracker.slimtop
+    - device_tracker.xmbombpc
 
 lis_devices:
-    name: Lis Devices
-    entities:
-        - device_tracker.android6e3bbe73876a4df8
-        - device_tracker.galaxytaba2016
-        - device_tracker.lisimac2
-        - device_tracker.zen
+  name: Lis Devices
+  entities:
+    - device_tracker.android6e3bbe73876a4df8
+    - device_tracker.galaxytaba2016
+    - device_tracker.lisimac2
+    - device_tracker.zen
