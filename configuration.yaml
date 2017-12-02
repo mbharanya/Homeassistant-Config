@@ -139,6 +139,10 @@ switch:
     name: "3D Printer"
     state_topic: "stat/sonoff/3dprinter/POWER"
     command_topic: "cmnd/sonoff/3dprinter/POWER"
+  - platform: mqtt
+    name: "TV"
+    state_topic: "stat/sonoff/tv/POWER"
+    command_topic: "cmnd/sonoff/tv/POWER"
 
 device_sun_light_trigger:
   light_group: group.pc_room_lights

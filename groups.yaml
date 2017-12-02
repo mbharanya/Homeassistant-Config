@@ -13,6 +13,7 @@ default_view:
     - group.milan_devices
     - group.lis_devices
     - group.homelab_sensors
+    - group.tradfri_remotes
     - media_player.plex
     - media_player.spotify
 
@@ -29,7 +30,7 @@ pc_room_sensors:
         - sensor.pc_room_humidity
         - sensor.pc_room_temperature
         - switch.3d_printer
-        - light.pc_room_plants
+        - light.plants
 
 bedroom_lights:
     name: Bedroom Lights
@@ -59,6 +60,12 @@ ups:
         - sensor.ups_battery_voltage
         - sensor.ups_status
         - sensor.ups_time_left
+
+tradfri_remotes:
+    name: TRADFRI Remotes
+    entities:
+        - sensor.tradfri_remote_control
+        - sensor.tradfri_remote_control_2
 
 milan_portable_devices:
     name: Milan Portable Devices
