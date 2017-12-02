@@ -74,6 +74,21 @@
     platform: state
     to: not_home
 - action:
+  - alias: PC Off TV Off
+    data:
+      entity_id: switch.tv
+    service: switch.turn_off
+  alias: PC Off TV Off
+  condition:
+  - after: sunset
+    condition: sun
+  id: '1509918759412'
+  trigger:
+  - entity_id: device_tracker.xmbombpc
+    from: home
+    platform: state
+    to: not_home
+- action:
   - data:
       message: UPS DOWN!
     service: notify.pushbullet
