@@ -79,6 +79,7 @@
       entity_id: switch.tv
     service: switch.turn_off
   alias: PC Off TV Off
+  id: pc-off-tv-off
   trigger:
   - entity_id: device_tracker.xmbombpc
     from: home
@@ -90,11 +91,12 @@
       entity_id: switch.tv
     service: switch.turn_on
   alias: PC on TV on
+  id: pc-on-tv-on
   trigger:
   - entity_id: device_tracker.xmbombpc
-    from: home
+    from: not_home
     platform: state
-    to: not_home
+    to: home
 - action:
   - data:
       message: UPS DOWN!
