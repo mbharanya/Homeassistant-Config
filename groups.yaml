@@ -76,8 +76,8 @@ entities:
 tradfri_remotes:
   name: TRADFRI Remotes
   entities:
-    - sensor.tradfri_remote_control
-    - sensor.tradfri_remote_control_2
+    - sensor.bedroom_remote
+    - sensor.pc_room_remote
 
 milan_portable_devices:
   name: Milan Portable Devices
