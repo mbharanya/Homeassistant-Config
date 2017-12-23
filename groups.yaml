@@ -2,7 +2,9 @@ default_view:
   view: yes
   icon: mdi:home 
   entities:
-    - sensor.exchange_rate_1_btc
+    - sensor.bitcoin
+    - sensor.litecoin
+    - sensor.ethereum
     - sun.sun
     - sensor.yr_symbol
     - group.pc_room_lights

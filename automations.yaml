@@ -1,7 +1,7 @@
 - action:
   - alias: Bedroom Lights on
     data:
-      brightness_pct: 25
+      brightness_pct: 1
       entity_id: light.bedroom_ceiling
     service: light.turn_on
   alias: Bedroom light alarm clock

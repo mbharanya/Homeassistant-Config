@@ -68,6 +68,15 @@ sensor:
   - platform: bitcoin
     display_options:
       - exchangerate
+  - platform: coinmarketcap
+    currency: Bitcoin
+    display_currency: CHF
+  - platform: coinmarketcap
+    currency: Ethereum
+    display_currency: CHF
+  - platform: coinmarketcap
+    currency: Litecoin
+    display_currency: CHF
   - platform: mqtt
     name: "PC Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
