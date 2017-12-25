@@ -5,6 +5,7 @@ default_view:
     - sensor.bitcoin
     - sensor.litecoin
     - sensor.ethereum
+    - sensor.dogecoin
     - sun.sun
     - sensor.yr_symbol
     - group.pc_room_lights
