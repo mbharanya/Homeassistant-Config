@@ -84,7 +84,7 @@ sensor:
     name: "PC Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
     unit_of_measurement: '°C'
-    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.891 | round(1) }}'
   - platform: mqtt
     name: "PC Room Humidity"
     state_topic: "tele/sonoff/plants/SENSOR"
@@ -94,7 +94,7 @@ sensor:
     name: "Bedroom Temperature"
     state_topic: "tele/sonoff/bed/SENSOR"
     unit_of_measurement: '°C'
-    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.891 | round(1) }}'
   - platform: mqtt
     name: "Bedroom Humidity"
     state_topic: "tele/sonoff/bed/SENSOR"
