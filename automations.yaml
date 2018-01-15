@@ -108,3 +108,15 @@
   - entity_id: sensor.ups_status
     from: ONLINE
     platform: state
+- action:
+  - data:
+      message: Schildkröten zu kalt
+    service: notify.pushbullet_lis
+  alias: Tortoises too cold
+  condition: []
+  id: '1511111478420'
+  trigger:
+  - entity_id: binary_sensor.shed_temperature_threshold
+    from: 'off'
+    platform: state
+    to: 'on'

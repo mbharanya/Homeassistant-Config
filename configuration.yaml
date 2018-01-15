@@ -84,7 +84,7 @@ sensor:
     name: "PC Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
     unit_of_measurement: '°C'
-    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.891 | round(1) }}'
+    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.89 | round(1) }}'
   - platform: mqtt
     name: "PC Room Humidity"
     state_topic: "tele/sonoff/plants/SENSOR"
@@ -94,13 +94,28 @@ sensor:
     name: "Bedroom Temperature"
     state_topic: "tele/sonoff/bed/SENSOR"
     unit_of_measurement: '°C'
-    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.891 | round(1) }}'
+    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.89 | round(1) }}'
   - platform: mqtt
     name: "Bedroom Humidity"
     state_topic: "tele/sonoff/bed/SENSOR"
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+  - platform: mqtt
+    name: "Shed Temperature"
+    state_topic: "tele/sonoff/shed/SENSOR"
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+  - platform: mqtt
+    name: "Shed Humidity"
+    state_topic: "tele/sonoff/shed/SENSOR"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
 
+binary_sensor:
+  - platform: threshold
+    name: shed_temperature_threshold
+    entity_id: sensor.shed_temperature
+    lower: 3.5
 
 # Text to speech
 tts:
@@ -127,6 +142,9 @@ notify:
   - name: pushbullet
     platform: pushbullet
     api_key: !secret pushbullet_api_key
+  - name: pushbullet_lis
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key_lis
 
 light:
   - platform: mqtt
@@ -155,6 +173,10 @@ switch:
     name: "TV"
     state_topic: "stat/sonoff/tv/POWER"
     command_topic: "cmnd/sonoff/tv/POWER"
+  - platform: mqtt
+    name: "Humidifier"
+    state_topic: "stat/sonoff/humidifier/POWER"
+    command_topic: "cmnd/sonoff/humidifier/POWER"
 
 device_sun_light_trigger:
   light_group: group.pc_room_lights

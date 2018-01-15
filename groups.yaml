@@ -12,6 +12,7 @@ default_view:
     - group.pc_room_sensors
     - group.bedroom_lights
     - group.bedroom_sensors
+    - group.shed_sensors
     - group.homelab_sensors
     - group.tradfri_remotes
     - media_player.plex
@@ -45,6 +46,7 @@ pc_room_sensors:
     - sensor.pc_room_temperature
     - switch.3d_printer
     - switch.tv
+    - switch.humidifier
     - light.plants
 
 bedroom_lights:
@@ -58,6 +60,13 @@ bedroom_sensors:
   entities:
     - sensor.bedroom_humidity
     - sensor.bedroom_temperature
+
+shed_sensors:
+  name: Shed Sensors
+  entities:
+    - sensor.shed_humidity
+    - sensor.shed_temperature
+    - binary_sensor.shed_temperature_threshold
 
 homelab_sensors:
   name: Homelab Sensors
