@@ -163,6 +163,21 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     retain: true
+  - platform: mqtt
+    name: Desk LEDs
+    state_topic: "stat/sonoff/desk_leds/POWER"
+    command_topic: "cmnd/sonoff/desk_leds/POWER"
+    brightness_state_topic: "stat/sonoff/desk_leds/DIMMER"
+    brightness_command_topic: "cmnd/sonoff/desk_leds/DIMMER"
+    brightness_value_template: "{{ value_json.brightness }}"
+    brightness_scale: 100
+    rgb_state_topic: "stat/sonoff/desk_leds/COLOR"
+    rgb_command_topic: "cmnd/sonoff/desk_leds/COLOR"
+    rgb_command_template: "{{ '#%02x%02x%02x' | format(red, green, blue) }}"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
 
 switch:
   - platform: mqtt

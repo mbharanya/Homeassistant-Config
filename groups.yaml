@@ -32,12 +32,19 @@ automation_view:
   entities:
     - group.all_automations
 
+shed_view:
+  view: yes
+  name: Shed
+  entities:
+    - group.shed_sensors
+
 pc_room_lights:
   name: PC Room Lights
   entities:
     - light.pc_room_3d_printer
     - light.pc_room_monitors
     - light.pc_room_panel
+    - light.desk_leds
 
 pc_room_sensors:
   name: PC Room Sensors
