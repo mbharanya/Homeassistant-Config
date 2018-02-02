@@ -80,6 +80,9 @@ sensor:
   - platform: coinmarketcap
     currency: Dogecoin
     display_currency: CHF
+  - platform: coinmarketcap
+    currency: Garlicoin
+    display_currency: CHF
   - platform: mqtt
     name: "PC Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
