@@ -120,3 +120,31 @@
     from: 'off'
     platform: state
     to: 'on'
+- action:
+  - data:
+      color_name: red
+      entity_id: light.desk_leds
+    service: light.turn_on
+  alias: Desk Led Color After Sunset
+  condition:
+  - condition: state
+    entity_id: group.milan_portable_devices
+    state: home
+  id: '1517777872949'
+  trigger:
+  - event: sunset
+    platform: sun
+- action:
+  - data:
+      color_name: blue
+      entity_id: light.desk_leds
+    service: light.turn_on
+  alias: Desk Led Color Before Sunset
+  condition:
+  - condition: state
+    entity_id: group.milan_portable_devices
+    state: home
+  id: '1517777872950'
+  trigger:
+  - event: sunset
+    platform: sun
