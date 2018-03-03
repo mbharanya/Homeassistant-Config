@@ -15,6 +15,8 @@ default_view:
     - group.bedroom_sensors
     - group.shed_sensors
     - group.homelab_sensors
+    - group.pi_hole
+    - group.speed_test
     - group.tradfri_remotes
     - media_player.plex
     - media_player.spotify
@@ -92,6 +94,19 @@ homelab_sensors:
     - sensor.ups_status
     - sensor.ups_time_left
 
+pi_hole:
+  name: Pi Hole
+  entities:
+    - sensor.pihole_ads_blocked_today
+    - sensor.pihole_ads_percentage_blocked_today
+    - sensor.pihole_dns_queries_today
+    - sensor.pihole_domains_blocked
+speed_test:
+  name: Speed Test
+  entities:
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
 ups:
 entities: 
     - sensor.ups_battery 

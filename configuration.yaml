@@ -66,6 +66,20 @@ sensor:
       - timeleft
       - battv
       - nombattv
+  - platform: pi_hole
+    host: 192.168.1.30
+    monitored_conditions:
+      - ads_blocked_today
+      - ads_percentage_today
+      - unique_domains
+      - dns_queries_today
+      - domains_being_blocked
+  - platform: speedtest
+    server_id: 6251
+    monitored_conditions:
+      - ping
+      - download
+      - upload
   - platform: bitcoin
     display_options:
       - exchangerate
