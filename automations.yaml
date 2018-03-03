@@ -125,28 +125,28 @@
       color_name: red
       entity_id: light.desk_leds
     service: light.turn_on
-  alias: Desk Led Color After Sunset
+  alias: Desk LEDs red if turned on after sunset
   condition:
   - after: sunset
     condition: sun
-  id: '1517777872949'
+  id: '1520076564952'
   trigger:
-  - entity_id: group.milan_portable_devices
-    from: not_home
+  - entity_id: light.desk_leds
+    from: 'off'
     platform: state
-    to: home
+    to: 'on'
 - action:
   - data:
       color_name: blue
       entity_id: light.desk_leds
     service: light.turn_on
-  alias: Desk Led Color Before Sunset
+  alias: Desk LED blue if turned on before sunset
   condition:
   - before: sunset
     condition: sun
-  id: '1517777872950'
+  id: '1520076624811'
   trigger:
-  - entity_id: group.milan_portable_devices
-    from: not_home
+  - entity_id: light.desk_leds
+    from: 'off'
     platform: state
-    to: home
+    to: 'on'

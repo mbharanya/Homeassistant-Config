@@ -2,8 +2,9 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 47.2136
-  longitude: 7.4992
+  latitude: 47.1706
+  longitude: 7.5730
+
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 450
   # metric for Metric, imperial for Imperial
@@ -97,7 +98,7 @@ sensor:
     name: "Bedroom Temperature"
     state_topic: "tele/sonoff/bed/SENSOR"
     unit_of_measurement: '°C'
-    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.89 | round(1) }}'
+    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.95 | round(1) }}'
   - platform: mqtt
     name: "Bedroom Humidity"
     state_topic: "tele/sonoff/bed/SENSOR"
@@ -197,7 +198,7 @@ switch:
     command_topic: "cmnd/sonoff/humidifier/POWER"
 
 device_sun_light_trigger:
-  light_group: group.pc_room_lights
+  light_group: group.pc_room_evening_lights
   device_group: group.milan_portable_devices
 
 group: !include groups.yaml
