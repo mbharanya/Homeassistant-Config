@@ -29,6 +29,7 @@ homelab_view:
     - group.pandora_disk_sensors
     - group.pi_hole
     - group.speed_test
+    - group.zfs
 
 people_view:
   view: yes
@@ -117,6 +118,30 @@ pandora_disk_sensors:
     - sensor.hd_temperature_devsdq
     - sensor.hd_temperature_devsdr
     - sensor.hd_temperature_devsds
+
+zfs:
+  name: ZFS
+  entities:
+    - zfs.zbackup_alloc
+    - zfs.zbackup_altroot
+    - zfs.zbackup_cap
+    - zfs.zbackup_dedup
+    - zfs.zbackup_expandsz
+    - zfs.zbackup_frag
+    - zfs.zbackup_free
+    - zfs.zbackup_health
+    - zfs.zbackup_name
+    - zfs.zbackup_size
+    - zfs.zmain_alloc
+    - zfs.zmain_altroot
+    - zfs.zmain_cap
+    - zfs.zmain_dedup
+    - zfs.zmain_expandsz
+    - zfs.zmain_frag
+    - zfs.zmain_free
+    - zfs.zmain_health
+    - zfs.zmain_name
+    - zfs.zmain_size
 
 pi_hole:
   name: Pi Hole

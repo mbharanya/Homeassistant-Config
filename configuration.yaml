@@ -241,6 +241,8 @@ device_sun_light_trigger:
   light_group: group.pc_room_evening_lights
   device_group: group.milan_portable_devices
 
+zfs:
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
