@@ -66,6 +66,28 @@ sensor:
       - timeleft
       - battv
       - nombattv
+  - platform: hddtemp
+    host: 192.168.1.8
+    disks:
+      - /dev/sda
+      - /dev/sdb
+      - /dev/sdc
+      - /dev/sdd
+      - /dev/sde
+      - /dev/sdf
+      - /dev/sdg
+      - /dev/sdh
+      - /dev/sdi
+      - /dev/sdj
+      - /dev/sdk
+      - /dev/sdl
+      - /dev/sdm
+      - /dev/sdn
+      - /dev/sdo
+      - /dev/sdp
+      - /dev/sdq
+      - /dev/sdr
+      - /dev/sds
   - platform: pi_hole
     host: 192.168.1.30
     monitored_conditions:
@@ -131,9 +153,13 @@ sensor:
 
 binary_sensor:
   - platform: threshold
-    name: shed_temperature_threshold
+    name: Shed Temperature Below 3.5
     entity_id: sensor.shed_temperature
     lower: 3.5
+  - platform: threshold
+    name: Shed Temperature Above 10
+    entity_id: sensor.shed_temperature
+    upper: 10
 
 # Text to speech
 tts:

@@ -116,7 +116,19 @@
   condition: []
   id: '1511111478420'
   trigger:
-  - entity_id: binary_sensor.shed_temperature_threshold
+  - entity_id: binary_sensor.shed_temperature_below_35
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      message: Schildkröten zu warm
+    service: notify.pushbullet_lis
+  alias: Tortoises too warm
+  condition: []
+  id: '1511111478421'
+  trigger:
+  - entity_id: binary_sensor.shed_temperature_above_10
     from: 'off'
     platform: state
     to: 'on'

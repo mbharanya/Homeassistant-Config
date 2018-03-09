@@ -14,12 +14,21 @@ default_view:
     - group.bedroom_lights
     - group.bedroom_sensors
     - group.shed_sensors
-    - group.homelab_sensors
+    - group.ups
     - group.pi_hole
     - group.speed_test
     - group.tradfri_remotes
     - media_player.plex
     - media_player.spotify
+
+homelab_view:
+  view: yes
+  icon: mdi:server
+  entities:
+    - group.ups
+    - group.pandora_disk_sensors
+    - group.pi_hole
+    - group.speed_test
 
 people_view:
   view: yes
@@ -83,16 +92,31 @@ shed_sensors:
   entities:
     - sensor.shed_humidity
     - sensor.shed_temperature
-    - binary_sensor.shed_temperature_threshold
+    - binary_sensor.shed_temperature_below_35
+    - binary_sensor.shed_temperature_above_10
 
-homelab_sensors:
-  name: Homelab Sensors
+pandora_disk_sensors:
+  name: Pandora HDD Sensors
   entities:
-    - sensor.ups_battery 
-    - sensor.ups_battery_nominal_voltage
-    - sensor.ups_battery_voltage
-    - sensor.ups_status
-    - sensor.ups_time_left
+    - sensor.hd_temperature_devsda
+    - sensor.hd_temperature_devsdb
+    - sensor.hd_temperature_devsdc
+    - sensor.hd_temperature_devsdd
+    - sensor.hd_temperature_devsde
+    - sensor.hd_temperature_devsdf
+    - sensor.hd_temperature_devsdg
+    - sensor.hd_temperature_devsdh
+    - sensor.hd_temperature_devsdi
+    - sensor.hd_temperature_devsdj
+    - sensor.hd_temperature_devsdk
+    - sensor.hd_temperature_devsdl
+    - sensor.hd_temperature_devsdm
+    - sensor.hd_temperature_devsdn
+    - sensor.hd_temperature_devsdo
+    - sensor.hd_temperature_devsdp
+    - sensor.hd_temperature_devsdq
+    - sensor.hd_temperature_devsdr
+    - sensor.hd_temperature_devsds
 
 pi_hole:
   name: Pi Hole
@@ -101,14 +125,17 @@ pi_hole:
     - sensor.pihole_ads_percentage_blocked_today
     - sensor.pihole_dns_queries_today
     - sensor.pihole_domains_blocked
+
 speed_test:
   name: Speed Test
   entities:
     - sensor.speedtest_ping
     - sensor.speedtest_download
     - sensor.speedtest_upload
+
 ups:
-entities: 
+  name: UPS
+  entities: 
     - sensor.ups_battery 
     - sensor.ups_battery_nominal_voltage
     - sensor.ups_battery_voltage
