@@ -1,0 +1,12 @@
+.HA_VERSION
+.spotify-token-cache
+.tradfri_psk.conf
+.uuid
+deps
+entity_registry.yaml
+home-assistant.log
+home-assistant_v2.db
+known_devices.yaml
+plex.conf
+secrets.yaml
+tts
