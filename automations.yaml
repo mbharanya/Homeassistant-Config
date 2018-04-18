@@ -15,6 +15,9 @@
     data:
       entity_id: light.bedroom_bed
     service: light.turn_on
+  - data:
+      entity_id: light.bed_leds
+    service: light.turn_on
   alias: Bedroom Tradfri on
   condition: []
   id: '1509791350748'
@@ -27,6 +30,9 @@
   - alias: Bedroom light off
     data:
       entity_id: light.bedroom_bed
+    service: light.turn_off
+  - data:
+      entity_id: light.bed_leds
     service: light.turn_off
   alias: Bedroom Tradfri off
   condition: []
@@ -186,3 +192,31 @@
     from: ONLINE
     to: DEGRADED
     platform: state
+- action:
+  - data:
+      entity_id: switch.humidifier
+    service: switch.turn_on
+  alias: PC Room Humidifier On
+  condition:
+  - condition: state
+    entity_id: group.milan_portable_devices
+    state: home
+  id: '1522953892250'
+  trigger:
+  - below: '45'
+    entity_id: sensor.pc_room_humidity
+    platform: numeric_state
+- action:
+  - data:
+      entity_id: switch.humidifier
+    service: switch.turn_off
+  alias: PC Room Humidifier off
+  condition:
+  - condition: state
+    entity_id: group.milan_portable_devices
+    state: home
+  id: '1522954007709'
+  trigger:
+  - above: '45'
+    entity_id: sensor.pc_room_humidity
+    platform: numeric_state

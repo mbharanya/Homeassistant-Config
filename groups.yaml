@@ -14,6 +14,7 @@ default_view:
     - group.bedroom_lights
     - group.bedroom_sensors
     - group.shed_sensors
+    - group.bathroom_lights
     - group.ups
     - group.pi_hole
     - group.speed_test
@@ -81,6 +82,7 @@ bedroom_lights:
   entities:
     - light.bedroom_ceiling
     - light.bedroom_bed
+    - light.bed_leds
 
 bedroom_sensors:
   name: Bedroom Sensors
@@ -95,6 +97,11 @@ shed_sensors:
     - sensor.shed_temperature
     - binary_sensor.shed_temperature_below_35
     - binary_sensor.shed_temperature_above_10
+
+bathroom_lights:
+  name: Bathroom Lights
+  entities:
+    - light.bathroom_ceiling
 
 pandora_disk_sensors:
   name: Pandora HDD Sensors
@@ -172,6 +179,7 @@ tradfri_remotes:
   entities:
     - sensor.bedroom_remote
     - sensor.pc_room_remote
+    - sensor.bathroom_remote
 
 milan_portable_devices:
   name: Milan Portable Devices
