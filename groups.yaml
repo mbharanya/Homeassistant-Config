@@ -13,8 +13,11 @@ default_view:
     - group.pc_room_sensors
     - group.bedroom_lights
     - group.bedroom_sensors
-    - group.shed_sensors
-    - group.bathroom_lights
+    - group.hallway_lights
+    - group.kitchen_lights
+    - group.kitchen_sensors
+    - group.living_room_lights
+    - group.living_room_sensors
     - group.ups
     - group.pi_hole
     - group.speed_test
@@ -38,7 +41,7 @@ people_view:
   entities:
     - group.milan_portable_devices
     - group.milan_devices
-    - group.lis_devices
+    - group.linda_portable_devices
 
 automation_view:
   view: yes
@@ -46,18 +49,12 @@ automation_view:
   entities:
     - group.all_automations
 
-shed_view:
-  view: yes
-  name: Shed
-  entities:
-    - group.shed_sensors
-
 pc_room_lights:
   name: PC Room Lights
   entities:
-    - light.pc_room_3d_printer
-    - light.pc_room_monitors
-    - light.pc_room_panel
+    - light.tradfri_bulb_e27_ws_opal_980lm_4
+    - light.pc_room_monitors_2
+    - light.pc_room_panel_2
     - light.desk_leds
 
 pc_room_evening_lights:
@@ -70,18 +67,15 @@ pc_room_evening_lights:
 pc_room_sensors:
   name: PC Room Sensors
   entities:
-    - sensor.pc_room_humidity
-    - sensor.pc_room_temperature
     - switch.3d_printer
     - switch.tv
     - switch.humidifier
-    - light.plants
 
 bedroom_lights:
   name: Bedroom Lights
   entities:
-    - light.bedroom_ceiling
-    - light.bedroom_bed
+    - light.bedroom_panel
+    - light.bedroom_corner
     - light.bed_leds
 
 bedroom_sensors:
@@ -90,18 +84,35 @@ bedroom_sensors:
     - sensor.bedroom_humidity
     - sensor.bedroom_temperature
 
-shed_sensors:
-  name: Shed Sensors
+hallway_lights:
+  name: Hallway Lights
   entities:
-    - sensor.shed_humidity
-    - sensor.shed_temperature
-    - binary_sensor.shed_temperature_below_35
-    - binary_sensor.shed_temperature_above_10
+    - light.hallway_panel
 
-bathroom_lights:
-  name: Bathroom Lights
+kitchen_lights:
+  name: Kitchen Lights
   entities:
-    - light.bathroom_ceiling
+    - light.kitchen_panel
+
+kitchen_sensors:
+  name: Kitchen Lights
+  entities:
+    - sensor.kitchen_humidity
+    - sensor.kitchen_temperature
+    - light.kitchen_grower
+
+living_room_lights:
+  name: Living Room Lights
+  entities:
+    - light.living_room_panel
+    - light.living_room_sofa
+
+living_room_sensors:
+  name: Living Room Sensors
+  entities:
+    - sensor.living_room_humidity
+    - sensor.living_room_temperature
+    - light.plants
 
 pandora_disk_sensors:
   name: Pandora HDD Sensors
@@ -177,9 +188,13 @@ ups:
 tradfri_remotes:
   name: TRADFRI Remotes
   entities:
-    - sensor.bedroom_remote
+    - sensor.bedroom_corner_remote
+    - sensor.bedroom_remote_ceiling
+    - sensor.hallway_remote
+    - sensor.kitchen_remote
+    - sensor.living_room_remote
+    - sensor.pc_room_monitors_remote
     - sensor.pc_room_remote
-    - sensor.bathroom_remote
 
 milan_portable_devices:
   name: Milan Portable Devices
@@ -189,15 +204,10 @@ milan_portable_devices:
 milan_devices:
   name: Milan Devices
   entities:
-    - device_tracker.android5d2ef70c71723cc8
-    - device_tracker.mbhlap1705
     - device_tracker.slimtop
     - device_tracker.xmbombpc
 
-lis_devices:
-  name: Lis Devices
+linda_portable_devices:
+  name: Linda Portable Devices
   entities:
-    - device_tracker.android6e3bbe73876a4df8
-    - device_tracker.galaxytaba2016
-    - device_tracker.lisimac2
-    - device_tracker.zen
+    - device_tracker.huawei_p10

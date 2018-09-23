@@ -88,6 +88,8 @@ sensor:
       - /dev/sdq
       - /dev/sdr
       - /dev/sds
+      - /dev/sdt
+      - /dev/sdu
   - platform: pi_hole
     host: 192.168.1.30
     monitored_conditions:
@@ -121,33 +123,33 @@ sensor:
     currency: Garlicoin
     display_currency: CHF
   - platform: mqtt
-    name: "PC Room Temperature"
+    name: "Living Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
     unit_of_measurement: '°C'
     value_template: '{{ value_json["AM2301"]["Temperature"] * 0.89 | round(1) }}'
   - platform: mqtt
-    name: "PC Room Humidity"
+    name: "Living Room Humidity"
     state_topic: "tele/sonoff/plants/SENSOR"
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
   - platform: mqtt
     name: "Bedroom Temperature"
-    state_topic: "tele/sonoff/bed/SENSOR"
-    unit_of_measurement: '°C'
-    value_template: '{{ value_json["AM2301"]["Temperature"] * 0.95 | round(1) }}'
-  - platform: mqtt
-    name: "Bedroom Humidity"
-    state_topic: "tele/sonoff/bed/SENSOR"
-    unit_of_measurement: '%'
-    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
-  - platform: mqtt
-    name: "Shed Temperature"
-    state_topic: "tele/sonoff/shed/SENSOR"
+    state_topic: "tele/sonoff/bedroom/SENSOR"
     unit_of_measurement: '°C'
     value_template: '{{ value_json["AM2301"]["Temperature"] }}'
   - platform: mqtt
-    name: "Shed Humidity"
-    state_topic: "tele/sonoff/shed/SENSOR"
+    name: "Bedroom Humidity"
+    state_topic: "tele/sonoff/bedroom/SENSOR"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+  - platform: mqtt
+    name: "Kitchen Temperature"
+    state_topic: "tele/sonoff/grower/SENSOR"
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+  - platform: mqtt
+    name: "Kitchen Humidity"
+    state_topic: "tele/sonoff/grower/SENSOR"
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
 
@@ -170,17 +172,15 @@ media_player:
   - platform: spotify
     client_id: 521b6f020f9d4923a98c8bdb39889d03
     client_secret: !secret spotify_client_secret
-  - platform: webostv
-    name: LG 4K
 
 mqtt:
   broker: localhost
 
 device_tracker:
-  - platform: asuswrt
-    host: 192.168.1.3
-    username: admin
-    password: !secret router_password
+  - platform: unifi
+    host: 192.168.1.22
+    username: !secret unifi_user
+    password: !secret unifi_password
 
 notify:
   - name: pushbullet
@@ -233,6 +233,17 @@ light:
     rgb_state_topic: "stat/sonoff/bed_leds/COLOR"
     rgb_command_topic: "cmnd/sonoff/bed_leds/COLOR"
     rgb_command_template: "{{ '%02x%02x%02x00' | format(red, green, blue) }}"
+    white_value_command_topic: "cmnd/sonoff/bed_leds/COLOR"
+    white_value_state_topic: "stat/sonoff/bed_leds/COLOR"
+    white_value_template: "{{ '000000%02x' | format(white) }}"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+  - platform: mqtt
+    name: Kitchen Grower
+    state_topic: "stat/sonoff/grower/POWER"
+    command_topic: "cmnd/sonoff/grower/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"

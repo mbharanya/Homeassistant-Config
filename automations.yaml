@@ -220,3 +220,37 @@
   - above: '45'
     entity_id: sensor.pc_room_humidity
     platform: numeric_state
+- id: '1527534824288'
+  alias: Desk LED Red if turned on and after sunset
+  trigger:
+  - event: sunset
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: light.desk_leds
+    state: 'on'
+  action:
+  - data:
+      color_name: red
+      entity_id: light.desk_leds
+    service: light.turn_on
+- id: '1537640292472'
+  alias: Grower on
+  trigger:
+  - at: '6:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.kitchen_grower
+    service: light.turn_on
+- id: '1537640537656'
+  alias: Grower off
+  trigger:
+  - at: '22:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.kitchen_grower
+    service: light.turn_off
