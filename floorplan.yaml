@@ -1,0 +1,46 @@
+      name: Demo Floorplan
+      image: /local/custom_ui/floorplan/floorplan.svg
+      stylesheet: /local/custom_ui/floorplan/floorplan.css
+            
+      last_motion_entity: sensor.template_last_motion
+      last_motion_class: last-motion
+      warnings:
+      pan_zoom:
+
+      groups:
+        - name: temperatures
+          entities:
+            - sensor.kitchen_temperature
+            - sensor.living_room_temperature
+            - sensor.bedroom_temperature
+          text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: humidities
+          entities:
+            - sensor.kitchen_humidity
+            - sensor.living_room_humidity
+            - sensor.bedroom_humidity
+          text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: Lights
+          entities:
+            - light.hallway_panel
+            - light.kitchen_panel
+            - light.kitchen_grower
+            - light.pc_room_panel_2
+            - light.pc_room_monitors_2
+            - light.desk_leds
+            - light.tradfri_bulb_e27_ws_opal_980lm_4
+            - light.plants
+            - light.living_room_panel
+            - light.living_room_sofa
+            - light.bedroom_panel
+            - light.bedroom_corner
+            - light.bed_leds
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: 'light-off'

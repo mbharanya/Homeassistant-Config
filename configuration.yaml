@@ -181,6 +181,7 @@ device_tracker:
     host: 192.168.1.22
     username: !secret unifi_user
     password: !secret unifi_password
+    verify_ssl: false
 
 notify:
   - name: pushbullet
@@ -265,6 +266,13 @@ switch:
 device_sun_light_trigger:
   light_group: group.pc_room_evening_lights
   device_group: group.milan_portable_devices
+
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config: !include floorplan.yaml
 
 zfs:
 
