@@ -1,0 +1,16 @@
+- name: Livingroom normal
+  entities:
+    light.living_room_sofa:
+        state: on
+        transition: 2
+        brightness_pct: 60
+    light.living_room_dinner_table:
+        state: on
+- name: Livingroom dim
+  entities:
+    light.living_room_sofa:
+        state: on
+        transition: 2
+        brightness_pct: 5
+    light.living_room_dinner_table:
+        state: off

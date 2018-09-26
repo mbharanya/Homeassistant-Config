@@ -26,16 +26,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="-924.11825"
-     inkscape:cy="1204.0005"
+     inkscape:cx="25.378924"
+     inkscape:cy="1768.8558"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="2560"
-     inkscape:window-height="1356"
-     inkscape:window-x="1912"
-     inkscape:window-y="2152"
+     inkscape:window-width="1987"
+     inkscape:window-height="1163"
+     inkscape:window-x="1992"
+     inkscape:window-y="2238"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -355,6 +355,20 @@
       <path
          id="path3920"
          d="m 90.25,32.834 c -2.6,0 -4.705,2.108 -4.705,4.708 V 55.416 H 14.454 V 25.798 c 0,-2.603 -2.105,-4.708 -4.708,-4.708 -2.6,0 -4.708,2.105 -4.708,4.708 V 78.91 h 9.416 V 65.947 H 85.545 V 78.91 h 9.417 V 37.542 c 0,-2.6 -2.112,-4.708 -4.712,-4.708 z"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="group.non_automatic_lights"
+       transform="matrix(2.219512,0,0,2.219512,633.72011,-3765.8787)"
+       inkscape:label="#g3939">
+      <path
+         id="path3937"
+         overflow="visible"
+         display="inline"
+         visibility="visible"
+         marker="none"
+         d="m 50,961.36219 c -13.2296,0 -26,10.28529 -26,24.84375 0,9.18102 3.5737,15.01576 6.875,19.68756 3.3013,4.6716 6.125,8.1035 6.125,13.4687 v 12 c 0,3.3944 2.8143,6 6,6 h 1 c 0,3.2894 2.7106,6 6,6 3.2894,0 6,-2.7106 6,-6 h 1 c 3.1857,0 6,-2.6056 6,-6 v -12 c 0,-5.3652 2.8237,-8.7971 6.125,-13.4687 C 72.4263,1001.2217 76,995.38696 76,986.20594 76,971.64748 63.2296,961.36219 50,961.36219 Z m 0,4 c 11.1608,0 22,8.63761 22,20.84375 0,8.18278 -2.9263,12.84857 -6.125,17.37506 -2.8723,4.0645 -6.1151,8.0874 -6.75,13.7812 h -18.25 c -0.6349,-5.6938 -3.8777,-9.7167 -6.75,-13.7812 C 30.9263,999.05451 28,994.38872 28,986.20594 28,973.9998 38.8392,965.36219 50,965.36219 Z m -2.2188,3.125 C 38.3394,969.58849 31,977.64485 31,987.36219 c 0,1.94221 0.3015,3.79716 0.8438,5.5625 0.2239,1.08504 1.471,1.82155 2.5312,1.5 1.0602,-0.32156 1.6978,-1.62959 1.2812,-2.65625 C 35.2279,990.37358 35,988.89838 35,987.36219 c 0,-7.71346 5.7588,-14.03615 13.2188,-14.90625 1.0471,-0.0818 1.9255,-1.10905 1.8437,-2.15625 -0.033,-1.37794 -1.2025,-1.88949 -2.2813,-1.8125 z M 41,1021.3622 h 18 v 4 H 41 Z m 0,8 h 18 v 2 c 0,1.2018 -0.9647,2 -2,2 H 43 c -1.0353,0 -2,-0.7982 -2,-2 z m 7,8 h 4 c 0,1.1426 -0.8574,2 -2,2 -1.1426,0 -2,-0.8574 -2,-2 z"
+         style="color:#000000;text-indent:0;text-transform:none;direction:ltr;baseline-shift:baseline;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;enable-background:accumulate"
          inkscape:connector-curvature="0" />
     </g>
   </g>

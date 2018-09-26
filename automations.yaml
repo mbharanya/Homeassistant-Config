@@ -254,3 +254,31 @@
   - data:
       entity_id: light.kitchen_grower
     service: light.turn_off
+
+- alias: "Media player paused/stopped"
+  trigger:
+    - platform: state
+      entity_id: media_player.lg_4k_oled
+      from: 'playing'
+      to: 'idle'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+  action:
+      service: scene.turn_on
+      entity_id: scene.livingroom_normal
+
+- alias: "Media player playing"
+  trigger:
+    - platform: state
+      entity_id: media_player.lg_4k_oled
+      to: 'playing'
+      from: 'idle'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+  action:
+      service: scene.turn_on
+      entity_id: scene.livingroom_dim
