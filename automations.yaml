@@ -255,30 +255,30 @@
       entity_id: light.kitchen_grower
     service: light.turn_off
 
-- alias: "Media player paused/stopped"
+- alias: "LG OLED paused/stopped"
   trigger:
     - platform: state
       entity_id: media_player.lg_4k_oled
       from: 'playing'
-      to: 'idle'
+      to: 'paused'
   condition:
     - condition: state
       entity_id: sun.sun
       state: 'below_horizon'
   action:
       service: scene.turn_on
-      entity_id: scene.livingroom_normal
+      entity_id: scene.living_room_normal
 
-- alias: "Media player playing"
+- alias: "LG OLED playing"
   trigger:
     - platform: state
       entity_id: media_player.lg_4k_oled
       to: 'playing'
-      from: 'idle'
+      from: 'paused'
   condition:
     - condition: state
       entity_id: sun.sun
       state: 'below_horizon'
   action:
       service: scene.turn_on
-      entity_id: scene.livingroom_dim
+      entity_id: scene.living_room_dim
