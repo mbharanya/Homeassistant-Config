@@ -19,6 +19,7 @@ default_view:
     - group.kitchen_sensors
     - group.living_room_lights
     - group.living_room_sensors
+    - group.fang_switches
     - media_player.plex
     - media_player.spotify
     - media_player.lg_4k_oled
@@ -44,6 +45,7 @@ people_view:
   view: yes
   icon: mdi:account-multiple
   entities:
+    - group.milan_and_linda
     - group.milan_portable_devices
     - group.milan_devices
     - group.linda_portable_devices
@@ -59,6 +61,7 @@ weather:
   entities:
     - sensor.weather_now_precipitation
     - sensor.weather_now_temperature
+    - sun.sun
 
 pc_room_lights:
   name: PC Room Lights
@@ -79,6 +82,7 @@ pc_room_sensors:
   entities:
     - switch.tv
     - switch.humidifier
+    - camera.fang1
 
 bedroom_lights:
   name: Bedroom Lights
@@ -97,6 +101,7 @@ hallway_lights:
   name: Hallway Lights
   entities:
     - light.hallway_panel
+    - camera.fang3
 
 kitchen_lights:
   name: Kitchen Lights
@@ -124,24 +129,28 @@ living_room_sensors:
     - sensor.living_room_humidity
     - sensor.living_room_temperature
     - light.plants
+    - camera.fang2
+
+fang_switches:
+  name: Cameras
+  entities:
+    - switch.fang_1
+    - switch.fang_2
+    - switch.fang_3
 
 non_automatic_lights:
   name: All Lights
   entities:
     - light.bed_leds
-    - light.bedroom_2
     - light.bedroom_corner
     - light.bedroom_corner_2
     - light.bedroom_panel
     - light.desk_leds
-    - light.hallway
     - light.hallway_panel
-    - light.kitchen
     - light.kitchen_panel
-    - light.living_room
     - light.living_room_panel
     - light.living_room_sofa
-    - light.pc_room_2
+    - light.living_room_dinner_table
     - light.pc_room_monitors_2
     - light.pc_room_monitors_3
     - light.pc_room_panel_2
@@ -229,6 +238,12 @@ tradfri_remotes:
     - sensor.living_room_remote
     - sensor.pc_room_monitors_remote
     - sensor.pc_room_remote
+
+milan_and_linda:
+  name: Milan and Linda
+  entities:
+    - device_tracker.galaxynote8
+    - device_tracker.huawei_p10
 
 milan_portable_devices:
   name: Milan Portable Devices

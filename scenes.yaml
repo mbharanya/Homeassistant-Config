@@ -14,3 +14,14 @@
         brightness_pct: 1
     light.living_room_dinner_table:
         state: off
+- name: Bedroom Wake Up
+  entities:
+    light.bedroom_corner:
+        state: on
+        transition: 120
+        brightness_pct: 100
+    light.bed_leds:
+        state: on
+        transition: 120
+        brightness_pct: 10
+        color_name: blue
