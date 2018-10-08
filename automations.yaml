@@ -260,3 +260,13 @@
   action:
     service: switch.turn_on
     entity_id: group.fang_switches
+- alias: Lights off if not home
+  trigger:
+  - platform: state
+    entity_id: group.milan_and_linda
+    to: not_home
+    from: home
+  action:
+    service: light.turn_off
+    entity_id: group.non_automatic_lights
+

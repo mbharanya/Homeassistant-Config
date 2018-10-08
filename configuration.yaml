@@ -173,6 +173,8 @@ binary_sensor:
 tts:
   - platform: google
 
+wake_on_lan:
+
 media_player:
   - platform: plex
   - platform: spotify
@@ -181,6 +183,14 @@ media_player:
   - platform: webostv
     host: 192.168.1.102
     name: LG 4K OLED
+    turn_on_action:
+      service: wake_on_lan.send_magic_packet
+      data:
+        mac: "20-3D-BD-1B-A3-86"
+#    customize:
+#      sources:
+#        - youtube
+#        - netflix
 
 mqtt:
   broker: localhost
@@ -281,17 +291,20 @@ switch:
     command_topic: "cmnd/sonoff/humidifier/POWER"
   - platform: command_line
     switches:
-      fang_1:
+      pc_room_camera:
+        friendly_name: PC Room Camera
         command_on: curl -s "http://192.168.1.164/cgi-bin/scripts?cmd=start&script=20-rtsp-server" > /dev/null
         command_off: curl -s "http://192.168.1.164/cgi-bin/scripts?cmd=stop&script=20-rtsp-server" > /dev/null
   - platform: command_line
     switches:
-      fang_2:
+      living_room_camera:
+        friendly_name: Living Room Camera
         command_on: curl -s "http://192.168.1.165/cgi-bin/scripts?cmd=start&script=20-rtsp-server" > /dev/null
         command_off: curl -s "http://192.168.1.165/cgi-bin/scripts?cmd=stop&script=20-rtsp-server" > /dev/null
   - platform: command_line
     switches:
-      fang_3:
+      hallway_camera:
+        friendly_name: Hallway Camera
         command_on: curl -s "http://192.168.1.166/cgi-bin/scripts?cmd=start&script=20-rtsp-server" > /dev/null
         command_off: curl -s "http://192.168.1.166/cgi-bin/scripts?cmd=stop&script=20-rtsp-server" > /dev/null
 
@@ -307,7 +320,7 @@ switch:
       - light.living_room_sofa
       - light.pc_room_monitors_2
       - light.pc_room_monitors_3
-      - light.pc_room_panel_2
+      - light.pc_room_panel_3
       - light.tradfri_bulb_e27_ws_opal_980lm_4
       - light.tv_leds
 
@@ -315,13 +328,13 @@ ffmpeg:
 
 camera:
   - platform: ffmpeg
-    name: fang1
+    name: PC Room Camera
     input: rtsp://192.168.1.164:554/unicast
   - platform: ffmpeg
-    name: fang2
+    name: Living Room Camera
     input: rtsp://192.168.1.165:554/unicast
   - platform: ffmpeg
-    name: fang3
+    name: Hallway Camera
     input: rtsp://192.168.1.166:554/unicast
   - platform: ffmpeg
     name: DaFang
