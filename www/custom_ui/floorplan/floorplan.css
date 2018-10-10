@@ -97,7 +97,7 @@ svg, svg * {
 }
 
 .light-on {
-  fill: #FFEB3B !important;
+  fill: #FFDE03 !important;
 }
 
 /* Doorbell */
@@ -107,7 +107,7 @@ svg, svg * {
 }
 
 .doorbell-on {
-  fill: #FFEB3B !important;
+  fill: #4CAF50 !important;
 }
 
 /* Temperature sensor */

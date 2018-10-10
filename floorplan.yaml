@@ -14,7 +14,7 @@
             - sensor.kitchen_temperature
             - sensor.living_room_temperature
             - sensor.bedroom_temperature
-          text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+          text_template: '${entity.state ? Math.round(entity.state) + "°": "undefined"}'
           class_template: '
             var temp = entity.state;
             if (temp < 10)
@@ -34,7 +34,7 @@
             - sensor.kitchen_humidity
             - sensor.living_room_humidity
             - sensor.bedroom_humidity
-          text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
+          text_template: '${entity.state ? Math.round(entity.state) + "%": "undefined"}'
           class_template: '
             var humidity = entity.state;
             if (humidity < 20)
@@ -85,3 +85,5 @@
               class: 'light-on'
             - state: 'off'
               class: 'light-off'
+          action: 
+            service: toggle
