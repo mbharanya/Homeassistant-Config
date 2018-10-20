@@ -6,8 +6,6 @@
       last_motion_class: last-motion
       warnings:
 
-
-
       groups:
         - name: temperatures
           entities:
@@ -65,7 +63,6 @@
 
         - name: Lights
           entities:
-            - group.non_automatic_lights
             - light.hallway_panel
             - light.kitchen_panel
             - light.kitchen_grower
@@ -87,3 +84,14 @@
               class: 'light-off'
           action: 
             service: toggle
+
+        - name: Configurable Lights
+          entities:
+            - group.non_automatic_lights
+            - light.tv_leds
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: 'light-off'
+

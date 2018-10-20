@@ -22,9 +22,12 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
+  api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
+  base_url: xmb.li:8123
+  trusted_networks:
+    - 127.0.0.1
+    - 192.168.1.0/24
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -64,7 +67,10 @@ sensor:
       - symbol
       - temperature
       - precipitation
-
+  - platform: time_date
+    name: Bedroom Alarm Clock Time
+    display_options:
+      - 'time'
   - platform: apcupsd
     resources:
       - status
@@ -270,11 +276,15 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     retain: true
-  # - platform: flux_led
-  #   automatic_add: true
-  #   devices:
-  #     192.168.1.163:
-  #       name: tv_leds
+  - platform: flux_led
+    automatic_add: true
+    devices:
+      192.168.1.163:
+        name: TV LEDs
+        mode: rgb
+      192.168.1.172:
+        name: Hydro LEDs
+        mode: rgbw
 
 switch:
   - platform: mqtt
@@ -289,6 +299,9 @@ switch:
     name: "Humidifier"
     state_topic: "stat/sonoff/humidifier/POWER"
     command_topic: "cmnd/sonoff/humidifier/POWER"
+  - platform: wake_on_lan
+    name: XMBomb PC
+    mac_address: "70-4D-7B-B7-8B-DD"
   - platform: command_line
     switches:
       pc_room_camera:
@@ -327,18 +340,24 @@ switch:
 ffmpeg:
 
 camera:
-  - platform: ffmpeg
-    name: PC Room Camera
-    input: rtsp://192.168.1.164:554/unicast
-  - platform: ffmpeg
-    name: Living Room Camera
-    input: rtsp://192.168.1.165:554/unicast
-  - platform: ffmpeg
-    name: Hallway Camera
-    input: rtsp://192.168.1.166:554/unicast
-  - platform: ffmpeg
-    name: DaFang
-    input: -rtsp_transport tcp -i rtsp://dafang:8554/unicast
+#  - platform: ffmpeg
+#    name: PC Room Camera
+#    input: rtsp://192.168.1.164:554/unicast
+#  - platform: ffmpeg
+#    name: Living Room Camera
+#    input: rtsp://192.168.1.165:554/unicast
+#  - platform: ffmpeg
+#    name: Hallway Camera
+#    input: rtsp://192.168.1.166:554/unicast
+#  - platform: ffmpeg
+#    name: DaFang
+#    input: -rtsp_transport tcp -i rtsp://dafang:8554/unicast
+
+input_datetime:
+  bedroom_alarm_clock_time:
+    name: Bedroom Alarm Clock
+    has_date: false
+    has_time: true
 
 device_sun_light_trigger:
   light_group: group.evening_lights

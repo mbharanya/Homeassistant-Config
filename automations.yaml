@@ -205,7 +205,9 @@
   condition: []
   action:
   - data:
-      entity_id: light.kitchen_grower
+      entity_id: 
+        - light.kitchen_grower
+        - light.hydro_leds
     service: light.turn_on
 - id: '1537640537656'
   alias: Grower off
@@ -215,7 +217,9 @@
   condition: []
   action:
   - data:
-      entity_id: light.kitchen_grower
+      entity_id:
+        - light.kitchen_grower
+        - light.hydro_leds
     service: light.turn_off
 - alias: LG OLED paused/stopped
   trigger:
@@ -269,4 +273,10 @@
   action:
     service: light.turn_off
     entity_id: group.non_automatic_lights
-
+- alias: alarm clock
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.bedroom_alarm_clock_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    service: scene.turn_on
+    entity_id: scene.bedroom_wake_up 

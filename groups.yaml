@@ -24,6 +24,7 @@ default_view:
     - media_player.spotify
     - media_player.lg_4k_oled
     - switch.xmbomb_pc
+    - input_datetime.bedroom_alarm_clock_time
 
 light_view:
   view: yes
@@ -84,6 +85,7 @@ pc_room_sensors:
     - switch.tv
     - switch.humidifier
     - camera.pc_room_camera
+    - light.hydro_leds
 
 bedroom_lights:
   name: Bedroom Lights
