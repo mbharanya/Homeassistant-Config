@@ -1,0 +1,7 @@
+zero_bed:
+  alias: Tare Bed
+  sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: "/weight/bed/tare"
+        payload: '0'

@@ -99,6 +99,8 @@ bedroom_sensors:
   entities:
     - sensor.bedroom_humidity
     - sensor.bedroom_temperature
+    - sensor.bed_mass
+    - input_boolean.in_bed
 
 hallway_lights:
   name: Hallway Lights
@@ -125,6 +127,7 @@ living_room_lights:
     - light.living_room_sofa
     - light.living_room_dinner_table
     - light.tv_leds
+    - light.sofa_leds
 
 living_room_sensors:
   name: Living Room Sensors
@@ -159,6 +162,7 @@ non_automatic_lights:
     - light.pc_room_panel_3
     - light.tradfri_bulb_e27_ws_opal_980lm_4
     - light.tv_leds
+    - light.sofa_leds
 
 pandora_disk_sensors:
   name: Pandora HDD Sensors

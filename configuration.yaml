@@ -164,6 +164,10 @@ sensor:
     state_topic: "tele/sonoff/grower/SENSOR"
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+  - platform: mqtt
+    state_topic: "/weight/bed/load"
+    name: Bed Mass
+    unit_of_measurement: "kg"
 
 binary_sensor:
   - platform: threshold
@@ -285,6 +289,9 @@ light:
       192.168.1.172:
         name: Hydro LEDs
         mode: rgbw
+      192.168.1.174:
+        name: Sofa LEDs
+        mode: rgbw
 
 switch:
   - platform: mqtt
@@ -358,6 +365,12 @@ input_datetime:
     name: Bedroom Alarm Clock
     has_date: false
     has_time: true
+
+input_boolean:
+  in_bed:
+    name: Bed Occupancy
+    initial: off
+    icon: mdi:hotel
 
 device_sun_light_trigger:
   light_group: group.evening_lights
