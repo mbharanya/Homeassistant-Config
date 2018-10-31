@@ -273,6 +273,15 @@
   action:
     service: light.turn_off
     entity_id: group.non_automatic_lights
+- alias: Lights on if home
+  trigger:
+  - platform: state
+    entity_id: group.milan_and_linda
+    to: home
+    from: not_home
+  action:
+    service: light.turn_on
+    entity_id: group.evening_lights
 - alias: alarm clock
   trigger:
     platform: template
@@ -282,7 +291,7 @@
     entity_id: scene.bedroom_wake_up 
 # sets the in_bed boolean over a certain mass
 - alias: bed set
-  # hide_entity: True
+  hide_entity: true
   trigger:
     platform: state
     entity_id: sensor.bed_mass
@@ -293,15 +302,15 @@
         entity_id: sensor.bed_mass
         above: 50
       - condition: state
-        entity_id: device_tracker.note
-        state: 'HOME'
+        entity_id: device_tracker.galaxynote8
+        state: home
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.in_bed
 
 # clears the in_bed boolean under a certain mass
 - alias: bed clear
-  # hide_entity: True
+  hide_entity: true
   trigger:
     platform: state
     entity_id: sensor.bed_mass
@@ -313,7 +322,7 @@
         below: 20
       - condition: state
         entity_id: device_tracker.galaxynote8
-        state: 'HOME'
+        state: home
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.in_bed
@@ -326,7 +335,7 @@
     to: 'on'
   condition:
     condition: time
-    after: '20:00:00'
+    after: '22:00:00'
     before: '04:00:00'
   action:
     - service: light.turn_off

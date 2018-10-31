@@ -137,7 +137,6 @@ svg, svg * {
   fill-opacity: 1 !important;
 }
 
-
 .humidity-very-low-background {
   fill: #2196F3 !important;
   fill-opacity: 1 !important;
@@ -159,6 +158,22 @@ svg, svg * {
 }
 
 .humidity-very-high-background {
+  fill: #F44336 !important;
+  fill-opacity: 1 !important;
+}
+
+.weight-empty{
+  text-align: center;
+  fill: #4CAF50 !important;
+  fill-opacity: 1 !important;
+}
+.weight-1-person{
+  text-align: center;
+  fill: #FF9800 !important;
+  fill-opacity: 1 !important;
+}
+.weight-2-people{
+  text-align: center;
   fill: #F44336 !important;
   fill-opacity: 1 !important;
 }

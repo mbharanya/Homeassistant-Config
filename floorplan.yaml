@@ -47,6 +47,20 @@
               return "humidity-very-high-background";
             '
 
+        - name: weight
+          entities:
+            - sensor.bed_mass
+          text_template: '${entity.state ? Math.round(entity.state) + " " +entity.attributes.unit_of_measurement: ""}'
+          class_template: '
+            var weight = entity.state;
+            if (weight < 40)
+              return "weight-empty";
+            else if (weight < 100)
+              return "weight-1-person";
+            else
+              return "weight-2-people";
+            '
+
         - name: cameras
           entities:
             - switch.pc_room_camera
@@ -89,6 +103,7 @@
           entities:
             - group.non_automatic_lights
             - light.tv_leds
+            - light.sofa_leds
           states:
             - state: 'on'
               class: 'light-on'

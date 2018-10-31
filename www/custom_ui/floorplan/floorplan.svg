@@ -42,6 +42,15 @@
        r="318.55237"
        gradientTransform="matrix(1,0,0,1.1752689,0,12.827111)"
        gradientUnits="userSpaceOnUse" />
+    <style
+       id="style3750"
+       type="text/css">
+   
+    .str0 {stroke:black;stroke-width:13.3307}
+    .fil1 {fill:none}
+    .fil0 {fill:black}
+   
+  </style>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -50,11 +59,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0488751"
-     inkscape:cx="601.99142"
-     inkscape:cy="763.17566"
+     inkscape:zoom="2.9666668"
+     inkscape:cx="930.71935"
+     inkscape:cy="1321.8046"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      units="px"
      inkscape:window-width="2560"
@@ -81,10 +90,10 @@
     <rect
        id="light.living_room_panel"
        width="648.54559"
-       height="782.33594"
+       height="783.26288"
        x="739.60834"
-       y="1217.0168"
-       style="opacity:0.29100001;fill:#000000;fill-opacity:1;stroke-width:1.03130567"
+       y="1216.0898"
+       style="opacity:0.29100001;fill:#000000;fill-opacity:1;stroke-width:1.0319165"
        ry="0"
        inkscape:label="#rect126" />
     <rect
@@ -161,7 +170,7 @@
     <g
        id="light.living_room_sofa"
        data-name="Ebene 2"
-       transform="matrix(2.0587813,0,0,2.1413662,770.04779,1.0947398)"
+       transform="matrix(2.0587813,0,0,2.1413662,758.60696,13.488971)"
        inkscape:label="#g3796">
       <g
          id="g3794">
@@ -245,26 +254,26 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:105.11209869px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.62780261"
-       x="813.75348"
-       y="-233.88557"
+       x="976.78528"
+       y="-254.86043"
        id="sensor.living_room_temperature"
        inkscape:label="#text3900"><tspan
          sodipodi:role="line"
          id="tspan3898"
-         x="813.75348"
-         y="-233.88557"
+         x="976.78528"
+         y="-254.86043"
          style="font-size:42.04484177px;stroke-width:2.62780261">temp</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:42.04484177px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.62780261"
-       x="815.63049"
-       y="-171.94444"
+       x="975.80206"
+       y="-205.31352"
        id="sensor.living_room_humidity"
        inkscape:label="#text3904"><tspan
          sodipodi:role="line"
          id="tspan3902"
-         x="815.63049"
-         y="-171.94444"
+         x="975.80206"
+         y="-205.31352"
          style="stroke-width:2.62780261">humid</tspan></text>
     <text
        inkscape:label="#text3900"
@@ -432,5 +441,23 @@
          inkscape:connector-curvature="0"
          style="fill:#000000" />
     </g>
+    <path
+       id="light.sofa_leds"
+       d="m 794.06527,-187.98806 v 6.39398 h -21.9527 c -6.18086,0 -11.29605,5.1152 -11.29605,11.29606 v 138.536414 c 0,6.180856 5.11519,11.296047 11.29605,11.296047 h 21.73956 v 6.393989 c 0,6.3939891 5.32832,11.722313 11.72232,11.722313 h 49.02057 c 6.394,0 11.72232,-5.3283239 11.72232,-11.722313 v -11.722313 -7.033389 -6.393988 -123.83024 -6.394 -7.03338 -11.72232 c 0,-6.39399 -5.32832,-11.72231 -11.72232,-11.72231 h -49.02057 c -6.394,0.21313 -11.50918,5.54146 -11.50918,11.93545 z m 20.67389,155.373921 h 16.62437 6.39399 22.37896 v 6.39399 12.148579 c 0,2.983861 -2.34447,5.3283241 -5.32832,5.3283241 h -49.02059 c -2.98386,0 -5.32832,-2.3444631 -5.32832,-5.3283241 v -13.214244 c 0,-2.983862 2.34446,-5.328325 5.32832,-5.328325 z M 831.36353,-163.0515 V -39.008127 H 821.13314 V -162.83837 h 10.23039 z m -25.57596,0 h 8.95159 v 124.043373 h -8.95159 c -6.39398,0 -11.7223,5.328324 -11.7223,11.722313 v 0.426265 h -21.9527 c -2.5576,0 -4.90207,-2.131328 -4.90207,-4.902057 V -170.29802 c 0,-2.5576 2.13133,-4.90207 4.90207,-4.90207 h 21.73956 v 0.42627 c 0.21314,6.60712 5.32832,11.72232 11.93544,11.72232 z m 48.80745,-30.26488 c 2.98386,0 5.32833,2.34445 5.32833,5.32832 v 12.3617 6.394 h -22.16583 -6.39399 -16.62437 -8.95159 c -2.98386,0 -5.32832,-2.34447 -5.32832,-5.32832 v -13.21426 c 0,-2.98385 2.34446,-5.32832 5.32832,-5.32832 h 48.80745 z"
+       inkscape:connector-curvature="0"
+       inkscape:label="#path3799"
+       style="stroke-width:2.13132954" />
+    <text
+       inkscape:label="#text3900"
+       id="sensor.bed_mass"
+       y="197.32288"
+       x="370.37357"
+       style="font-style:normal;font-weight:normal;font-size:105.11209869px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.62780261"
+       xml:space="preserve"><tspan
+         style="font-size:42.04484177px;stroke-width:2.62780261"
+         y="197.32288"
+         x="370.37357"
+         id="tspan3906-2"
+         sodipodi:role="line">?? kg</tspan></text>
   </g>
 </svg>

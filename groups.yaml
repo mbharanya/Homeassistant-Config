@@ -101,6 +101,7 @@ bedroom_sensors:
     - sensor.bedroom_temperature
     - sensor.bed_mass
     - input_boolean.in_bed
+    - script.zero_bed
 
 hallway_lights:
   name: Hallway Lights
