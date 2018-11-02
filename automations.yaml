@@ -301,6 +301,7 @@
       - condition: numeric_state
         entity_id: sensor.bed_mass
         above: 50
+        below: 100
       - condition: state
         entity_id: device_tracker.galaxynote8
         state: home
@@ -319,6 +320,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.bed_mass
+        above: 5
         below: 20
       - condition: state
         entity_id: device_tracker.galaxynote8

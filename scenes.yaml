@@ -18,10 +18,10 @@
   entities:
     light.bedroom_corner:
         state: on
-        transition: 120
+        transition: 240
         brightness_pct: 100
     light.bed_leds:
         state: on
         transition: 120
-        brightness_pct: 10
+        brightness_pct: 100
         color_name: blue

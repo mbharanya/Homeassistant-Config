@@ -250,19 +250,16 @@ light:
     payload_off: "OFF"
     retain: true
   - platform: mqtt
-    name: Bed LEDs
-    state_topic: "stat/sonoff/bed_leds/POWER"
-    command_topic: "cmnd/sonoff/bed_leds/POWER"
-    brightness_state_topic: "stat/sonoff/bed_leds/DIMMER"
-    brightness_command_topic: "cmnd/sonoff/bed_leds/DIMMER"
+    name: TV LEDs
+    state_topic: "stat/sonoff/tv_leds/POWER"
+    command_topic: "cmnd/sonoff/tv_leds/POWER"
+    brightness_state_topic: "stat/sonoff/tv_leds/DIMMER"
+    brightness_command_topic: "cmnd/sonoff/tv_leds/DIMMER"
     brightness_value_template: "{{ value_json.brightness }}"
     brightness_scale: 100
-    rgb_state_topic: "stat/sonoff/bed_leds/COLOR"
-    rgb_command_topic: "cmnd/sonoff/bed_leds/COLOR"
-    rgb_command_template: "{{ '%02x%02x%02x00' | format(red, green, blue) }}"
-    white_value_command_topic: "cmnd/sonoff/bed_leds/COLOR"
-    white_value_state_topic: "stat/sonoff/bed_leds/COLOR"
-    white_value_template: "{{ '000000%02x' | format(white) }}"
+    rgb_state_topic: "stat/sonoff/tv_leds/COLOR"
+    rgb_command_topic: "cmnd/sonoff/tv_leds/COLOR"
+    rgb_command_template: "{{ '#%02x%02x%02x' | format(red, green, blue) }}"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
@@ -286,14 +283,14 @@ light:
   - platform: flux_led
     automatic_add: true
     devices:
-      192.168.1.163:
-        name: TV LEDs
-        mode: rgb
       192.168.1.172:
         name: Hydro LEDs
         mode: rgbw
       192.168.1.174:
         name: Sofa LEDs
+        mode: rgbw
+      192.168.1.173:
+        name: Bed LEDs
         mode: rgbw
 
 switch:
