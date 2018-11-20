@@ -5,6 +5,7 @@
   action:
     service: scene.turn_on
     entity_id: scene.bedroom_wake_up
+  id: f93d16b45e3845afb9c7733d86cb9f5f
 - action:
   - alias: Plant Light on
     data:
@@ -205,21 +206,21 @@
   condition: []
   action:
   - data:
-      entity_id: 
-        - light.kitchen_grower
-        - light.hydro_leds
+      entity_id:
+      - light.kitchen_grower
+      - light.hydro_2700k
     service: light.turn_on
 - id: '1537640537656'
   alias: Grower off
   trigger:
-  - at: '22:00'
+  - at: '23:00'
     platform: time
   condition: []
   action:
   - data:
       entity_id:
-        - light.kitchen_grower
-        - light.hydro_leds
+      - light.kitchen_grower
+      - light.hydro_2700k
     service: light.turn_off
 - alias: LG OLED paused/stopped
   trigger:
@@ -234,6 +235,7 @@
   action:
     service: scene.turn_on
     entity_id: scene.living_room_normal
+  id: 1daa736598934a179c35e6567ab173d0
 - alias: LG OLED playing
   trigger:
   - platform: state
@@ -246,6 +248,7 @@
   action:
     service: scene.turn_on
     entity_id: scene.living_room_dim
+  id: 7d0974f0e61643c3bad60f08f6923f8e
 - alias: Cameras off if home
   trigger:
   - platform: state
@@ -255,6 +258,7 @@
   action:
     service: switch.turn_off
     entity_id: group.fang_switches
+  id: bdb1d72900f9459d8f3bbf0356b6bee1
 - alias: Cameras on if not home
   trigger:
   - platform: state
@@ -264,6 +268,7 @@
   action:
     service: switch.turn_on
     entity_id: group.fang_switches
+  id: 5592c91d1d054c4485d26e673df10216
 - alias: Lights off if not home
   trigger:
   - platform: state
@@ -273,23 +278,29 @@
   action:
     service: light.turn_off
     entity_id: group.non_automatic_lights
-- alias: Lights on if home
+  id: 25131da67fea4f56944935414680b6d1
+- id: fbcbbbf751a84c0cb99e7a709aba8672
+  alias: Lights on if home
   trigger:
-  - platform: state
-    entity_id: group.milan_and_linda
-    to: home
+  - entity_id: group.milan_and_linda
     from: not_home
+    platform: state
+    to: home
+  condition:
+  - after: sunset
+    condition: sun
   action:
+  - entity_id: group.evening_lights
     service: light.turn_on
-    entity_id: group.evening_lights
 - alias: alarm clock
   trigger:
     platform: template
-    value_template: "{{ states('sensor.time') == (states.input_datetime.bedroom_alarm_clock_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.bedroom_alarm_clock_time.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
   action:
     service: scene.turn_on
-    entity_id: scene.bedroom_wake_up 
-# sets the in_bed boolean over a certain mass
+    entity_id: scene.bedroom_wake_up
+  id: 744b4b893020470d85a9a4f841d5114c
 - alias: bed set
   hide_entity: true
   trigger:
@@ -298,18 +309,17 @@
   condition:
     condition: and
     conditions:
-      - condition: numeric_state
-        entity_id: sensor.bed_mass
-        above: 50
-        below: 100
-      - condition: state
-        entity_id: device_tracker.galaxynote8
-        state: home
+    - condition: numeric_state
+      entity_id: sensor.bed_mass
+      above: 50
+      below: 100
+    - condition: state
+      entity_id: device_tracker.galaxynote8
+      state: home
   action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.in_bed
-
-# clears the in_bed boolean under a certain mass
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.in_bed
+  id: a94c73122e7f4449bd600945188a3459
 - alias: bed clear
   hide_entity: true
   trigger:
@@ -318,18 +328,16 @@
   condition:
     condition: and
     conditions:
-      - condition: numeric_state
-        entity_id: sensor.bed_mass
-        above: 5
-        below: 20
-      - condition: state
-        entity_id: device_tracker.galaxynote8
-        state: home
+    - condition: numeric_state
+      entity_id: sensor.bed_mass
+      below: 20
+    - condition: state
+      entity_id: device_tracker.galaxynote8
+      state: home
   action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.in_bed
-
-# tasks to perform when in bed
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.in_bed
+  id: 0b1a7bfdca5445dda5672f4987d1ec12
 - alias: Bed Occupied Tasks
   trigger:
     platform: state
@@ -338,9 +346,34 @@
   condition:
     condition: time
     after: '22:00:00'
-    before: '04:00:00'
+    before: 04:00:00
   action:
-    - service: light.turn_off
-      entity_id: group.non_automatic_lights
-      data:
-        transition: 10
+  - service: light.turn_off
+    entity_id: group.non_automatic_lights
+    data:
+      transition: 10
+  id: 39542d047c5245e7a008c59c9f1385db
+- id: '1541266912466'
+  alias: Hydro Bubbler on
+  trigger:
+  - entity_id: device_tracker.galaxynote8
+    platform: state
+    to: not_home
+  condition:
+  - after: 06:00
+    before: '22:00'
+    condition: time
+  action:
+  - data:
+      entity_id: switch.hydro_bubbler
+    service: switch.turn_on
+- id: '1541266912468'
+  alias: Hydro Bubbler off
+  trigger:
+  - entity_id: device_tracker.galaxynote8
+    platform: state
+    to: home
+  action:
+  - data:
+      entity_id: switch.hydro_bubbler
+    service: switch.turn_off

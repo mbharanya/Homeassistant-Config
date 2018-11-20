@@ -59,6 +59,10 @@ sun:
 apcupsd:
   host: 192.168.1.8
 
+python_script:
+
+led_color_temp:
+
 # Weather prediction
 sensor:
   - platform: yr
@@ -164,6 +168,17 @@ sensor:
   - platform: mqtt
     name: "Kitchen Humidity"
     state_topic: "tele/sonoff/grower/SENSOR"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+    icon: mdi:water-percent
+  - platform: mqtt
+    name: "Hydro 2700K Temperature"
+    state_topic: "tele/sonoff/hydro_2700k/SENSOR"
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+  - platform: mqtt
+    name: "Hydro 2700K Humidity"
+    state_topic: "tele/sonoff/hydro_2700k/SENSOR"
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
     icon: mdi:water-percent
@@ -280,6 +295,14 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     retain: true
+  - platform: mqtt
+    name: "Hydro 2700k"
+    state_topic: "stat/sonoff/hydro_2700k/POWER"
+    command_topic: "cmnd/sonoff/hydro_2700k/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
   - platform: flux_led
     automatic_add: true
     devices:
@@ -295,17 +318,13 @@ light:
 
 switch:
   - platform: mqtt
-    name: "3D Printer"
-    state_topic: "stat/sonoff/3dprinter/POWER"
-    command_topic: "cmnd/sonoff/3dprinter/POWER"
+    name: "Hydro Bubbler"
+    state_topic: "stat/sonoff/hydro_bubbler/POWER"
+    command_topic: "cmnd/sonoff/hydro_bubbler/POWER"
   - platform: mqtt
     name: "TV"
     state_topic: "stat/sonoff/tv/POWER"
     command_topic: "cmnd/sonoff/tv/POWER"
-  - platform: mqtt
-    name: "Humidifier"
-    state_topic: "stat/sonoff/humidifier/POWER"
-    command_topic: "cmnd/sonoff/humidifier/POWER"
   - platform: wake_on_lan
     name: XMBomb PC
     mac_address: "70-4D-7B-B7-8B-DD"

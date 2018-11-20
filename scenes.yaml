@@ -14,6 +14,14 @@
         brightness_pct: 1
     light.living_room_dinner_table:
         state: off
+- name: Living Room Dinner Lighting
+  entities:
+    light.living_room_sofa:
+        state: on
+        transition: 2
+        brightness_pct: 60
+    light.living_room_dinner_table:
+        state: on
 - name: Bedroom Wake Up
   entities:
     light.bedroom_corner:
