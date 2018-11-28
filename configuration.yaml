@@ -181,6 +181,16 @@ sensor:
     state_topic: "tele/sonoff/hydro_2700k/SENSOR"
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+  - platform: mqtt
+    name: "PC Room Temperature"
+    state_topic: "tele/sonoff/pc_room_camera/SENSOR"
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+  - platform: mqtt
+    name: "PC Room Humidity"
+    state_topic: "tele/sonoff/pc_room_camera/SENSOR"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
     icon: mdi:water-percent
   - platform: mqtt
     state_topic: "/weight/bed/load"
@@ -306,9 +316,6 @@ light:
   - platform: flux_led
     automatic_add: true
     devices:
-      192.168.1.172:
-        name: Hydro LEDs
-        mode: rgbw
       192.168.1.174:
         name: Sofa LEDs
         mode: rgbw
@@ -325,15 +332,13 @@ switch:
     name: "TV"
     state_topic: "stat/sonoff/tv/POWER"
     command_topic: "cmnd/sonoff/tv/POWER"
+  - platform: mqtt
+    name: "PC Room Camera"
+    state_topic: "stat/sonoff/pc_room_camera/POWER"
+    command_topic: "cmnd/sonoff/pc_room_camera/POWER"
   - platform: wake_on_lan
     name: XMBomb PC
     mac_address: "70-4D-7B-B7-8B-DD"
-  - platform: command_line
-    switches:
-      pc_room_camera:
-        friendly_name: PC Room Camera
-        command_on: curl -s "http://192.168.1.164/cgi-bin/scripts?cmd=start&script=20-rtsp-server" > /dev/null
-        command_off: curl -s "http://192.168.1.164/cgi-bin/scripts?cmd=stop&script=20-rtsp-server" > /dev/null
   - platform: command_line
     switches:
       living_room_camera:

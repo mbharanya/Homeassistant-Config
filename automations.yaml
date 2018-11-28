@@ -220,8 +220,18 @@
   - data:
       entity_id:
       - light.kitchen_grower
+    service: light.turn_off
+- alias: 2700K off
+  trigger:
+  - platform: time
+    at: '20:00'
+  condition: []
+  action:
+  - data:
+      entity_id:
       - light.hydro_2700k
     service: light.turn_off
+
 - alias: LG OLED paused/stopped
   trigger:
   - platform: state
@@ -247,7 +257,7 @@
     state: below_horizon
   action:
     service: scene.turn_on
-    entity_id: scene.living_room_dim
+    entity_id: scene.watching_tv
   id: 7d0974f0e61643c3bad60f08f6923f8e
 - alias: Cameras off if home
   trigger:
@@ -344,9 +354,14 @@
     entity_id: input_boolean.in_bed
     to: 'on'
   condition:
-    condition: time
-    after: '22:00:00'
-    before: 04:00:00
+    condition: and
+    conditions:
+      - condition: time
+        after: '22:00:00'
+        before: 04:00:00
+      - condition: state
+        entity_id: device_tracker.huawei_p10
+        state: not_home
   action:
   - service: light.turn_off
     entity_id: group.non_automatic_lights
@@ -377,3 +392,32 @@
   - data:
       entity_id: switch.hydro_bubbler
     service: switch.turn_off
+- id: lightByTime
+  alias: Set light level by time of day
+  trigger:
+    platform: state
+    from: 'off'
+    to: 'on'
+    entity_id:
+    - light.bed_leds
+    - light.bedroom_corner
+    - light.bedroom_corner_2
+    - light.bedroom_panel
+    - light.desk_leds
+    - light.hallway_panel
+    - light.kitchen_panel
+    - light.living_room_panel
+    - light.living_room_sofa
+    - light.living_room_dinner_table
+    - light.pc_room_monitors_2
+    - light.pc_room_monitors_3
+    - light.pc_room_panel_3
+    - light.tradfri_bulb_e27_ws_opal_980lm_4
+    - light.tv_leds
+    - light.sofa_leds
+  action:
+    data_template:
+      brightness: "{% if now().hour > 18 %}30{% elif now().hour < 7 %}30{% else %}200{% endif %}"
+      color_temp: "{% if now().hour > 18 %}454{% elif now().hour < 7 %}454{% else %}1{% endif %}"
+      entity_id: "{{trigger.entity_id}}"
+    service: light.turn_on

@@ -11,6 +11,7 @@
           entities:
             - sensor.kitchen_temperature
             - sensor.living_room_temperature
+            - sensor.pc_room_temperature
             - sensor.bedroom_temperature
             - sensor.hydro_2700k_temperature
           text_template: '${entity.state ? Math.round(entity.state) + "°": "undefined"}'
@@ -32,6 +33,7 @@
           entities:
             - sensor.kitchen_humidity
             - sensor.living_room_humidity
+            - sensor.pc_room_humidity
             - sensor.bedroom_humidity
             - sensor.hydro_2700k_humidity
           text_template: '${entity.state ? Math.round(entity.state) + "%": "undefined"}'

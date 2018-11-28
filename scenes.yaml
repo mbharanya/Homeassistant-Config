@@ -22,6 +22,30 @@
         brightness_pct: 60
     light.living_room_dinner_table:
         state: on
+    light.living_room_panel:
+        state: off
+    light.tv_leds:
+        state: off
+    light.sofa_leds:
+        state: off
+- name: Watching TV
+  entities:
+    light.tv_leds:
+      state: on
+      transition: 10
+      brightness_pct: 75
+    light.sofa_leds:
+      state: on
+      transition: 10
+      brightness_pct: 100
+    light.living_room_panel:
+      state: off
+      transition: 10
+    light.living_room_dinner_table:
+      state: off
+    light.living_room_sofa:
+      state: off
+      transition: 10
 - name: Bedroom Wake Up
   entities:
     light.bedroom_corner:

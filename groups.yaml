@@ -83,9 +83,12 @@ pc_room_sensors:
   name: PC Room Sensors
   entities:
     - switch.tv
-    - switch.humidifier
-    - camera.pc_room_camera
-    - light.hydro_leds
+    - switch.hydro_bubbler
+    - light.hydro_2700k
+    - sensor.hydro_2700k_temperature
+    - sensor.hydro_2700k_humidity
+    - sensor.pc_room_temperature
+    - sensor.pc_room_humidity
 
 bedroom_lights:
   name: Bedroom Lights
@@ -129,6 +132,7 @@ living_room_lights:
     - light.living_room_dinner_table
     - light.tv_leds
     - light.sofa_leds
+    - scene.living_room_dinner_lighting
 
 living_room_sensors:
   name: Living Room Sensors
