@@ -57,3 +57,19 @@
         transition: 120
         brightness_pct: 100
         color_name: blue
+- name: Sex Lighting
+  entities:
+    light.bedroom_corner:
+      state: on
+      transition: 60
+      brightness_pct: 30
+    light.bed_leds:
+      state: on
+      transition: 60
+      brightness_pct: 100
+      color_name: red
+      white_value: 0
+    light.bedroom_ceiling:
+      state: off
+
+

@@ -63,6 +63,11 @@ python_script:
 
 led_color_temp:
 
+panel_iframe:
+  nodered:
+    title: Node-RED
+    icon: mdi:sitemap
+    url: http://xmb.li:1880
 # Weather prediction
 sensor:
   - platform: yr

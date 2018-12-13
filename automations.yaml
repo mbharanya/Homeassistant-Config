@@ -231,7 +231,7 @@
       entity_id:
       - light.hydro_2700k
     service: light.turn_off
-
+  id: 2a508e9e53344e35bd4accb6fec1cab4
 - alias: LG OLED paused/stopped
   trigger:
   - platform: state
@@ -302,15 +302,19 @@
   action:
   - entity_id: group.evening_lights
     service: light.turn_on
-- alias: alarm clock
+- id: 744b4b893020470d85a9a4f841d5114c
+  alias: alarm clock
   trigger:
-    platform: template
+  - platform: template
     value_template: '{{ states(''sensor.time'') == (states.input_datetime.bedroom_alarm_clock_time.attributes.timestamp
       | int | timestamp_custom(''%H:%M'', False)) }}'
+  condition:
+  - condition: state
+    entity_id: device_tracker.galaxynote8
+    state: home
   action:
+  - entity_id: scene.bedroom_wake_up
     service: scene.turn_on
-    entity_id: scene.bedroom_wake_up
-  id: 744b4b893020470d85a9a4f841d5114c
 - alias: bed set
   hide_entity: true
   trigger:
@@ -356,12 +360,12 @@
   condition:
     condition: and
     conditions:
-      - condition: time
-        after: '22:00:00'
-        before: 04:00:00
-      - condition: state
-        entity_id: device_tracker.huawei_p10
-        state: not_home
+    - condition: time
+      after: '22:00:00'
+      before: 04:00:00
+    - condition: state
+      entity_id: device_tracker.huawei_p10
+      state: not_home
   action:
   - service: light.turn_off
     entity_id: group.non_automatic_lights
@@ -417,7 +421,9 @@
     - light.sofa_leds
   action:
     data_template:
-      brightness: "{% if now().hour > 18 %}30{% elif now().hour < 7 %}30{% else %}200{% endif %}"
-      color_temp: "{% if now().hour > 18 %}454{% elif now().hour < 7 %}454{% else %}1{% endif %}"
-      entity_id: "{{trigger.entity_id}}"
+      brightness: '{% if is_state(''sun.sun'', ''below_horizon'') %}30{% else %}200{%
+        endif %}'
+      color_temp: '{% if is_state(''sun.sun'', ''below_horizon'') %}454{% else %}1{%
+        endif %}'
+      entity_id: '{{trigger.entity_id}}'
     service: light.turn_on
