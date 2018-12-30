@@ -72,6 +72,7 @@ pc_room_lights:
     - light.pc_room_monitors_2
     - light.pc_room_panel_3
     - light.desk_leds
+    - light.tv_monitor_leds
 
 evening_lights:
   name: Evening Lights
@@ -110,7 +111,6 @@ hallway_lights:
   name: Hallway Lights
   entities:
     - light.hallway_panel
-    - camera.hallway_camera
 
 kitchen_lights:
   name: Kitchen Lights
@@ -140,7 +140,6 @@ living_room_sensors:
     - sensor.living_room_humidity
     - sensor.living_room_temperature
     - light.plants
-    - camera.living_room_camera
 
 fang_switches:
   name: Cameras
@@ -154,7 +153,6 @@ non_automatic_lights:
   entities:
     - light.bed_leds
     - light.bedroom_corner
-    - light.bedroom_corner_2
     - light.bedroom_panel
     - light.desk_leds
     - light.hallway_panel
@@ -163,11 +161,23 @@ non_automatic_lights:
     - light.living_room_sofa
     - light.living_room_dinner_table
     - light.pc_room_monitors_2
-    - light.pc_room_monitors_3
     - light.pc_room_panel_3
     - light.tradfri_bulb_e27_ws_opal_980lm_4
     - light.tv_leds
     - light.sofa_leds
+
+non_living_room_lights:
+  name: All Lights
+  entities:
+    - light.bed_leds
+    - light.bedroom_corner
+    - light.bedroom_panel
+    - light.desk_leds
+    - light.hallway_panel
+    - light.kitchen_panel
+    - light.pc_room_monitors_2
+    - light.pc_room_panel_3
+    - light.tradfri_bulb_e27_ws_opal_980lm_4
 
 pandora_disk_sensors:
   name: Pandora HDD Sensors

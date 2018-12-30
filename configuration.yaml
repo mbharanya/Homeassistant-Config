@@ -63,6 +63,10 @@ python_script:
 
 led_color_temp:
 
+weather:
+  - platform: darksky
+    api_key: !secret darksky
+
 panel_iframe:
   nodered:
     title: Node-RED
@@ -327,6 +331,9 @@ light:
       192.168.1.173:
         name: Bed LEDs
         mode: rgbw
+      192.168.1.172:
+        name: TV Monitor LEDs
+        mode: rgbw
 
 switch:
   - platform: mqtt
@@ -341,22 +348,17 @@ switch:
     name: "PC Room Camera"
     state_topic: "stat/sonoff/pc_room_camera/POWER"
     command_topic: "cmnd/sonoff/pc_room_camera/POWER"
+  - platform: mqtt
+    name: "Hallway Camera"
+    state_topic: "stat/sonoff/hallway_camera/POWER"
+    command_topic: "cmnd/sonoff/hallway_camera/POWER"
+  - platform: mqtt
+    name: "Living Room Camera"
+    state_topic: "stat/sonoff/living_room_camera/POWER"
+    command_topic: "cmnd/sonoff/living_room_camera/POWER"
   - platform: wake_on_lan
     name: XMBomb PC
     mac_address: "70-4D-7B-B7-8B-DD"
-  - platform: command_line
-    switches:
-      living_room_camera:
-        friendly_name: Living Room Camera
-        command_on: curl -s "http://192.168.1.165/cgi-bin/scripts?cmd=start&script=20-rtsp-server" > /dev/null
-        command_off: curl -s "http://192.168.1.165/cgi-bin/scripts?cmd=stop&script=20-rtsp-server" > /dev/null
-  - platform: command_line
-    switches:
-      hallway_camera:
-        friendly_name: Hallway Camera
-        command_on: curl -s "http://192.168.1.166/cgi-bin/scripts?cmd=start&script=20-rtsp-server" > /dev/null
-        command_off: curl -s "http://192.168.1.166/cgi-bin/scripts?cmd=stop&script=20-rtsp-server" > /dev/null
-
   - platform: flux
     lights:
       - light.bed_leds

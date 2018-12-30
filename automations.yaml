@@ -427,3 +427,16 @@
         endif %}'
       entity_id: '{{trigger.entity_id}}'
     service: light.turn_on
+- alias: Pause TV if light is turned on in another room
+  trigger:
+    platform: state
+    from: 'off'
+    to: 'on'
+    entity_id: group.non_living_room_lights
+  condition: 
+    - condition: state
+      entity_id: media_player.lg_4k_oled
+      state: 'playing'
+  action:
+    service: media_player.media_pause
+    entity_id: media_player.lg_4k_oled
