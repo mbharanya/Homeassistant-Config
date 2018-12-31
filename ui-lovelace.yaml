@@ -1,0 +1,149 @@
+resources:
+  - type: module
+    url: /local/mini-media-player-bundle.js?v=0.9.2
+  - type: module
+    url: /local/mini-graph-card-bundle.js?v=0.0.9
+title: Home
+views:
+  - title: Main
+    badges: []
+    cards:
+      - type: weather-forecast
+        entity: weather.dark_sky
+        title: Weather
+      - type: entities
+        title: Cameras
+        entities:
+          - switch.pc_room_camera
+          - switch.living_room_camera
+          - switch.hallway_camera
+      - type: entities
+        title: Alarm Clock
+        entities:
+          - input_datetime.bedroom_alarm_clock_time
+      - type: entities
+        entities:
+          - group.non_automatic_lights
+
+  - badges: []
+    icon: 'mdi:sofa'
+    path: living_room
+    title: Living Room
+    cards:
+      - type: horizontal-stack
+        cards:
+          - entity: light.living_room_panel
+            type: light
+          - entity: light.living_room_dinner_table
+            type: light
+      - type: horizontal-stack
+        cards:
+          - entity: light.sofa_leds
+            type: light
+          - entity: light.tv_leds
+            type: light
+      - type: light
+        entity: light.living_room_sofa
+      - type: sensor
+        entity: sensor.living_room_temperature
+        graph: line
+      - type: entities
+        entities:
+          - scene.living_room_dinner_lighting
+          - scene.watching_tv
+          - light.plants
+      - type: sensor
+        entity: sensor.living_room_humidity
+        graph: line
+      - type: 'custom:mini-media-player'
+        entity: media_player.lg_4k_oled
+  - title: PC Room
+    icon: 'mdi:laptop'
+    path: pc-room
+    cards: 
+      - type: horizontal-stack
+        cards:
+          - entity: light.tradfri_bulb_e27_ws_opal_980lm_4
+            type: light
+          - entity: light.pc_room_monitors_2
+            type: light
+      - type: horizontal-stack
+        cards:
+          - entity: light.desk_leds
+            type: light
+          - entity: light.tv_monitor_leds
+            type: light
+      - type: light
+        entity: light.pc_room_panel_3
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.pc_room_temperature
+            graph: line
+          - type: sensor
+            entity: sensor.pc_room_humidity
+            graph: line
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.hydro_2700k_temperature
+            graph: line
+          - type: sensor
+            entity: sensor.hydro_2700k_humidity
+            graph: line
+      - type: entities
+        entities:
+          - switch.tv
+          - switch.hydro_bubbler
+          - light.hydro_2700k
+  - title: bedroom
+    icon: 'mdi:hotel'
+    path: bedroom
+    badges: []
+    cards: 
+      - type: horizontal-stack
+        cards:
+          - entity: light.bedroom_corner
+            type: light
+          - entity: light.bed_leds
+            type: light
+      - type: light
+        entity: light.bedroom_panel
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.bedroom_humidity
+            graph: line
+          - type: sensor
+            entity: sensor.bedroom_temperature
+            graph: line
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.bed_mass
+            graph: line
+          - type: entities
+            entities: 
+              - input_boolean.in_bed
+              - script.zero_bed
+  - title: Hallway
+    cards:      
+      - type: light
+        entity: light.hallway_panel
+    icon: 'mdi:door'
+    path: hallway
+  - title: Kitchen
+    cards:       
+      - type: light
+        entity: light.kitchen_panel
+      - type: sensor
+        entity: sensor.kitchen_temperature
+        graph: line
+      - type: sensor
+        entity: sensor.kitchen_humidity
+        graph: line
+      - type: entities
+        entities:
+          - light.kitchen_grower
+    icon: 'mdi:knife'
+    path: kitchen
