@@ -24,7 +24,6 @@ views:
       - type: entities
         entities:
           - group.non_automatic_lights
-
   - badges: []
     icon: 'mdi:sofa'
     path: living_room
@@ -47,6 +46,7 @@ views:
       - type: sensor
         entity: sensor.living_room_temperature
         graph: line
+        detail: 2
       - type: entities
         entities:
           - scene.living_room_dinner_lighting
@@ -55,6 +55,7 @@ views:
       - type: sensor
         entity: sensor.living_room_humidity
         graph: line
+        detail: 2
       - type: 'custom:mini-media-player'
         entity: media_player.lg_4k_oled
   - title: PC Room
@@ -80,17 +81,21 @@ views:
           - type: sensor
             entity: sensor.pc_room_temperature
             graph: line
+            detail: 2
           - type: sensor
             entity: sensor.pc_room_humidity
             graph: line
+            detail: 2
       - type: vertical-stack
         cards:
           - type: sensor
             entity: sensor.hydro_2700k_temperature
             graph: line
+            detail: 2
           - type: sensor
             entity: sensor.hydro_2700k_humidity
             graph: line
+            detail: 2
       - type: entities
         entities:
           - switch.tv
@@ -114,14 +119,17 @@ views:
           - type: sensor
             entity: sensor.bedroom_humidity
             graph: line
+            detail: 2
           - type: sensor
             entity: sensor.bedroom_temperature
             graph: line
+            detail: 2
       - type: vertical-stack
         cards:
           - type: sensor
             entity: sensor.bed_mass
             graph: line
+            detail: 2
           - type: entities
             entities: 
               - input_boolean.in_bed
@@ -139,11 +147,178 @@ views:
       - type: sensor
         entity: sensor.kitchen_temperature
         graph: line
+        detail: 2
       - type: sensor
         entity: sensor.kitchen_humidity
         graph: line
+        detail: 2
       - type: entities
         entities:
           - light.kitchen_grower
     icon: 'mdi:knife'
     path: kitchen
+  - title: light_view
+    badges: []
+    cards:
+      - entities:
+          - light.bed_leds
+          - light.bedroom_corner
+          - light.bedroom_panel
+          - light.desk_leds
+          - light.hallway_panel
+          - light.kitchen_panel
+          - light.living_room_panel
+          - light.living_room_sofa
+          - light.living_room_dinner_table
+          - light.pc_room_monitors_2
+          - light.pc_room_panel_3
+          - light.tradfri_bulb_e27_ws_opal_980lm_4
+          - light.tv_leds
+          - light.sofa_leds
+        title: All Lights
+        type: entities
+    icon: 'mdi:lightbulb'
+    path: light_view
+  - badges: []
+    cards:
+      - entities:
+          - sensor.ups_battery
+          - sensor.ups_battery_nominal_voltage
+          - sensor.ups_battery_voltage
+          - sensor.ups_status
+          - sensor.ups_time_left
+        title: UPS
+        type: entities
+      - entities:
+          - sensor.hd_temperature_devsda
+          - sensor.hd_temperature_devsdb
+          - sensor.hd_temperature_devsdc
+          - sensor.hd_temperature_devsdd
+          - sensor.hd_temperature_devsde
+          - sensor.hd_temperature_devsdf
+          - sensor.hd_temperature_devsdg
+          - sensor.hd_temperature_devsdh
+          - sensor.hd_temperature_devsdi
+          - sensor.hd_temperature_devsdj
+          - sensor.hd_temperature_devsdk
+          - sensor.hd_temperature_devsdl
+          - sensor.hd_temperature_devsdm
+          - sensor.hd_temperature_devsdn
+          - sensor.hd_temperature_devsdo
+          - sensor.hd_temperature_devsdp
+          - sensor.hd_temperature_devsdq
+          - sensor.hd_temperature_devsdr
+          - sensor.hd_temperature_devsds
+        title: Pandora HDD Sensors
+        type: entities
+      - entities:
+          - sensor.pihole_ads_blocked_today
+          - sensor.pihole_ads_percentage_blocked_today
+          - sensor.pihole_dns_queries_today
+          - sensor.pihole_domains_blocked
+        title: Pi Hole
+        type: entities
+      - entities:
+          - sensor.speedtest_ping
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+        title: Speed Test
+        type: entities
+      - entities:
+          - zfs.zbackup_alloc
+          - zfs.zbackup_altroot
+          - zfs.zbackup_cap
+          - zfs.zbackup_dedup
+          - zfs.zbackup_expandsz
+          - zfs.zbackup_frag
+          - zfs.zbackup_free
+          - zfs.zbackup_health
+          - zfs.zbackup_name
+          - zfs.zbackup_size
+          - zfs.zmain_alloc
+          - zfs.zmain_altroot
+          - zfs.zmain_cap
+          - zfs.zmain_dedup
+          - zfs.zmain_expandsz
+          - zfs.zmain_frag
+          - zfs.zmain_free
+          - zfs.zmain_health
+          - zfs.zmain_name
+          - zfs.zmain_size
+        title: ZFS
+        type: entities
+      - entities:
+          - sensor.bedroom_corner_remote
+          - sensor.bedroom_remote_ceiling
+          - sensor.hallway_remote
+          - sensor.kitchen_remote
+          - sensor.living_room_remote
+          - sensor.pc_room_monitors_remote
+          - sensor.pc_room_remote
+        title: TRADFRI Remotes
+        type: entities
+    icon: 'mdi:server'
+    path: homelab_view
+    title: homelab_view
+  - badges: []
+    cards:
+      - entities:
+          - device_tracker.galaxynote8
+          - device_tracker.huawei_p10
+        title: Milan and Linda
+        type: entities
+      - entities:
+          - device_tracker.galaxynote8
+        title: Milan Portable Devices
+        type: entities
+      - entities:
+          - device_tracker.slimtop
+          - device_tracker.xmbombpc
+        title: Milan Devices
+        type: entities
+      - entities:
+          - device_tracker.huawei_p10
+        title: Linda Portable Devices
+        type: entities
+    icon: 'mdi:account-multiple'
+    path: people_view
+    title: people_view
+  - badges: []
+    cards:
+      - entities:
+          - automation.2700k_off
+          - automation.alarm_clock_on
+          - automation.bed_occupied_tasks
+          - automation.cameras_off_if_home
+          - automation.cameras_on_if_not_home
+          - automation.desk_led_red_if_turned_on_and_after_sunset
+          - automation.desk_led_blue_if_turned_on_before_sunset
+          - automation.desk_leds_red_if_turned_on_after_sunset
+          - automation.grower_off
+          - automation.grower_on
+          - automation.hydro_bubbler_off
+          - automation.hydro_bubbler_on
+          - automation.lg_oled_pausedstopped
+          - automation.lg_oled_playing
+          - automation.lights_off_if_not_home
+          - automation.lights_on_if_home
+          - automation.pc_off_lights_off
+          - automation.pc_off_tv_off
+          - automation.pc_room_humidifier_on
+          - automation.pc_room_humidifier_off
+          - automation.pc_on_tv_on
+          - automation.set_light_level_by_time_of_day
+          - automation.sunrise_plants_on
+          - automation.sunset_plants_off
+          - automation.tortoises_too_cold
+          - automation.tortoises_too_warm
+          - automation.ups_on_battery_notification
+          - automation.zbackup_degraded_notification
+          - automation.zmain_degraded_notification
+          - automation.alarm_clock
+          - automation.bed_clear
+          - automation.bed_set
+        title: all automations
+        type: entities
+    path: automation_view
+    title: Automations
