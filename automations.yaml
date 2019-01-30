@@ -236,8 +236,21 @@
   trigger:
   - platform: state
     entity_id: media_player.lg_4k_oled
-    from: playing
-    to: paused
+    from: 'playing'
+    to: 'paused'
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+    service: scene.turn_on
+    entity_id: scene.living_room_normal
+  id: 1daa736598934a179c35e6567ab173d0
+- alias: LG OLED off after playing
+  trigger:
+  - platform: state
+    entity_id: media_player.lg_4k_oled
+    to: 'off'
   condition:
   - condition: state
     entity_id: sun.sun

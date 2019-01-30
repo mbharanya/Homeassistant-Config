@@ -24,6 +24,8 @@ views:
       - type: entities
         entities:
           - group.non_automatic_lights
+          - scene.all_lights_off_besides_bedroom_corner
+          - scene.living_room_dinner_lighting
   - badges: []
     icon: 'mdi:sofa'
     path: living_room
@@ -175,6 +177,7 @@ views:
           - light.tradfri_bulb_e27_ws_opal_980lm_4
           - light.tv_leds
           - light.sofa_leds
+          - light.tv_monitor_leds
         title: All Lights
         type: entities
     icon: 'mdi:lightbulb'
