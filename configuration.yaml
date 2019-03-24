@@ -204,6 +204,30 @@ sensor:
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
     icon: mdi:water-percent
+  - platform: mold_indicator
+    name: Living Room Mold Chance
+    indoor_temp_sensor: sensor.living_room_temperature
+    indoor_humidity_sensor: sensor.living_room_humidity
+    outdoor_temp_sensor: sensor.weather_now_temperature
+    calibration_factor: 1.157894737
+  - platform: mold_indicator
+    name: PC Room Mold Chance
+    indoor_temp_sensor: sensor.pc_room_temperature
+    indoor_humidity_sensor: sensor.pc_room_humidity
+    outdoor_temp_sensor: sensor.weather_now_temperature
+    calibration_factor: 1.481481481
+  - platform: mold_indicator
+    name: Kitchen Mold Chance
+    indoor_temp_sensor: sensor.kitchen_temperature
+    indoor_humidity_sensor: sensor.kitchen_humidity
+    outdoor_temp_sensor: sensor.weather_now_temperature
+    calibration_factor: 1.371428571
+  - platform: mold_indicator
+    name: Bedroom Mold Chance
+    indoor_temp_sensor: sensor.bedroom_temperature
+    indoor_humidity_sensor: sensor.bedroom_humidity
+    outdoor_temp_sensor: sensor.weather_now_temperature
+    calibration_factor: 1.480769231 
   - platform: mqtt
     state_topic: "/weight/bed/load"
     name: Bed Mass

@@ -58,6 +58,10 @@ views:
         entity: sensor.living_room_humidity
         graph: line
         detail: 2
+      - type: sensor
+        entity: sensor.living_room_mold_chance
+        graph: line
+        detail: 2
       - type: 'custom:mini-media-player'
         entity: media_player.lg_4k_oled
   - title: PC Room
@@ -98,6 +102,10 @@ views:
             entity: sensor.hydro_2700k_humidity
             graph: line
             detail: 2
+      - type: sensor
+        entity: sensor.pc_room_mold_chance
+        graph: line
+        detail: 2
       - type: entities
         entities:
           - switch.tv
@@ -136,6 +144,10 @@ views:
             entities: 
               - input_boolean.in_bed
               - script.zero_bed
+      - type: sensor
+        entity: sensor.bedroom_mold_chance
+        graph: line
+        detail: 2
   - title: Hallway
     cards:      
       - type: light
@@ -152,6 +164,10 @@ views:
         detail: 2
       - type: sensor
         entity: sensor.kitchen_humidity
+        graph: line
+        detail: 2
+      - type: sensor
+        entity: sensor.kitchen_mold_chance
         graph: line
         detail: 2
       - type: entities

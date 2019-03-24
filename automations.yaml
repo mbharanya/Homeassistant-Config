@@ -201,7 +201,7 @@
 - id: '1537640292472'
   alias: Grower on
   trigger:
-  - at: '6:00'
+  - at: '9:00'
     platform: time
   condition: []
   action:
@@ -213,7 +213,7 @@
 - id: '1537640537656'
   alias: Grower off
   trigger:
-  - at: '23:00'
+  - at: '20:00'
     platform: time
   condition: []
   action:
@@ -388,7 +388,7 @@
 - id: '1541266912466'
   alias: Hydro Bubbler on
   trigger:
-  - entity_id: device_tracker.galaxynote8
+  - entity_id: group.milan_and_linda
     platform: state
     to: not_home
   condition:
