@@ -51,6 +51,23 @@
               return "humidity-very-high-background";
             '
 
+        - name: mold
+          entities:
+            - sensor.living_room_mold_chance
+            - sensor.pc_room_mold_chance
+            - sensor.bedroom_mold_chance
+            - sensor.kitchen_mold_chance
+          text_template: '${entity.state ? Math.round(entity.state) + "%": "undefined"}'
+          class_template: '
+            var chance = entity.state;
+            if (chance < 70)
+              return "humidity-average-background";
+            else if (chance < 90)
+              return "humidity-high-background";
+            else
+              return "humidity-very-high-background";
+            '
+
         - name: weight
           entities:
             - sensor.bed_mass

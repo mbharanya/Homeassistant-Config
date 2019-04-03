@@ -201,36 +201,53 @@
 - id: '1537640292472'
   alias: Grower on
   trigger:
-  - at: '9:00'
-    platform: time
+  - platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.kitchen_grower_on.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
   condition: []
   action:
   - data:
       entity_id:
-      - light.kitchen_grower
       - light.hydro_2700k
     service: light.turn_on
+
 - id: '1537640537656'
   alias: Grower off
   trigger:
-  - at: '20:00'
-    platform: time
+  - platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.kitchen_grower_off.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
   condition: []
   action:
   - data:
       entity_id:
       - light.kitchen_grower
     service: light.turn_off
+
+- alias: 2700K on
+  trigger:
+  - platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.pc_room_hydro_2700k_on.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.hydro_2700k
+    service: light.turn_on
+
 - alias: 2700K off
   trigger:
-  - platform: time
-    at: '20:00'
+  - platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.pc_room_hydro_2700k_off.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
   condition: []
   action:
   - data:
       entity_id:
       - light.hydro_2700k
     service: light.turn_off
+
   id: 2a508e9e53344e35bd4accb6fec1cab4
 - alias: LG OLED paused/stopped
   trigger:

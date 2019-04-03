@@ -84,7 +84,6 @@ sensor:
       - temperature
       - precipitation
   - platform: time_date
-    name: Bedroom Alarm Clock Time
     display_options:
       - 'time'
   - platform: apcupsd
@@ -126,29 +125,20 @@ sensor:
       - unique_domains
       - dns_queries_today
       - domains_being_blocked
-  - platform: speedtest
-    # server_id: 6251
-    monitored_conditions:
-      - ping
-      - download
-      - upload
   - platform: bitcoin
     display_options:
       - exchangerate
   - platform: coinmarketcap
-    currency: Bitcoin
+    currency_id: 1
     display_currency: CHF
   - platform: coinmarketcap
-    currency: Ethereum
+    currency_id: 1027
     display_currency: CHF
   - platform: coinmarketcap
-    currency: Litecoin
+    currency_id: 2
     display_currency: CHF
   - platform: coinmarketcap
-    currency: Dogecoin
-    display_currency: CHF
-  - platform: coinmarketcap
-    currency: Garlicoin
+    currency_id: 74
     display_currency: CHF
   - platform: mqtt
     name: "Living Room Temperature"
@@ -417,6 +407,22 @@ camera:
 input_datetime:
   bedroom_alarm_clock_time:
     name: Bedroom Alarm Clock
+    has_date: false
+    has_time: true
+  kitchen_grower_on:
+    name: Grower on
+    has_date: false
+    has_time: true
+  kitchen_grower_off:
+    name: Grower off
+    has_date: false
+    has_time: true
+  pc_room_hydro_2700k_on:
+    name: Hydro on
+    has_date: false
+    has_time: true
+  pc_room_hydro_2700k_off:
+    name: Hydro off
     has_date: false
     has_time: true
 

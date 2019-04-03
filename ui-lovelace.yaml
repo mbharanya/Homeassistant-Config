@@ -102,6 +102,10 @@ views:
             entity: sensor.hydro_2700k_humidity
             graph: line
             detail: 2
+          - type: entities
+            entities:
+              - input_datetime.pc_room_hydro_2700k_on
+              - input_datetime.pc_room_hydro_2700k_off
       - type: sensor
         entity: sensor.pc_room_mold_chance
         graph: line
@@ -173,6 +177,8 @@ views:
       - type: entities
         entities:
           - light.kitchen_grower
+          - input_datetime.kitchen_grower_on
+          - input_datetime.kitchen_grower_off
     icon: 'mdi:knife'
     path: kitchen
   - title: light_view
@@ -236,12 +242,6 @@ views:
           - sensor.pihole_dns_queries_today
           - sensor.pihole_domains_blocked
         title: Pi Hole
-        type: entities
-      - entities:
-          - sensor.speedtest_ping
-          - sensor.speedtest_download
-          - sensor.speedtest_upload
-        title: Speed Test
         type: entities
       - entities:
           - zfs.zbackup_alloc
