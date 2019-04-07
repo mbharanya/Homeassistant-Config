@@ -23,6 +23,8 @@ config:
 lovelace:
   mode: yaml
 
+system_health:
+
 http:
   # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password

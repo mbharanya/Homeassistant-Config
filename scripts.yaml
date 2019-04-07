@@ -5,3 +5,13 @@ zero_bed:
       data_template:
         topic: "/weight/bed/tare"
         payload: '0'
+
+all_lights_off_except_bedroom:
+  alias: All lights off except bedroom corner 
+  sequence: 
+    - service: light.turn_off
+      data:
+        entity_id: group.non_automatic_lights
+    - service: light.turn_on
+      data:
+        entity_id: light.bedroom_corner

@@ -3,6 +3,13 @@ resources:
     url: /local/mini-media-player-bundle.js?v=0.9.2
   - type: module
     url: /local/mini-graph-card-bundle.js?v=0.0.9
+  - type: js
+    url: /local/group-card.js?v=5
+  - type: js
+    url: /local/custom-group-card.js?v=16
+  - type: js
+    url: /local/slider-entity-row.js?v=1
+
 title: Home
 views:
   - title: Main
@@ -23,9 +30,14 @@ views:
           - input_datetime.bedroom_alarm_clock_time
       - type: entities
         entities:
-          - group.non_automatic_lights
-          - scene.all_lights_off_besides_bedroom_corner
+          - script.all_lights_off_except_bedroom
           - scene.living_room_dinner_lighting
+      - type: 'custom:custom-group-card'
+        card:
+          type: custom:slider-entity-row
+          title: Lights
+        group: group.non_automatic_lights
+        
   - badges: []
     icon: 'mdi:sofa'
     path: living_room
@@ -302,42 +314,12 @@ views:
     icon: 'mdi:account-multiple'
     path: people_view
     title: people_view
-  - badges: []
-    cards:
-      - entities:
-          - automation.2700k_off
-          - automation.alarm_clock_on
-          - automation.bed_occupied_tasks
-          - automation.cameras_off_if_home
-          - automation.cameras_on_if_not_home
-          - automation.desk_led_red_if_turned_on_and_after_sunset
-          - automation.desk_led_blue_if_turned_on_before_sunset
-          - automation.desk_leds_red_if_turned_on_after_sunset
-          - automation.grower_off
-          - automation.grower_on
-          - automation.hydro_bubbler_off
-          - automation.hydro_bubbler_on
-          - automation.lg_oled_pausedstopped
-          - automation.lg_oled_playing
-          - automation.lights_off_if_not_home
-          - automation.lights_on_if_home
-          - automation.pc_off_lights_off
-          - automation.pc_off_tv_off
-          - automation.pc_room_humidifier_on
-          - automation.pc_room_humidifier_off
-          - automation.pc_on_tv_on
-          - automation.set_light_level_by_time_of_day
-          - automation.sunrise_plants_on
-          - automation.sunset_plants_off
-          - automation.tortoises_too_cold
-          - automation.tortoises_too_warm
-          - automation.ups_on_battery_notification
-          - automation.zbackup_degraded_notification
-          - automation.zmain_degraded_notification
-          - automation.alarm_clock
-          - automation.bed_clear
-          - automation.bed_set
-        title: all automations
-        type: entities
+
+  - title: Automations
     path: automation_view
-    title: Automations
+    cards:
+      - type: 'custom:group-card'
+        card:
+          type: entities
+          title: Automations
+        group: group.all_automations
