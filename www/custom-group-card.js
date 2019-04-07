@@ -30,12 +30,14 @@ class CustomGroupCard extends HTMLElement {
 
     setTimeout(() => {
       children.map((child, i) => {
-        child.setConfig(Object.assign({
-          entity: config.card.entities[i]
-        }, config.card))
-        child.hass = hass
+        if (config.card.entities[i]) {
+          child.setConfig(Object.assign({
+            entity: config.card.entities[i]
+          }, config.card))
+          child.hass = hass
+        }
       })
-    }, 500 )
+    }, 500)
   }
 
   getCardSize() {
