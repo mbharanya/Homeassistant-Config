@@ -382,7 +382,8 @@
   - service: input_boolean.turn_off
     entity_id: input_boolean.in_bed
   id: 0b1a7bfdca5445dda5672f4987d1ec12
-- alias: Bed Occupied Tasks
+
+- alias: All Lights off (except bedroom corner) when in bed
   trigger:
     platform: state
     entity_id: input_boolean.in_bed
@@ -393,15 +394,11 @@
     - condition: time
       after: '22:00:00'
       before: 04:00:00
-    - condition: state
-      entity_id: device_tracker.huawei_p10
-      state: not_home
   action:
-  - service: light.turn_off
-    entity_id: group.non_automatic_lights
-    data:
-      transition: 10
+  - service: script.turn_on
+    entity_id: script.all_lights_off_except_bedroom
   id: 39542d047c5245e7a008c59c9f1385db
+  
 - id: '1541266912466'
   alias: Hydro Bubbler on
   trigger:

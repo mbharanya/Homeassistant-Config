@@ -24,6 +24,9 @@ views:
           - switch.pc_room_camera
           - switch.living_room_camera
           - switch.hallway_camera
+      - type: glance
+        entities:
+          - switch.flux
       - type: entities
         title: Alarm Clock
         entities:
@@ -35,9 +38,10 @@ views:
       - type: 'custom:custom-group-card'
         card:
           type: custom:slider-entity-row
+          toggle: true
           title: Lights
         group: group.non_automatic_lights
-        
+
   - badges: []
     icon: 'mdi:sofa'
     path: living_room

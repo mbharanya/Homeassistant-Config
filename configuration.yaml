@@ -379,6 +379,7 @@ switch:
     name: XMBomb PC
     mac_address: "70-4D-7B-B7-8B-DD"
   - platform: flux
+    mode: mired
     lights:
       - light.bedroom_corner_2
       - light.bedroom_panel
