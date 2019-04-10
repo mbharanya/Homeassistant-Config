@@ -15,7 +15,8 @@ homeassistant:
   customize: !include customize.yaml
 
 # Enables the frontend
-frontend:
+frontend: 
+  themes: !include_dir_merge_named themes/
 
 # Enables configuration UI
 config:
@@ -34,6 +35,10 @@ http:
     - 127.0.0.1
     - 192.168.1.0/24
 
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.1.108
+    token: !secret roborock_token
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
@@ -77,6 +82,10 @@ panel_iframe:
     title: Node-RED
     icon: mdi:sitemap
     url: http://xmb.li:1880
+  vscode:
+    title: VSCode
+    icon: mdi:visual-studio-code
+    url: http://xmb.li:3000
 # Weather prediction
 sensor:
   - platform: yr
@@ -224,6 +233,18 @@ sensor:
     state_topic: "/weight/bed/load"
     name: Bed Mass
     unit_of_measurement: "kg"
+  - platform: template
+    sensors:
+      vacuum_status:
+        friendly_name: "Vacuum - Status"
+        value_template: "Status: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}"
+  - platform: template
+    sensors:
+      vacuum_battery:
+        friendly_name: "Vacuum - Battery"
+        value_template: "Battery: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.battery_level }}"
+        device_class: battery
+        unit_of_measurement: '%'
 
 binary_sensor:
   - platform: threshold
