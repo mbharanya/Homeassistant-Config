@@ -423,37 +423,6 @@
   - data:
       entity_id: switch.hydro_bubbler
     service: switch.turn_off
-- id: lightByTime
-  alias: Set light level by time of day
-  trigger:
-    platform: state
-    from: 'off'
-    to: 'on'
-    entity_id:
-    - light.bed_leds
-    - light.bedroom_corner
-    - light.bedroom_corner_2
-    - light.bedroom_panel
-    - light.desk_leds
-    - light.hallway_panel
-    - light.kitchen_panel
-    - light.living_room_panel
-    - light.living_room_sofa
-    - light.living_room_dinner_table
-    - light.pc_room_monitors_2
-    - light.pc_room_monitors_3
-    - light.pc_room_panel_3
-    - light.tradfri_bulb_e27_ws_opal_980lm_4
-    - light.tv_leds
-    - light.sofa_leds
-  action:
-    data_template:
-      brightness: '{% if is_state(''sun.sun'', ''below_horizon'') %}30{% else %}200{%
-        endif %}'
-      color_temp: '{% if is_state(''sun.sun'', ''below_horizon'') %}454{% else %}1{%
-        endif %}'
-      entity_id: '{{trigger.entity_id}}'
-    service: light.turn_on
 - alias: Pause TV if light is turned on in another room
   trigger:
     platform: state
@@ -467,7 +436,7 @@
   action:
     service: media_player.media_pause
     entity_id: media_player.lg_4k_oled
-- alias: 'Set HA theme for day and night'
+- alias: Set HA theme for day and night
   trigger:
     - platform: homeassistant
       event: start
@@ -486,3 +455,69 @@
         {% else %}
           BlueNight
         {% endif %}'
+- alias: Send alert after daily vacuum to empty the dustbin
+  trigger:
+  - platform: state
+    entity_id: group.milan_and_linda
+    to: 'home'
+    for:
+      minutes: 5
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.daily_vacuum_first_run
+      state: 'on'
+    - condition: time
+      after: '08:30:00'
+      before: '23:30:00'
+    - condition: template
+      value_template: >
+        {% if states.automation.send_alert_after_daily_vacuum_to_empty_the_dustbin.last_triggered is not none %}
+          {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.send_alert_after_daily_vacuum_to_empty_the_dustbin.attributes.last_triggered) | int > 1800 %} true {% else %} false
+          {% endif %}
+        {% else %}
+        false
+        {% endif %}
+    - condition: state
+      entity_id: input_boolean.disable_dustbin_notification
+      state: 'off'
+  action:
+  - service: notify.pushbullet
+    data:
+      message: "Dustin is full :o"
+
+- alias: Reset Daily Vacuum First Run state at midnight
+  trigger:
+  - platform: time
+    at: '0:00:00'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.daily_vacuum_first_run
+
+- alias: Start Daily Vacuum
+  trigger:
+  - platform: time_pattern
+    minutes: '/45'
+    seconds: 00
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: group.milan_and_linda
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.daily_vacuum_first_run
+      state: 'off'
+    - condition: time
+      after: '10:00:00'
+      before: '19:00:00'
+    - condition: state
+      entity_id: input_boolean.disable_daily_vacuum
+      state: 'off'
+  action:
+  - delay: '00:00:15'
+  - service: vacuum.turn_on
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.daily_vacuum_first_run
