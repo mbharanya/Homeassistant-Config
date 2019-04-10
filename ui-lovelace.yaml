@@ -43,6 +43,9 @@ views:
           toggle: true
           title: Lights
         group: group.non_automatic_lights
+      - type: entities
+        entities:
+          - vacuum.xiaomi_vacuum_cleaner
       - type: custom:vertical-stack-in-card
         cards:
         - type: picture-elements
@@ -51,45 +54,60 @@ views:
           elements:
             - type: icon
               icon: mdi:bell-ring
-              tap_action: call-service
+              tap_action: 
+                action: call-service
+                service: vacuum.locate
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
               entity: vacuum.xiaomi_vacuum_cleaner
-              service: vacuum.locate
               style:
                 top: 90%
                 left: 80%
                 color: '#3090C7'
             - type: icon
               icon: mdi:crosshairs
-              tap_action: call-service
+              tap_action: 
+                action: call-service
+                service: vacuum.clean_spot
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
               entity: vacuum.xiaomi_vacuum_cleaner
-              service: vacuum.clean_spot
               style:
                 top: 90%
                 left: 65%
                 color: '#3090C7'
             - type: icon
-              tap_action: call-service
+              tap_action: 
+                action: call-service
+                service: vacuum.return_to_base
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
               icon: mdi:home
               entity: vacuum.xiaomi_vacuum_cleaner
-              service: vacuum.return_to_base
               style:
                 top: 90%
                 left: 50%
                 color: '#3090C7'
             - type: icon
               icon: mdi:stop
-              tap_action: call-service
+              tap_action: 
+                action: call-service
+                service: vacuum.stop
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
               entity: vacuum.xiaomi_vacuum_cleaner
-              service: vacuum.stop
               style:
                 top: 90%
                 left: 35%
                 color: '#3090C7'
             - type: icon
               icon: mdi:play
-              tap_action: call-service
+              tap_action: 
+                action: call-service
+                service: vacuum.start
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
               entity: vacuum.xiaomi_vacuum_cleaner
-              service: vacuum.start
               style:
                 top: 90%
                 left: 20%
