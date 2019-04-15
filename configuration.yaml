@@ -88,6 +88,7 @@ panel_iframe:
     url: http://xmb.li:3000
 # Weather prediction
 sensor:
+  - platform: zfs_sensor
   - platform: yr
     name: Weather now
     monitored_conditions:
@@ -125,9 +126,9 @@ sensor:
       - /dev/sdp
       - /dev/sdq
       - /dev/sdr
-      - /dev/sds
       - /dev/sdt
       - /dev/sdu
+      - /dev/sdv
   - platform: pi_hole
     host: 192.168.1.30
     monitored_conditions:
@@ -233,6 +234,18 @@ sensor:
     state_topic: "/weight/bed/load"
     name: Bed Mass
     unit_of_measurement: "kg"
+  - platform: template
+    sensors:
+      edimax_current_power:
+        friendly_name: Edimax Current power consumption
+        unit_of_measurement: 'W'
+        value_template: "{{ state_attr('switch.edimax_smart_plug',  'current_power_w') | replace('None', 0) }}"
+
+      edimax_total_power:
+        friendly_name: Edimax Accumulated daily power consumption
+        unit_of_measurement: 'kWh'
+        value_template: "{{ state_attr('switch.edimax_smart_plug',  'today_energy_kwh') | replace('None', 0) }}"
+
   - platform: template
     sensors:
       vacuum_status:
@@ -479,6 +492,10 @@ switch:
   - platform: wake_on_lan
     name: XMBomb PC
     mac_address: "70-4D-7B-B7-8B-DD"
+  - platform: edimax
+    host: 192.168.1.183
+    username: admin
+    password: kRC9zFHPO1
   - platform: flux
     mode: mired
     lights:

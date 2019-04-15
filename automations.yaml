@@ -517,7 +517,7 @@
       state: 'off'
   action:
   - delay: '00:00:15'
-  - service: vacuum.turn_on
+  - service: vacuum.start
     entity_id: vacuum.xiaomi_vacuum_cleaner
   - service: homeassistant.turn_on
     entity_id: input_boolean.daily_vacuum_first_run
