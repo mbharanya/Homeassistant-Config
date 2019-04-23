@@ -570,8 +570,6 @@ panel_custom:
     url_path: floorplan
     config: !include floorplan.yaml
 
-zfs:
-
 scene: !include scenes.yaml
 
 

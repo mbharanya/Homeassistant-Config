@@ -482,68 +482,65 @@ views:
     path: light_view
   - badges: []
     cards:
-      - entities:
+      - title: UPS
+        type: glance
+        entities:
           - sensor.ups_battery
           - sensor.ups_battery_nominal_voltage
           - sensor.ups_battery_voltage
           - sensor.ups_status
           - sensor.ups_time_left
-        title: UPS
+      - title: Pandora HDD Sensors
         type: entities
-      - entities:
-        - sensor.hd_temperature_dev_sda
-        - sensor.hd_temperature_dev_sdb
-        - sensor.hd_temperature_dev_sdc
-        - sensor.hd_temperature_dev_sdd
-        - sensor.hd_temperature_dev_sde
-        - sensor.hd_temperature_dev_sdf
-        - sensor.hd_temperature_dev_sdg
-        - sensor.hd_temperature_dev_sdh
-        - sensor.hd_temperature_dev_sdi
-        - sensor.hd_temperature_dev_sdj
-        - sensor.hd_temperature_dev_sdk
-        - sensor.hd_temperature_dev_sdl
-        - sensor.hd_temperature_dev_sdm
-        - sensor.hd_temperature_dev_sdn
-        - sensor.hd_temperature_dev_sdo
-        - sensor.hd_temperature_dev_sdp
-        - sensor.hd_temperature_dev_sdq
-        - sensor.hd_temperature_dev_sdr
-        - sensor.hd_temperature_dev_sdt
-        - sensor.hd_temperature_dev_sdu
-        - sensor.hd_temperature_dev_sdv
-        title: Pandora HDD Sensors
-        type: entities
-      - entities:
+        entities:
+          - sensor.hd_temperature_dev_sda
+          - sensor.hd_temperature_dev_sdb
+          - sensor.hd_temperature_dev_sdc
+          - sensor.hd_temperature_dev_sdd
+          - sensor.hd_temperature_dev_sde
+          - sensor.hd_temperature_dev_sdf
+          - sensor.hd_temperature_dev_sdg
+          - sensor.hd_temperature_dev_sdh
+          - sensor.hd_temperature_dev_sdi
+          - sensor.hd_temperature_dev_sdj
+          - sensor.hd_temperature_dev_sdk
+          - sensor.hd_temperature_dev_sdl
+          - sensor.hd_temperature_dev_sdm
+          - sensor.hd_temperature_dev_sdn
+          - sensor.hd_temperature_dev_sdo
+          - sensor.hd_temperature_dev_sdp
+          - sensor.hd_temperature_dev_sdq
+          - sensor.hd_temperature_dev_sdr
+          - sensor.hd_temperature_dev_sdt
+          - sensor.hd_temperature_dev_sdu
+          - sensor.hd_temperature_dev_sdv
+      - title: Pi Hole
+        type: glance
+        entities:
           - sensor.pi_hole_ads_blocked_today
           - sensor.pi_hole_ads_percentage_blocked_today
           - sensor.pi_hole_dns_queries_today
           - sensor.pi_hole_domains_blocked
-        title: Pi Hole
-        type: entities
-      - entities:
-          - zfs.zbackup_alloc
-          - zfs.zbackup_altroot
-          - zfs.zbackup_cap
-          - zfs.zbackup_dedup
-          - zfs.zbackup_expandsz
-          - zfs.zbackup_frag
-          - zfs.zbackup_free
-          - zfs.zbackup_health
-          - zfs.zbackup_name
-          - zfs.zbackup_size
-          - zfs.zmain_alloc
-          - zfs.zmain_altroot
-          - zfs.zmain_cap
-          - zfs.zmain_dedup
-          - zfs.zmain_expandsz
-          - zfs.zmain_frag
-          - zfs.zmain_free
-          - zfs.zmain_health
-          - zfs.zmain_name
-          - zfs.zmain_size
-        title: ZFS
-        type: entities
+      - title: ZBackup
+        type: glance
+        entities:
+          - sensor.zfs_zbackup_alloc
+          - sensor.zfs_zbackup_cap
+          - sensor.zfs_zbackup_dedup
+          - sensor.zfs_zbackup_frag
+          - sensor.zfs_zbackup_free
+          - sensor.zfs_zbackup_health
+          - sensor.zfs_zbackup_size
+      - title: ZMain
+        type: glance
+        entities:
+          - sensor.zfs_zmain_alloc
+          - sensor.zfs_zmain_cap
+          - sensor.zfs_zmain_dedup
+          - sensor.zfs_zmain_frag
+          - sensor.zfs_zmain_free
+          - sensor.zfs_zmain_health
+          - sensor.zfs_zmain_size
       - entities:
           - sensor.bedroom_corner_remote
           - sensor.bedroom_remote_ceiling

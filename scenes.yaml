@@ -33,7 +33,7 @@
     light.tv_leds:
       state: on
       transition: 10
-      brightness_pct: 75
+      brightness_pct: 1
     light.sofa_leds:
       state: on
       transition: 10
@@ -71,12 +71,3 @@
       white_value: 0
     light.bedroom_ceiling:
       state: off
-- name: All lights off besides bedroom corner
-  entities:
-    group.non_automatic_lights:
-      state: off
-      transition: 60
-    light.bedroom_corner:
-      state: on
-      transition: 60
-      brightness_pct: 30

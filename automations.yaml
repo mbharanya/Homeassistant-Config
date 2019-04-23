@@ -134,27 +134,25 @@
     to: 'on'
 - action:
   - data:
-      message: ZMain Degraded
+      message: ZMain state changed
     service: notify.pushbullet
   alias: ZMain Degraded Notification
   condition: []
   id: '1511111478420'
   trigger:
-  - entity_id: zfs.zmain_health
+  - entity_id: sensor.zfs_zmain_health
     from: ONLINE
-    to: DEGRADED
     platform: state
 - action:
   - data:
-      message: ZBackup Degraded
+      message: ZBackup state changed
     service: notify.pushbullet
   alias: ZBackup Degraded Notification
   condition: []
   id: '1511111478420'
   trigger:
-  - entity_id: zfs.zbackup_health
+  - entity_id: sensor.zfs_zbackup_health
     from: ONLINE
-    to: DEGRADED
     platform: state
 - action:
   - data:

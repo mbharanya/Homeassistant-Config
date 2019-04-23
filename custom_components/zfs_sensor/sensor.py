@@ -43,6 +43,7 @@ class ZfsSensor(Entity):
         self._state = None
         self._api = ZfsApi("192.168.1.8", 7777)
         self._element = None
+        self.update()
 
     @property
     def name(self):
@@ -64,9 +65,8 @@ class ZfsSensor(Entity):
         This is the only method that should fetch new data for Home Assistant.
         """
         elements = self._api.getAllElements()
-        _LOGGER.error( elements[self._volume])
         self._element = [element for element in elements[self._volume] if element.property() == self._name][0]
-        self._state = element.value()
+        self._state = self._element.value()
 
 class ZfsApi:
     def __init__(self, hostname, port):
@@ -110,7 +110,7 @@ class ZfsElement:
         return self._property
     
     def value(self):
-        return self._value
+        return self._value.replace("%", "").replace("T", "").replace("x", "")
     
     def unit(self):
         if "%" in self._value:
