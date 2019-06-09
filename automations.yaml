@@ -247,20 +247,6 @@
     service: light.turn_off
 
   id: 2a508e9e53344e35bd4accb6fec1cab4
-- alias: LG OLED paused/stopped
-  trigger:
-  - platform: state
-    entity_id: media_player.lg_4k_oled
-    from: 'playing'
-    to: 'paused'
-  condition:
-  - condition: state
-    entity_id: sun.sun
-    state: below_horizon
-  action:
-    service: scene.turn_on
-    entity_id: scene.living_room_normal
-  id: 1daa736598934a179c35e6567ab173d0
 - alias: LG OLED off after playing
   trigger:
   - platform: state
@@ -274,11 +260,11 @@
     service: scene.turn_on
     entity_id: scene.living_room_normal
   id: 1daa736598934a179c35e6567ab173d0
-- alias: LG OLED playing
+- alias: LG OLED on
   trigger:
   - platform: state
     entity_id: media_player.lg_4k_oled
-    to: playing
+    to: 'on'
   condition:
   - condition: state
     entity_id: sun.sun

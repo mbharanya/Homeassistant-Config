@@ -338,6 +338,14 @@ views:
         entity: sensor.living_room_mold_chance
         graph: line
         detail: 2
+      - type: sensor
+        entity: sensor.greenhouse_humidity
+        graph: line
+        detail: 2
+      - type: sensor
+        entity: sensor.greenhouse_temperature
+        graph: line
+        detail: 2
       - type: 'custom:mini-media-player'
         entity: media_player.lg_4k_oled
   - title: PC Room

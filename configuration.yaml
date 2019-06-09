@@ -206,6 +206,17 @@ sensor:
     unit_of_measurement: '%'
     value_template: '{{ value_json["AM2301"]["Humidity"] }}'
     icon: mdi:water-percent
+  - platform: mqtt
+    name: "Greenhouse Temperature"
+    state_topic: "tele/sonoff/greenhouse/SENSOR"
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json["AM2301"]["Temperature"] }}'
+  - platform: mqtt
+    name: "Greenhouse Humidity"
+    state_topic: "tele/sonoff/greenhouse/SENSOR"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json["AM2301"]["Humidity"] }}'
+    icon: mdi:water-percent
   - platform: mold_indicator
     name: Living Room Mold Chance
     indoor_temp_sensor: sensor.living_room_temperature
@@ -351,7 +362,8 @@ binary_sensor:
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 wake_on_lan:
 
