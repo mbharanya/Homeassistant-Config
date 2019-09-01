@@ -36,7 +36,7 @@ views:
       - type: entities
         entities:
           - script.all_lights_off_except_bedroom
-          - scene.living_room_dinner_lighting
+          - scene.living_room_dinner
       - type: 'custom:custom-group-card'
         card:
           type: custom:slider-entity-row
@@ -327,7 +327,7 @@ views:
         detail: 2
       - type: entities
         entities:
-          - scene.living_room_dinner_lighting
+          - scene.living_room_dinner
           - scene.watching_tv
           - light.plants
       - type: sensor

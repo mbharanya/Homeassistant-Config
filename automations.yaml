@@ -1,3 +1,11 @@
+- alias: Hass start
+  trigger:
+    platform: homeassistant
+    event: start
+  hide_entity: True
+  action:
+  - service: switch.turn_on
+    entity_id: switch.flux
 - alias: Alarm clock on
   trigger:
     platform: mqtt

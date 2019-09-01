@@ -132,7 +132,7 @@ living_room_lights:
     - light.living_room_dinner_table
     - light.tv_leds
     - light.sofa_leds
-    - scene.living_room_dinner_lighting
+    - scene.living_room_dinner
 
 living_room_sensors:
   name: Living Room Sensors

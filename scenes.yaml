@@ -14,7 +14,7 @@
         brightness_pct: 1
     light.living_room_dinner_table:
         state: off
-- name: Living Room Dinner Lighting
+- name: Living Room Dinner
   entities:
     light.living_room_sofa:
         state: on
