@@ -328,7 +328,7 @@ views:
       - type: entities
         entities:
           - scene.living_room_dinner
-          - scene.watching_tv
+          - script.watching_tv_all_lights_off
           - light.plants
       - type: sensor
         entity: sensor.living_room_humidity
@@ -399,6 +399,7 @@ views:
           - switch.tv
           - switch.hydro_bubbler
           - light.hydro_2700k
+          - script.evening_pc_lights
   - title: bedroom
     icon: 'mdi:hotel'
     path: bedroom

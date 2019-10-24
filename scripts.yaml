@@ -17,3 +17,27 @@ all_lights_off_except_bedroom:
     - service: light.turn_on
       data:
         entity_id: light.bedroom_corner
+
+watching_tv_all_lights_off:
+  alias: All lights off TV scene 
+  sequence: 
+    - service: light.turn_off
+      data:
+        entity_id: group.non_automatic_lights
+        transition: 1
+    - delay: 00:00:01
+    - service: scene.turn_on
+      data:
+        entity_id: scene.watching_tv
+
+evening_pc_lights:
+  alias: All lights except PC Room 
+  sequence: 
+    - service: light.turn_off
+      data:
+        entity_id: group.non_automatic_lights
+        transition: 1
+    - delay: 00:00:01
+    - service: scene.turn_on
+      data:
+        entity_id: scene.evening_pc_lights

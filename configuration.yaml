@@ -88,7 +88,7 @@ panel_iframe:
     url: http://xmb.li:3000
 # Weather prediction
 sensor:
-  - platform: zfs_sensor
+  # - platform: zfs_sensor
   - platform: yr
     name: Weather now
     monitored_conditions:
