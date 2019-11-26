@@ -6,7 +6,7 @@
   action:
   - service: switch.turn_on
     entity_id: switch.flux
-- alias: Alarm clock on
+- alias: MQTT Alarm clock
   trigger:
     platform: mqtt
     topic: alarm_clock
@@ -325,7 +325,7 @@
   - entity_id: group.evening_lights
     service: light.turn_on
 - id: 744b4b893020470d85a9a4f841d5114c
-  alias: alarm clock
+  alias: Alarm Clock by time
   trigger:
   - platform: template
     value_template: '{{ states(''sensor.time'') == (states.input_datetime.bedroom_alarm_clock_time.attributes.timestamp
