@@ -31,30 +31,33 @@ views:
           - switch.flux
       - type: entities
         title: Alarm Clock
+        show_header_toggle: false
         entities:
           - input_datetime.bedroom_alarm_clock_time
+          - automation.alarm_clock_by_time
       - type: entities
         entities:
           - script.all_lights_off_except_bedroom
           - scene.living_room_dinner
+          - script.evening_pc_lights
       - type: 'custom:custom-group-card'
         card:
           type: custom:slider-entity-row
           toggle: true
           title: Lights
         group: group.non_automatic_lights
-      - type: horizontal-stack
-        cards:
-          - entity: switch.edimax_smart_plug
-            type:  entity-button
-          - entity: sensor.edimax_current_power 
-            type: sensor
-            graph: line
-            detail: 2
-          - entity: sensor.edimax_total_power
-            type: sensor
-            graph: line
-            detail: 2
+      # - type: horizontal-stack
+      #   cards:
+      #     - entity: switch.edimax_smart_plug
+      #       type:  entity-button
+      #     - entity: sensor.edimax_current_power 
+      #       type: sensor
+      #       graph: line
+      #       detail: 2
+      #     - entity: sensor.edimax_total_power
+      #       type: sensor
+      #       graph: line
+      #       detail: 2
       - type: custom:vertical-stack-in-card
         cards:
         - type: picture-elements
