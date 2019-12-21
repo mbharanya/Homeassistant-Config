@@ -88,7 +88,7 @@
      id="layer2"
      inkscape:label="Background">
     <rect
-       id="light.living_room_panel"
+       id="light.living_room_panel_2"
        width="648.54559"
        height="783.26288"
        x="739.60834"
@@ -97,7 +97,7 @@
        ry="0"
        inkscape:label="#rect126" />
     <rect
-       id="light.pc_room_panel_3"
+       id="light.pc_room_panel_2"
        width="643.31653"
        height="872.85809"
        x="734.87354"
@@ -195,7 +195,7 @@
       </g>
     </g>
     <g
-       id="light.tradfri_bulb_e27_ws_opal_980lm_4"
+       id="light.pc_room_3d_printer_2"
        transform="matrix(0.48241677,-0.00427119,0.00368626,0.55896371,1140.4411,-826.35851)"
        inkscape:label="#g3827">
       <path

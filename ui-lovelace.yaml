@@ -312,7 +312,7 @@ views:
     cards:
       - type: horizontal-stack
         cards:
-          - entity: light.living_room_panel
+          - entity: light.living_room_panel_2
             type: light
           - entity: light.living_room_dinner_table
             type: light
@@ -357,7 +357,7 @@ views:
     cards: 
       - type: horizontal-stack
         cards:
-          - entity: light.tradfri_bulb_e27_ws_opal_980lm_4
+          - entity: light.pc_room_3d_printer_2
             type: light
           - entity: light.pc_room_monitors_2
             type: light
@@ -368,7 +368,7 @@ views:
           - entity: light.tv_monitor_leds
             type: light
       - type: light
-        entity: light.pc_room_panel_3
+        entity: light.pc_room_panel_2
       - type: vertical-stack
         cards:
           - type: sensor
@@ -479,12 +479,12 @@ views:
           - light.desk_leds
           - light.hallway_panel
           - light.kitchen_panel
-          - light.living_room_panel
+          - light.living_room_panel_2
           - light.living_room_sofa
           - light.living_room_dinner_table
           - light.pc_room_monitors_2
-          - light.pc_room_panel_3
-          - light.tradfri_bulb_e27_ws_opal_980lm_4
+          - light.pc_room_panel_2
+          - light.pc_room_3d_printer_2
           - light.tv_leds
           - light.sofa_leds
           - light.tv_monitor_leds

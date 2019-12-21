@@ -68,9 +68,9 @@ weather:
 pc_room_lights:
   name: PC Room Lights
   entities:
-    - light.tradfri_bulb_e27_ws_opal_980lm_4
+    - light.pc_room_3d_printer_2
     - light.pc_room_monitors_2
-    - light.pc_room_panel_3
+    - light.pc_room_panel_2
     - light.desk_leds
     - light.tv_monitor_leds
 
@@ -127,7 +127,7 @@ kitchen_sensors:
 living_room_lights:
   name: Living Room Lights
   entities:
-    - light.living_room_panel
+    - light.living_room_panel_2
     - light.living_room_sofa
     - light.living_room_dinner_table
     - light.tv_leds
@@ -157,12 +157,12 @@ non_automatic_lights:
     - light.desk_leds
     - light.hallway_panel
     - light.kitchen_panel
-    - light.living_room_panel
+    - light.living_room_panel_2
     - light.living_room_sofa
     - light.living_room_dinner_table
     - light.pc_room_monitors_2
-    - light.pc_room_panel_3
-    - light.tradfri_bulb_e27_ws_opal_980lm_4
+    - light.pc_room_panel_2
+    - light.pc_room_3d_printer_2
     - light.tv_leds
     - light.sofa_leds
     - light.tv_monitor_leds
@@ -177,8 +177,8 @@ non_living_room_lights:
     - light.hallway_panel
     - light.kitchen_panel
     - light.pc_room_monitors_2
-    - light.pc_room_panel_3
-    - light.tradfri_bulb_e27_ws_opal_980lm_4
+    - light.pc_room_panel_2
+    - light.pc_room_3d_printer_2
 
 pandora_disk_sensors:
   name: Pandora HDD Sensors

@@ -22,7 +22,7 @@
         brightness_pct: 60
     light.living_room_dinner_table:
         state: on
-    light.living_room_panel:
+    light.living_room_panel_2:
         state: off
     light.tv_leds:
         state: off
@@ -38,7 +38,7 @@
       state: on
       transition: 10
       brightness_pct: 100
-    light.living_room_panel:
+    light.living_room_panel_2:
       state: off
       transition: 10
     light.living_room_dinner_table:
@@ -75,5 +75,5 @@
   entities:
     light.pc_room_monitors_2:
       state: on
-    light.tradfri_bulb_e27_ws_opal_980lm_4:
+    light.pc_room_3d_printer_2:
       state: on
