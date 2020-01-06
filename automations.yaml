@@ -2,10 +2,11 @@
   trigger:
     platform: homeassistant
     event: start
-  hide_entity: True
+  hide_entity: true
   action:
   - service: switch.turn_on
     entity_id: switch.flux
+  id: 06e20ecadc174fe5983f810e9a3ca984
 - alias: MQTT Alarm clock
   trigger:
     platform: mqtt
@@ -41,26 +42,24 @@
     to: home
 - alias: Turn PC room lights on, on weekdays after pc started
   trigger:
-    - platform: sun
-      event: sunset
-    - platform: state
-      entity_id: device_tracker.xmbombpc
-      to: home
+  - platform: state
+    entity_id: device_tracker.xmbombpc
+    to: home
   condition:
-    - condition: sun
-      after: sunset
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+  - condition: sun
+    after: sunset
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
   action:
     service: script.turn_on
     data:
       entity_id: script.evening_pc_lights
-
+  id: 0e1c561596ff4cf39d1eb0ad2e00053d
 - action:
   - alias: PC Off TV Off
     data:
@@ -226,7 +225,6 @@
       entity_id:
       - light.kitchen_grower
     service: light.turn_on
-
 - id: '1537640537656'
   alias: Grower off
   trigger:
@@ -239,7 +237,6 @@
       entity_id:
       - light.kitchen_grower
     service: light.turn_off
-
 - alias: 2700K on
   trigger:
   - platform: template
@@ -251,7 +248,7 @@
       entity_id:
       - light.hydro_2700k
     service: light.turn_on
-
+  id: bab9c47155a54b7ebbee5f58d7ba90e1
 - alias: 2700K off
   trigger:
   - platform: template
@@ -263,7 +260,6 @@
       entity_id:
       - light.hydro_2700k
     service: light.turn_off
-
   id: 2a508e9e53344e35bd4accb6fec1cab4
 - alias: LG OLED off after playing
   trigger:
@@ -384,7 +380,6 @@
   - service: input_boolean.turn_off
     entity_id: input_boolean.in_bed
   id: 0b1a7bfdca5445dda5672f4987d1ec12
-
 - alias: All Lights off (except bedroom corner) when in bed
   trigger:
     platform: state
@@ -400,7 +395,6 @@
   - service: script.turn_on
     entity_id: script.all_lights_off_except_bedroom
   id: 39542d047c5245e7a008c59c9f1385db
-  
 - id: '1541266912466'
   alias: Hydro Bubbler on
   trigger:
@@ -431,37 +425,35 @@
     from: 'off'
     to: 'on'
     entity_id: group.non_living_room_lights
-  condition: 
-    - condition: state
-      entity_id: media_player.lg_4k_oled
-      state: 'playing'
+  condition:
+  - condition: state
+    entity_id: media_player.lg_4k_oled
+    state: playing
   action:
     service: media_player.media_pause
     entity_id: media_player.lg_4k_oled
+  id: 104f6a021bae401391dfca5248b5096a
 - alias: Set HA theme for day and night
   trigger:
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: sun.sun
-      to: above_horizon
-    - platform: state
-      entity_id: sun.sun
-      to: below_horizon
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sun.sun
+    to: above_horizon
+  - platform: state
+    entity_id: sun.sun
+    to: below_horizon
   action:
-    - service_template: frontend.set_theme
-      data_template:
-        name: '
-        {% if states.sun.sun.state == "above_horizon" %}
-          default
-        {% else %}
-          BlueNight
-        {% endif %}'
+  - service_template: frontend.set_theme
+    data_template:
+      name: ' {% if states.sun.sun.state == "above_horizon" %} default {% else %}
+        BlueNight {% endif %}'
+  id: 7f79bda228b441c2a156cfb409389b28
 - alias: Send alert after daily vacuum to empty the dustbin
   trigger:
   - platform: state
     entity_id: group.milan_and_linda
-    to: 'home'
+    to: home
     for:
       minutes: 5
   condition:
@@ -471,43 +463,40 @@
       entity_id: input_boolean.daily_vacuum_first_run
       state: 'on'
     - condition: time
-      after: '08:30:00'
+      after: 08:30:00
       before: '23:30:00'
     - condition: template
-      value_template: >
-        {% if states.automation.send_alert_after_daily_vacuum_to_empty_the_dustbin.last_triggered is not none %}
-          {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.send_alert_after_daily_vacuum_to_empty_the_dustbin.attributes.last_triggered) | int > 1800 %} true {% else %} false
-          {% endif %}
-        {% else %}
-        false
-        {% endif %}
+      value_template: "{% if states.automation.send_alert_after_daily_vacuum_to_empty_the_dustbin.last_triggered\
+        \ is not none %}\n  {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.send_alert_after_daily_vacuum_to_empty_the_dustbin.attributes.last_triggered)\
+        \ | int > 1800 %} true {% else %} false\n  {% endif %}\n{% else %} false {%\
+        \ endif %}\n"
     - condition: state
       entity_id: input_boolean.disable_dustbin_notification
       state: 'off'
   action:
   - service: notify.pushbullet
     data:
-      message: "Dustin is full :o"
-
+      message: Dustin is full :o
+  id: f7d4984467bf4fc1b1bde60e39a6d8e9
 - alias: Reset Daily Vacuum First Run state at midnight
   trigger:
   - platform: time
-    at: '0:00:00'
+    at: 0:00:00
   action:
   - service: homeassistant.turn_off
     entity_id: input_boolean.daily_vacuum_first_run
-
+  id: 31078cb2ea0a4f6aad6c1a1dba41ed01
 - alias: Start Daily Vacuum
   trigger:
   - platform: time_pattern
-    minutes: '/45'
-    seconds: 00
+    minutes: /45
+    seconds: 0
   condition:
     condition: and
     conditions:
     - condition: state
       entity_id: group.milan_and_linda
-      state: 'not_home'
+      state: not_home
     - condition: state
       entity_id: input_boolean.daily_vacuum_first_run
       state: 'off'
@@ -518,8 +507,54 @@
       entity_id: input_boolean.disable_daily_vacuum
       state: 'off'
   action:
-  - delay: '00:00:15'
+  - delay: 00:00:15
   - service: vacuum.start
     entity_id: vacuum.xiaomi_vacuum_cleaner
   - service: homeassistant.turn_on
     entity_id: input_boolean.daily_vacuum_first_run
+  id: 9682f2eb9996425483a2fb8157fd2593
+- id: '1578244687661'
+  alias: Subwoofer off after 22:00
+  trigger:
+  - at: '22:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.subwoofer
+    service: switch.turn_off
+- id: '1578244783554'
+  alias: Subwoofer on if home
+  trigger:
+  - entity_id: group.milan_portable_devices
+    platform: state
+    to: home
+  condition: []
+  action:
+  - data:
+      entity_id: switch.subwoofer
+    service: switch.turn_on
+- id: '1578244853786'
+  alias: Subwoofer off when leaving home
+  trigger:
+  - entity_id: group.milan_portable_devices
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - data:
+      entity_id: switch.subwoofer
+    service: switch.turn_off
+- id: '1578244945400'
+  alias: Subwoofer on if TV is turned on before 22:00
+  trigger:
+  - entity_id: media_player.lg_4k_oled
+    platform: state
+    to: playing
+  condition:
+  - before: '22:00'
+    condition: time
+  action:
+  - data:
+      entity_id: switch.subwoofer
+    service: switch.turn_on

@@ -46,18 +46,6 @@ views:
           toggle: true
           title: Lights
         group: group.non_automatic_lights
-      # - type: horizontal-stack
-      #   cards:
-      #     - entity: switch.edimax_smart_plug
-      #       type:  entity-button
-      #     - entity: sensor.edimax_current_power 
-      #       type: sensor
-      #       graph: line
-      #       detail: 2
-      #     - entity: sensor.edimax_total_power
-      #       type: sensor
-      #       graph: line
-      #       detail: 2
       - type: custom:vertical-stack-in-card
         cards:
         - type: picture-elements
@@ -341,16 +329,29 @@ views:
         entity: sensor.living_room_mold_chance
         graph: line
         detail: 2
-      - type: sensor
-        entity: sensor.greenhouse_humidity
-        graph: line
-        detail: 2
-      - type: sensor
-        entity: sensor.greenhouse_temperature
-        graph: line
+      # - type: sensor
+      #   entity: sensor.greenhouse_humidity
+      #   graph: line
+      #   detail: 2
+      # - type: sensor
+      #   entity: sensor.greenhouse_temperature
+      #   graph: line
         detail: 2
       - type: 'custom:mini-media-player'
         entity: media_player.lg_4k_oled
+      - type: horizontal-stack
+        cards:
+          - entity: switch.subwoofer
+            type:  entity-button
+          - entity: sensor.subwoofer_current_power 
+            type: sensor
+            graph: line
+            detail: 2
+          - entity: sensor.subwoofer_total_power
+            type: sensor
+            graph: line
+            detail: 2
+
   - title: PC Room
     icon: 'mdi:laptop'
     path: pc-room
@@ -559,6 +560,7 @@ views:
           - sensor.hallway_remote
           - sensor.kitchen_remote
           - sensor.living_room_remote
+          - sensor.living_room_sofa_remote
           - sensor.pc_room_monitors_remote
           - sensor.pc_room_remote
         title: TRADFRI Remotes

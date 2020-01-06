@@ -54,9 +54,6 @@ discovery:
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
-# Enables support for tracking state changes over time
-history:
-
 # View all events in a logbook
 logbook:
 
@@ -247,15 +244,15 @@ sensor:
     unit_of_measurement: "kg"
   - platform: template
     sensors:
-      edimax_current_power:
-        friendly_name: Edimax Current power consumption
+      subwoofer_current_power:
+        friendly_name: Subwoofer Current power consumption
         unit_of_measurement: 'W'
-        value_template: "{{ state_attr('switch.edimax_smart_plug',  'current_power_w') | replace('None', 0) }}"
+        value_template: "{{ state_attr('switch.subwoofer',  'current_power_w') | replace('None', 0) }}"
 
-      edimax_total_power:
-        friendly_name: Edimax Accumulated daily power consumption
+      subwoofer_total_power:
+        friendly_name: Subwoofer Accumulated daily power consumption
         unit_of_measurement: 'kWh'
-        value_template: "{{ state_attr('switch.edimax_smart_plug',  'today_energy_kwh') | replace('None', 0) }}"
+        value_template: "{{ state_attr('switch.subwoofer',  'today_energy_kwh') | replace('None', 0) }}"
 
   - platform: template
     sensors:
@@ -505,7 +502,8 @@ switch:
     name: XMBomb PC
     mac_address: "70-4D-7B-B7-8B-DD"
   - platform: edimax
-    host: 192.168.1.183
+    name: Subwoofer
+    host: 192.168.1.194
     username: admin
     password: kRC9zFHPO1
   - platform: flux
@@ -524,18 +522,18 @@ switch:
 ffmpeg:
 
 camera:
-#  - platform: ffmpeg
-#    name: PC Room Camera
-#    input: rtsp://192.168.1.164:554/unicast
-#  - platform: ffmpeg
-#    name: Living Room Camera
-#    input: rtsp://192.168.1.165:554/unicast
-#  - platform: ffmpeg
-#    name: Hallway Camera
-#    input: rtsp://192.168.1.166:554/unicast
-#  - platform: ffmpeg
-#    name: DaFang
-#    input: -rtsp_transport tcp -i rtsp://dafang:8554/unicast
+ - platform: ffmpeg
+   name: PC Room Camera
+   input: rtsp://192.168.1.164:554/unicast
+ - platform: ffmpeg
+   name: Living Room Camera
+   input: rtsp://192.168.1.165:554/unicast
+ - platform: ffmpeg
+   name: Hallway Camera
+   input: rtsp://192.168.1.166:554/unicast
+ - platform: ffmpeg
+   name: DaFang
+   input: -rtsp_transport tcp -i rtsp://dafang:8554/unicast
 
 input_datetime:
   bedroom_alarm_clock_time:
@@ -588,3 +586,5 @@ scene: !include scenes.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+# Enables support for tracking state changes over time
+history: !include history.yaml

@@ -37,7 +37,8 @@
     light.sofa_leds:
       state: on
       transition: 10
-      brightness_pct: 100
+      # brightness_pct: 100
+      white_value: 100
     light.living_room_panel_2:
       state: off
       transition: 10
