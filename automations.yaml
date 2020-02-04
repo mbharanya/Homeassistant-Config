@@ -37,9 +37,6 @@
   trigger:
   - platform: sun
     event: sunset
-  - platform: state
-    entity_id: device_tracker.xmbombpc
-    to: home
 - alias: Turn PC room lights on, on weekdays after pc started
   trigger:
   - platform: state
@@ -60,6 +57,27 @@
     data:
       entity_id: script.evening_pc_lights
   id: 0e1c561596ff4cf39d1eb0ad2e00053d
+- alias: Turn PC TV on, on weekdays after coming home
+  trigger:
+  - platform: state
+    entity_id: device_tracker.sm_n9500
+    to: home
+  condition:
+  - condition: sun
+    after: sunset
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.tv
+  id: 0e1c561596ff4cf39d1eb0ad2e00053f
+
 - action:
   - alias: PC Off TV Off
     data:
@@ -338,7 +356,7 @@
       | int | timestamp_custom(''%H:%M'', False)) }}'
   condition:
   - condition: state
-    entity_id: device_tracker.galaxynote8
+    entity_id: device_tracker.sm_n9500
     state: home
   action:
   - entity_id: scene.bedroom_wake_up
@@ -356,7 +374,7 @@
       above: 50
       below: 100
     - condition: state
-      entity_id: device_tracker.galaxynote8
+      entity_id: device_tracker.sm_n9500
       state: home
   action:
   - service: input_boolean.turn_on
@@ -374,7 +392,7 @@
       entity_id: sensor.bed_mass
       below: 20
     - condition: state
-      entity_id: device_tracker.galaxynote8
+      entity_id: device_tracker.sm_n9500
       state: home
   action:
   - service: input_boolean.turn_off
@@ -390,7 +408,7 @@
     conditions:
     - condition: time
       after: '22:00:00'
-      before: 04:00:00
+      before: 02:30:00
   action:
   - service: script.turn_on
     entity_id: script.all_lights_off_except_bedroom
@@ -412,7 +430,7 @@
 - id: '1541266912468'
   alias: Hydro Bubbler off
   trigger:
-  - entity_id: device_tracker.galaxynote8
+  - entity_id: device_tracker.sm_n9500
     platform: state
     to: home
   action:

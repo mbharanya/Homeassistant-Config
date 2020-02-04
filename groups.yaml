@@ -265,7 +265,7 @@ tradfri_remotes:
 milan_and_linda:
   name: Milan and Linda
   entities:
-    - device_tracker.galaxynote8
+    - device_tracker.sm_n9500
     - device_tracker.huawei_p10
 
 milan_portable_devices:

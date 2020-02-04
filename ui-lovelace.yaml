@@ -15,7 +15,9 @@ resources:
 title: Home
 views:
   - title: Main
-    badges: []
+    badges: 
+      - device_tracker.sm_n9500
+      - sensor.bitcoin
     cards:
       - type: weather-forecast
         entity: weather.dark_sky
@@ -40,6 +42,12 @@ views:
           - script.all_lights_off_except_bedroom
           - scene.living_room_dinner
           - script.evening_pc_lights
+      - type: map
+        aspect_ratio: 16:9
+        default_zoom: 10
+        entities:
+          - zone.home
+          - device_tracker.sm_n9500
       - type: 'custom:custom-group-card'
         card:
           type: custom:slider-entity-row
@@ -577,6 +585,7 @@ views:
         type: entities
       - entities:
           - device_tracker.galaxynote8
+          - device_tracker.sm_n9500
         title: Milan Portable Devices
         type: entities
       - entities:

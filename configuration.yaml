@@ -14,6 +14,12 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+zone:
+  - name: Work
+    latitude: 47.3640412
+    longitude: 8.5352484
+    icon: mdi:briefcase
+
 # Enables the frontend
 frontend: 
   themes: !include_dir_merge_named themes/
@@ -69,6 +75,8 @@ apcupsd:
 python_script:
 
 led_color_temp:
+
+mobile_app:
 
 weather:
   - platform: darksky
