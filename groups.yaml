@@ -47,10 +47,8 @@ people_view:
   view: yes
   icon: mdi:account-multiple
   entities:
-    - group.milan_and_linda
     - group.milan_portable_devices
     - group.milan_devices
-    - group.linda_portable_devices
 
 automation_view:
   view: yes
@@ -262,24 +260,13 @@ tradfri_remotes:
     - sensor.pc_room_monitors_remote
     - sensor.pc_room_remote
 
-milan_and_linda:
-  name: Milan and Linda
-  entities:
-    - device_tracker.sm_n9500
-    - device_tracker.huawei_p10
-
 milan_portable_devices:
   name: Milan Portable Devices
   entities:
-    - device_tracker.galaxynote8
+    - device_tracker.sm_n9500
 
 milan_devices:
   name: Milan Devices
   entities:
     - device_tracker.slimtop
     - device_tracker.xmbombpc
-
-linda_portable_devices:
-  name: Linda Portable Devices
-  entities:
-    - device_tracker.huawei_p10

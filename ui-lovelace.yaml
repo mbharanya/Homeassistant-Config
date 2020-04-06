@@ -17,17 +17,11 @@ views:
   - title: Main
     badges: 
       - device_tracker.sm_n9500
-      - sensor.bitcoin
+      - sensor.exchange_rate_1_btc
     cards:
       - type: weather-forecast
         entity: weather.dark_sky
         title: Weather
-      - type: entities
-        title: Cameras
-        entities:
-          - switch.pc_room_camera
-          - switch.living_room_camera
-          - switch.hallway_camera
       - type: glance
         entities:
           - switch.flux
@@ -40,20 +34,9 @@ views:
       - type: entities
         entities:
           - script.all_lights_off_except_bedroom
+          - group.non_automatic_lights
           - scene.living_room_dinner
           - script.evening_pc_lights
-      - type: map
-        aspect_ratio: 16:9
-        default_zoom: 10
-        entities:
-          - zone.home
-          - device_tracker.sm_n9500
-      - type: 'custom:custom-group-card'
-        card:
-          type: custom:slider-entity-row
-          toggle: true
-          title: Lights
-        group: group.non_automatic_lights
       - type: custom:vertical-stack-in-card
         cards:
         - type: picture-elements
@@ -301,6 +284,23 @@ views:
         - type: history-graph
           entities:
             - vacuum.xiaomi_vacuum_cleaner
+      - type: entities
+        entities:
+          - light.bed_leds
+          - light.bedroom_corner
+          - light.bedroom_panel
+          - light.desk_leds
+          - light.hallway_panel
+          - light.kitchen_panel
+          - light.living_room_panel_2
+          - light.living_room_sofa
+          - light.living_room_dinner_table
+          - light.pc_room_monitors_2
+          - light.pc_room_panel_2
+          - light.pc_room_3d_printer_2
+          - light.tv_leds
+          - light.sofa_leds
+          - light.tv_monitor_leds
   - badges: []
     icon: 'mdi:sofa'
     path: living_room
@@ -344,7 +344,7 @@ views:
       # - type: sensor
       #   entity: sensor.greenhouse_temperature
       #   graph: line
-        detail: 2
+      #   detail: 2
       - type: 'custom:mini-media-player'
         entity: media_player.lg_4k_oled
       - type: horizontal-stack
@@ -570,7 +570,7 @@ views:
           - sensor.living_room_remote
           - sensor.living_room_sofa_remote
           - sensor.pc_room_monitors_remote
-          - sensor.pc_room_remote
+          - sensor.pc_room_panel_remote
         title: TRADFRI Remotes
         type: entities
     icon: 'mdi:server'
@@ -578,11 +578,6 @@ views:
     title: homelab_view
   - badges: []
     cards:
-      - entities:
-          - device_tracker.galaxynote8
-          - device_tracker.huawei_p10
-        title: Milan and Linda
-        type: entities
       - entities:
           - device_tracker.galaxynote8
           - device_tracker.sm_n9500
@@ -593,10 +588,13 @@ views:
           - device_tracker.xmbombpc
         title: Milan Devices
         type: entities
-      - entities:
-          - device_tracker.huawei_p10
-        title: Linda Portable Devices
-        type: entities
+      - type: map
+        aspect_ratio: 16:9
+        default_zoom: 10
+        entities:
+          - zone.home
+          - device_tracker.sm_n9500
+
     icon: 'mdi:account-multiple'
     path: people_view
     title: people_view

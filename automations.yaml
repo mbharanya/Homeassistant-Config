@@ -115,30 +115,6 @@
     platform: state
 - action:
   - data:
-      message: Schildkröten zu kalt
-    service: notify.pushbullet_lis
-  alias: Tortoises too cold
-  condition: []
-  id: '1511111478420'
-  trigger:
-  - entity_id: binary_sensor.shed_temperature_below_35
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      message: Schildkröten zu warm
-    service: notify.pushbullet_lis
-  alias: Tortoises too warm
-  condition: []
-  id: '1511111478421'
-  trigger:
-  - entity_id: binary_sensor.shed_temperature_above_10
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
       color_name: red
       entity_id: light.desk_leds
     service: light.turn_on
@@ -308,7 +284,7 @@
 - alias: Cameras off if home
   trigger:
   - platform: state
-    entity_id: group.milan_and_linda
+    entity_id: group.milan_portable_devices
     to: home
     from: not_home
   action:
@@ -318,7 +294,7 @@
 - alias: Cameras on if not home
   trigger:
   - platform: state
-    entity_id: group.milan_and_linda
+    entity_id: group.milan_portable_devices
     to: not_home
     from: home
   action:
@@ -328,7 +304,7 @@
 - alias: Lights off if not home
   trigger:
   - platform: state
-    entity_id: group.milan_and_linda
+    entity_id: group.milan_portable_devices
     to: not_home
     from: home
   action:
@@ -338,7 +314,7 @@
 - id: fbcbbbf751a84c0cb99e7a709aba8672
   alias: Lights on if home
   trigger:
-  - entity_id: group.milan_and_linda
+  - entity_id: group.milan_portable_devices
     from: not_home
     platform: state
     to: home
@@ -416,7 +392,7 @@
 - id: '1541266912466'
   alias: Hydro Bubbler on
   trigger:
-  - entity_id: group.milan_and_linda
+  - entity_id: group.milan_portable_devices
     platform: state
     to: not_home
   condition:
@@ -470,7 +446,7 @@
 - alias: Send alert after daily vacuum to empty the dustbin
   trigger:
   - platform: state
-    entity_id: group.milan_and_linda
+    entity_id: group.milan_portable_devices
     to: home
     for:
       minutes: 5
@@ -513,7 +489,7 @@
     condition: and
     conditions:
     - condition: state
-      entity_id: group.milan_and_linda
+      entity_id: group.milan_portable_devices
       state: not_home
     - condition: state
       entity_id: input_boolean.daily_vacuum_first_run
