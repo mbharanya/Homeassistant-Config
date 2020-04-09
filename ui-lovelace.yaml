@@ -11,6 +11,8 @@ resources:
     url: /local/slider-entity-row.js?v=1
   - type: js
     url: /local/vertical-stack-in-card.js?v=1
+  - url: /local/auto-entities.js
+    type: module
 
 title: Home
 views:
@@ -37,7 +39,7 @@ views:
           - group.non_automatic_lights
           - scene.living_room_dinner
           - script.evening_pc_lights
-      - type: custom:vertical-stack-in-card
+      - type: vertical-stack
         cards:
         - type: picture-elements
           icon: mdi:cloud
@@ -282,6 +284,9 @@ views:
           - entity: input_boolean.disable_daily_vacuum
             name: Disable Daily Cleanup
         - type: history-graph
+          entities:
+            - vacuum.xiaomi_vacuum_cleaner
+        - type: entities
           entities:
             - vacuum.xiaomi_vacuum_cleaner
       - type: entities
@@ -579,13 +584,12 @@ views:
   - badges: []
     cards:
       - entities:
-          - device_tracker.galaxynote8
           - device_tracker.sm_n9500
+          - device_tracker.milans_note_8
         title: Milan Portable Devices
         type: entities
       - entities:
-          - device_tracker.slimtop
-          - device_tracker.xmbombpc
+          - device_tracker.xmbomb_pc
         title: Milan Devices
         type: entities
       - type: map
@@ -602,8 +606,9 @@ views:
   - title: Automations
     path: automation_view
     cards:
-      - type: 'custom:group-card'
+      - type: custom:auto-entities
         card:
           type: entities
-          title: Automations
-        group: group.all_automations
+        filter:
+          include:
+            - domain: automation

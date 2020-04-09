@@ -1,5 +1,4 @@
 default_view:
-  view: yes
   icon: mdi:home 
   entities:
     - sensor.bitcoin
@@ -27,13 +26,11 @@ default_view:
     - input_datetime.bedroom_alarm_clock_time
 
 light_view:
-  view: yes
   icon: mdi:lightbulb 
   entities:
     - group.non_automatic_lights
 
 homelab_view:
-  view: yes
   icon: mdi:server
   entities:
     - group.ups
@@ -44,14 +41,12 @@ homelab_view:
     - group.tradfri_remotes
 
 people_view:
-  view: yes
   icon: mdi:account-multiple
   entities:
     - group.milan_portable_devices
     - group.milan_devices
 
 automation_view:
-  view: yes
   name: Automations
   entities:
     - group.all_automations

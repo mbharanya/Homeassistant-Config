@@ -13,6 +13,13 @@ homeassistant:
   time_zone: Europe/Zurich
   # Customization file
   customize: !include customize.yaml
+  auth_providers:
+  - type: homeassistant
+  - type: legacy_api_password
+    api_password: !secret http_password
+  - type: trusted_networks
+    trusted_networks:
+      - 127.0.0.1
 
 zone:
   - name: Work
@@ -34,12 +41,14 @@ system_health:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  api_password: !secret http_password
+  # api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: xmb.li:8123
-  trusted_networks:
-    - 127.0.0.1
-    - 192.168.1.0/24
+
+pi_hole:
+    - host: "192.168.1.30"
+      verify_ssl: false
+
 
 vacuum:
   - platform: xiaomi_miio
@@ -74,7 +83,8 @@ apcupsd:
 
 python_script:
 
-led_color_temp:
+# led_color_temp:
+# zfs_sensor:
 
 mobile_app:
 
@@ -93,7 +103,7 @@ panel_iframe:
     url: http://xmb.li:3000
 # Weather prediction
 sensor:
-  # - platform: zfs_sensor
+  - platform: zfs_sensor
   - platform: yr
     name: Weather now
     monitored_conditions:
@@ -134,29 +144,21 @@ sensor:
       - /dev/sdt
       - /dev/sdu
       - /dev/sdv
-  - platform: pi_hole
-    host: 192.168.1.30
-    monitored_conditions:
-      - ads_blocked_today
-      - ads_percentage_today
-      - unique_domains
-      - dns_queries_today
-      - domains_being_blocked
   - platform: bitcoin
     display_options:
       - exchangerate
-  - platform: coinmarketcap
-    currency_id: 1
-    display_currency: CHF
-  - platform: coinmarketcap
-    currency_id: 1027
-    display_currency: CHF
-  - platform: coinmarketcap
-    currency_id: 2
-    display_currency: CHF
-  - platform: coinmarketcap
-    currency_id: 74
-    display_currency: CHF
+  # - platform: coinmarketcap
+  #   currency_id: 1
+  #   display_currency: CHF
+  # - platform: coinmarketcap
+  #   currency_id: 1027
+  #   display_currency: CHF
+  # - platform: coinmarketcap
+  #   currency_id: 2
+  #   display_currency: CHF
+  # - platform: coinmarketcap
+  #   currency_id: 74
+  #   display_currency: CHF
   - platform: mqtt
     name: "Living Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
@@ -372,34 +374,31 @@ tts:
 
 wake_on_lan:
 
-media_player:
-  - platform: plex
-  - platform: spotify
-    client_id: 521b6f020f9d4923a98c8bdb39889d03
-    client_secret: !secret spotify_client_secret
-  - platform: webostv
+webostv: 
     host: 192.168.1.102
     name: LG 4K OLED
     turn_on_action:
       service: wake_on_lan.send_magic_packet
       data:
         mac: "20-3D-BD-1B-A3-86"
-#    customize:
-#      sources:
-#        - youtube
-#        - netflix
 
+media_player:
+  - platform: plex
+  - platform: spotify
+    client_id: 521b6f020f9d4923a98c8bdb39889d03
+    client_secret: !secret spotify_client_secret
+  
 mqtt:
   broker: localhost
   discovery: true
   discovery_prefix: homeassistant
 
 device_tracker:
-  - platform: unifi
-    host: 192.168.1.22
-    username: !secret unifi_user
-    password: !secret unifi_password
-    verify_ssl: false
+  # - platform: unifi
+  #   host: 192.168.1.22
+  #   username: !secret unifi_user
+  #   password: !secret unifi_password
+  #   verify_ssl: false
 
 notify:
   - name: pushbullet
@@ -506,9 +505,6 @@ switch:
     name: "Living Room Camera"
     state_topic: "stat/sonoff/living_room_camera/POWER"
     command_topic: "cmnd/sonoff/living_room_camera/POWER"
-  - platform: wake_on_lan
-    name: XMBomb PC
-    mac_address: "70-4D-7B-B7-8B-DD"
   - platform: edimax
     name: Subwoofer
     host: 192.168.1.194
