@@ -43,12 +43,18 @@ http:
   # Secrets are defined in the file secrets.yaml
   # api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  base_url: xmb.li:8123
+  base_url: "hass.xmb.li"
+  use_x_forwarded_for: true
+  ssl_certificate: /config/fullchain.pem
+  ssl_key: /config/privkey.pem
+  trusted_proxies:
+    - 192.168.1.22 #Traefik container IP
+    - 172.21.0.4
+
 
 pi_hole:
     - host: "192.168.1.30"
       verify_ssl: false
-
 
 vacuum:
   - platform: xiaomi_miio
@@ -100,9 +106,22 @@ panel_iframe:
   vscode:
     title: VSCode
     icon: mdi:visual-studio-code
-    url: http://xmb.li:3000
+    url: https://1code.xmb.li
 # Weather prediction
 sensor:
+  - platform: qbittorrent
+    url: 'http://192.168.1.22:9111'
+    username: !secret qbittorrent_user
+    password: !secret qbittorrent_password
+  - platform: radarr
+    host: '192.168.1.22'
+    api_key: !secret radarr_api_key
+  - platform: sonarr
+    host: '192.168.1.22'
+    api_key: !secret sonarr_api_key
+    monitored_conditions:
+      - upcoming
+      - series
   - platform: zfs_sensor
   - platform: yr
     name: Weather now
@@ -141,6 +160,29 @@ sensor:
       - /dev/sdp
       - /dev/sdq
       - /dev/sdr
+      - /dev/sds
+      - /dev/sdt
+      - /dev/sdu
+      - /dev/sdv
+      - /dev/sda
+      - /dev/sdb
+      - /dev/sdc
+      - /dev/sdd
+      - /dev/sde
+      - /dev/sdf
+      - /dev/sdg
+      - /dev/sdh
+      - /dev/sdi
+      - /dev/sdj
+      - /dev/sdk
+      - /dev/sdl
+      - /dev/sdm
+      - /dev/sdn
+      - /dev/sdo
+      - /dev/sdp
+      - /dev/sdq
+      - /dev/sdr
+      - /dev/sds
       - /dev/sdt
       - /dev/sdu
       - /dev/sdv
@@ -389,7 +431,7 @@ media_player:
     client_secret: !secret spotify_client_secret
   
 mqtt:
-  broker: localhost
+  broker: 192.168.1.22
   discovery: true
   discovery_prefix: homeassistant
 
@@ -510,6 +552,14 @@ switch:
     host: 192.168.1.194
     username: admin
     password: kRC9zFHPO1
+  - platform: command_line
+    switches:
+      humidifier:
+        command_on: "curl -X GET 'http://192.168.1.70/relay?state=1'"
+        command_off: "curl -X GET 'http://192.168.1.70/relay?state=0'"
+        command_state: "curl -X GET 'http://192.168.1.70/report'"
+        value_template: '{{ value_json.relay == true }}'
+        friendly_name: Humidifier
   - platform: flux
     mode: mired
     lights:

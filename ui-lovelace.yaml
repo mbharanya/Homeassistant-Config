@@ -2,7 +2,7 @@ resources:
   - type: module
     url: /local/mini-media-player-bundle.js?v=0.9.2
   - type: module
-    url: /local/mini-graph-card-bundle.js?v=0.0.9
+    url: /local/mini-graph-card-bundle.js?v=0.9.3
   - type: js
     url: /local/group-card.js?v=5
   - type: js
@@ -450,6 +450,7 @@ views:
             entities: 
               - input_boolean.in_bed
               - script.zero_bed
+              - switch.humidifier
       - type: sensor
         entity: sensor.bedroom_mold_chance
         graph: line
@@ -517,29 +518,73 @@ views:
           - sensor.ups_status
           - sensor.ups_time_left
       - title: Pandora HDD Sensors
-        type: entities
+        type: custom:mini-graph-card
+        height: 400
+        line_width: 2
         entities:
-          - sensor.hd_temperature_dev_sda
-          - sensor.hd_temperature_dev_sdb
-          - sensor.hd_temperature_dev_sdc
-          - sensor.hd_temperature_dev_sdd
-          - sensor.hd_temperature_dev_sde
-          - sensor.hd_temperature_dev_sdf
-          - sensor.hd_temperature_dev_sdg
-          - sensor.hd_temperature_dev_sdh
-          - sensor.hd_temperature_dev_sdi
-          - sensor.hd_temperature_dev_sdj
-          - sensor.hd_temperature_dev_sdk
-          - sensor.hd_temperature_dev_sdl
-          - sensor.hd_temperature_dev_sdm
-          - sensor.hd_temperature_dev_sdn
-          - sensor.hd_temperature_dev_sdo
-          - sensor.hd_temperature_dev_sdp
-          - sensor.hd_temperature_dev_sdq
-          - sensor.hd_temperature_dev_sdr
-          - sensor.hd_temperature_dev_sdt
-          - sensor.hd_temperature_dev_sdu
-          - sensor.hd_temperature_dev_sdv
+          - entity: sensor.hd_temperature_dev_sda
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdb
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdc
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdd
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sde
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdf
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdg
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdh
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdi
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdj
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdk
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdl
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdm
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdn
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdo
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdp
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdq
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdr
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdt
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdu
+            show_legend: false
+            show_fill: false
+          - entity: sensor.hd_temperature_dev_sdv
+            show_legend: false
+            show_fill: false
       - title: Pi Hole
         type: glance
         entities:
@@ -578,6 +623,19 @@ views:
           - sensor.pc_room_panel_remote
         title: TRADFRI Remotes
         type: entities
+      - title: Torrent
+        type: glance
+        entities:
+          - sensor.qbittorrent_down_speed
+          - sensor.qbittorrent_up_speed
+          - sensor.qbittorrent_status
+      - title: Sonarr / Radarr
+        type: glance
+        entities:
+          - sensor.radarr_movies
+          - sensor.sonarr_series
+          - sensor.sonarr_upcoming
+
     icon: 'mdi:server'
     path: homelab_view
     title: homelab_view

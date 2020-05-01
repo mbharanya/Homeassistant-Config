@@ -77,7 +77,6 @@
     data:
       entity_id: switch.tv
   id: 0e1c561596ff4cf39d1eb0ad2e00053f
-
 - action:
   - alias: PC Off TV Off
     data:
@@ -149,7 +148,7 @@
     service: notify.pushbullet
   alias: ZMain Degraded Notification
   condition: []
-  id: '1511111478420'
+  id: '1511111478421'
   trigger:
   - entity_id: sensor.zfs_zmain_health
     from: ONLINE
@@ -165,25 +164,28 @@
   - entity_id: sensor.zfs_zbackup_health
     from: ONLINE
     platform: state
-- action:
-  - data:
-      entity_id: switch.humidifier
-    service: switch.turn_on
-  alias: PC Room Humidifier On
+- id: '1522953892250'
+  alias: Bedroom Humidifier On
+  trigger:
+  - below: '45'
+    entity_id: sensor.bedroom_humidity
+    platform: numeric_state
   condition:
   - condition: state
     entity_id: group.milan_portable_devices
     state: home
-  id: '1522953892250'
-  trigger:
-  - below: '45'
-    entity_id: sensor.pc_room_humidity
-    platform: numeric_state
+  - after: '22:00'
+    before: 08:00
+    condition: time
+  action:
+  - data:
+      entity_id: switch.humidifier
+    service: switch.turn_on
 - action:
   - data:
       entity_id: switch.humidifier
     service: switch.turn_off
-  alias: PC Room Humidifier off
+  alias: Bedroom Humidifier off
   condition:
   - condition: state
     entity_id: group.milan_portable_devices
@@ -191,7 +193,7 @@
   id: '1522954007709'
   trigger:
   - above: '45'
-    entity_id: sensor.pc_room_humidity
+    entity_id: sensor.bedroom_humidity
     platform: numeric_state
 - id: '1527534824288'
   alias: Desk LED Red if turned on and after sunset

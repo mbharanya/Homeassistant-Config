@@ -1,0 +1,8 @@
+{
+  "domain": "zfs_sensor",
+  "name": "zfs Sensor",
+  "documentation": "https://github.com/home-assistant/zfs-custom-config/tree/master/custom_components/zfs_sensor/",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": []
+}
