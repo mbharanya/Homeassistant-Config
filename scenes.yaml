@@ -49,7 +49,7 @@
       transition: 10
 - name: Bedroom Wake Up
   entities:
-    light.bedroom_corner:
+    light.bedroom_corner_3:
         state: on
         transition: 240
         brightness_pct: 100
@@ -60,7 +60,7 @@
         color_name: blue
 - name: Sex Lighting
   entities:
-    light.bedroom_corner:
+    light.bedroom_corner_3:
       state: on
       transition: 60
       brightness_pct: 30

@@ -88,7 +88,7 @@ bedroom_lights:
   name: Bedroom Lights
   entities:
     - light.bedroom_panel
-    - light.bedroom_corner
+    - light.bedroom_corner_3
     - light.bed_leds
 
 bedroom_sensors:
@@ -145,7 +145,7 @@ non_automatic_lights:
   name: All Lights
   entities:
     - light.bed_leds
-    - light.bedroom_corner
+    - light.bedroom_corner_3
     - light.bedroom_panel
     - light.desk_leds
     - light.hallway_panel
@@ -164,7 +164,7 @@ non_living_room_lights:
   name: All Lights
   entities:
     - light.bed_leds
-    - light.bedroom_corner
+    - light.bedroom_corner_3
     - light.bedroom_panel
     - light.desk_leds
     - light.hallway_panel

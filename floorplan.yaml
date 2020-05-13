@@ -111,7 +111,7 @@
             - light.living_room_sofa
             - light.living_room_dinner_table
             - light.bedroom_panel
-            - light.bedroom_corner
+            - light.bedroom_corner_3
             - light.bed_leds
           states:
             - state: 'on'

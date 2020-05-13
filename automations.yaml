@@ -443,7 +443,7 @@
   - service_template: frontend.set_theme
     data_template:
       name: ' {% if states.sun.sun.state == "above_horizon" %} default {% else %}
-        BlueNight {% endif %}'
+        blue_night {% endif %}'
   id: 7f79bda228b441c2a156cfb409389b28
 - alias: Send alert after daily vacuum to empty the dustbin
   trigger:

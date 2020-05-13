@@ -1,19 +1,3 @@
-resources:
-  - type: module
-    url: /local/mini-media-player-bundle.js?v=0.9.2
-  - type: module
-    url: /local/mini-graph-card-bundle.js?v=0.9.3
-  - type: js
-    url: /local/group-card.js?v=5
-  - type: js
-    url: /local/custom-group-card.js?v=16
-  - type: js
-    url: /local/slider-entity-row.js?v=1
-  - type: js
-    url: /local/vertical-stack-in-card.js?v=1
-  - url: /local/auto-entities.js
-    type: module
-
 title: Home
 views:
   - title: Main
@@ -39,6 +23,9 @@ views:
           - group.non_automatic_lights
           - scene.living_room_dinner
           - script.evening_pc_lights
+      - title: Sonarr
+        type: custom:upcoming-media-card
+        entity: sensor.sonarr_upcoming_media
       - type: vertical-stack
         cards:
         - type: picture-elements
@@ -292,7 +279,7 @@ views:
       - type: entities
         entities:
           - light.bed_leds
-          - light.bedroom_corner
+          - light.bedroom_corner_3
           - light.bedroom_panel
           - light.desk_leds
           - light.hallway_panel
@@ -424,7 +411,7 @@ views:
     cards: 
       - type: horizontal-stack
         cards:
-          - entity: light.bedroom_corner
+          - entity: light.bedroom_corner_3
             type: light
           - entity: light.bed_leds
             type: light
@@ -489,7 +476,7 @@ views:
     cards:
       - entities:
           - light.bed_leds
-          - light.bedroom_corner
+          - light.bedroom_corner_3
           - light.bedroom_panel
           - light.desk_leds
           - light.hallway_panel
@@ -635,7 +622,26 @@ views:
           - sensor.radarr_movies
           - sensor.sonarr_series
           - sensor.sonarr_upcoming
-
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.processor_use
+            graph: line
+            detail: 2
+          - type: sensor
+            entity: sensor.memory_use_percent
+            graph: line
+            detail: 2
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.pandora_cpu
+            graph: line
+            detail: 2
+          - type: sensor
+            entity: sensor.pandora_memory_use
+            graph: line
+            detail: 2
     icon: 'mdi:server'
     path: homelab_view
     title: homelab_view

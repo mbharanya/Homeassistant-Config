@@ -30,12 +30,14 @@ zone:
 # Enables the frontend
 frontend: 
   themes: !include_dir_merge_named themes/
+  javascript_version: latest
 
 # Enables configuration UI
 config:
 
 lovelace:
   mode: yaml
+  resources: !include resources.yaml
 
 system_health:
 
@@ -106,7 +108,7 @@ panel_iframe:
   vscode:
     title: VSCode
     icon: mdi:visual-studio-code
-    url: https://1code.xmb.li
+    url: https://code.xmb.li
 # Weather prediction
 sensor:
   - platform: qbittorrent
@@ -122,7 +124,36 @@ sensor:
     monitored_conditions:
       - upcoming
       - series
+  - platform: sonarr_upcoming_media
+    api_key: !secret sonarr_api_key
+    host: '192.168.1.22'
+    port: 8989
+    days: 7
+    ssl: false
+    max: 10
   - platform: zfs_sensor
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: memory_use_percent
+      - type: throughput_network_in
+        arg: eth0
+      - type: throughput_network_out
+        arg: eth0
+      - type: network_in
+        arg: eth0
+      - type: network_in
+        arg: eth0
+  - platform: command_line
+    name: Pandora CPU
+    unit_of_measurement: "%"
+    command: 'nc 192.168.1.8 7778'
+    scan_interval: 30
+  - platform: command_line
+    name: Pandora Memory Use
+    unit_of_measurement: "%"
+    command: 'nc 192.168.1.8 7779'
+    scan_interval: 30
   - platform: yr
     name: Weather now
     monitored_conditions:
@@ -141,51 +172,6 @@ sensor:
       - nombattv
   - platform: hddtemp
     host: 192.168.1.8
-    disks:
-      - /dev/sda
-      - /dev/sdb
-      - /dev/sdc
-      - /dev/sdd
-      - /dev/sde
-      - /dev/sdf
-      - /dev/sdg
-      - /dev/sdh
-      - /dev/sdi
-      - /dev/sdj
-      - /dev/sdk
-      - /dev/sdl
-      - /dev/sdm
-      - /dev/sdn
-      - /dev/sdo
-      - /dev/sdp
-      - /dev/sdq
-      - /dev/sdr
-      - /dev/sds
-      - /dev/sdt
-      - /dev/sdu
-      - /dev/sdv
-      - /dev/sda
-      - /dev/sdb
-      - /dev/sdc
-      - /dev/sdd
-      - /dev/sde
-      - /dev/sdf
-      - /dev/sdg
-      - /dev/sdh
-      - /dev/sdi
-      - /dev/sdj
-      - /dev/sdk
-      - /dev/sdl
-      - /dev/sdm
-      - /dev/sdn
-      - /dev/sdo
-      - /dev/sdp
-      - /dev/sdq
-      - /dev/sdr
-      - /dev/sds
-      - /dev/sdt
-      - /dev/sdu
-      - /dev/sdv
   - platform: bitcoin
     display_options:
       - exchangerate
@@ -563,7 +549,7 @@ switch:
   - platform: flux
     mode: mired
     lights:
-      - light.bedroom_corner_2
+      - light.bedroom_corner_3
       - light.bedroom_panel
       - light.hallway_panel
       - light.kitchen_panel

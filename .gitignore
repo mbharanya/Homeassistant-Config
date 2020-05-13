@@ -10,3 +10,8 @@ known_devices.yaml
 plex.conf
 secrets.yaml
 tts
+*.pem
+.Trash-0
+.storage
+webostv.conf
+*/**/__pycache*
