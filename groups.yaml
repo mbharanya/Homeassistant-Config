@@ -21,7 +21,7 @@ default_view:
     - group.fang_switches
     - media_player.plex
     - media_player.spotify
-    - media_player.lg_4k_oled
+    - media_player.lg_4k_oled_2
     - switch.xmbomb_pc
     - input_datetime.bedroom_alarm_clock_time
 
@@ -63,7 +63,7 @@ pc_room_lights:
   entities:
     - light.pc_room_3d_printer_2
     - light.pc_room_monitors_2
-    - light.pc_room_panel_2
+    - light.pc_room_panel_3
     - light.desk_leds
     - light.tv_monitor_leds
 
@@ -121,7 +121,7 @@ living_room_lights:
   name: Living Room Lights
   entities:
     - light.living_room_panel_2
-    - light.living_room_sofa
+    - light.living_room_sofa_2
     - light.living_room_dinner_table
     - light.tv_leds
     - light.sofa_leds
@@ -151,10 +151,10 @@ non_automatic_lights:
     - light.hallway_panel
     - light.kitchen_panel
     - light.living_room_panel_2
-    - light.living_room_sofa
+    - light.living_room_sofa_2
     - light.living_room_dinner_table
     - light.pc_room_monitors_2
-    - light.pc_room_panel_2
+    - light.pc_room_panel_3
     - light.pc_room_3d_printer_2
     - light.tv_leds
     - light.sofa_leds
@@ -170,7 +170,7 @@ non_living_room_lights:
     - light.hallway_panel
     - light.kitchen_panel
     - light.pc_room_monitors_2
-    - light.pc_room_panel_2
+    - light.pc_room_panel_3
     - light.pc_room_3d_printer_2
 
 pandora_disk_sensors:
@@ -247,7 +247,7 @@ ups:
 tradfri_remotes:
   name: TRADFRI Remotes
   entities:
-    - sensor.bedroom_corner_remote
+    - sensor.bedroom_corner_remote_2
     - sensor.bedroom_remote_ceiling
     - sensor.hallway_remote
     - sensor.kitchen_remote

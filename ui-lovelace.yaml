@@ -285,10 +285,10 @@ views:
           - light.hallway_panel
           - light.kitchen_panel
           - light.living_room_panel_2
-          - light.living_room_sofa
+          - light.living_room_sofa_2
           - light.living_room_dinner_table
           - light.pc_room_monitors_2
-          - light.pc_room_panel_2
+          - light.pc_room_panel_3
           - light.pc_room_3d_printer_2
           - light.tv_leds
           - light.sofa_leds
@@ -311,7 +311,7 @@ views:
           - entity: light.tv_leds
             type: light
       - type: light
-        entity: light.living_room_sofa
+        entity: light.living_room_sofa_2
       - type: sensor
         entity: sensor.living_room_temperature
         graph: line
@@ -338,7 +338,7 @@ views:
       #   graph: line
       #   detail: 2
       - type: 'custom:mini-media-player'
-        entity: media_player.lg_4k_oled
+        entity: media_player.lg_4k_oled_2
       - type: horizontal-stack
         cards:
           - entity: switch.subwoofer
@@ -369,7 +369,7 @@ views:
           - entity: light.tv_monitor_leds
             type: light
       - type: light
-        entity: light.pc_room_panel_2
+        entity: light.pc_room_panel_3
       - type: vertical-stack
         cards:
           - type: sensor
@@ -405,7 +405,7 @@ views:
           - light.hydro_2700k
           - script.evening_pc_lights
   - title: bedroom
-    icon: 'mdi:hotel'
+    icon: 'mdi:bed'
     path: bedroom
     badges: []
     cards: 
@@ -482,10 +482,10 @@ views:
           - light.hallway_panel
           - light.kitchen_panel
           - light.living_room_panel_2
-          - light.living_room_sofa
+          - light.living_room_sofa_2
           - light.living_room_dinner_table
           - light.pc_room_monitors_2
-          - light.pc_room_panel_2
+          - light.pc_room_panel_3
           - light.pc_room_3d_printer_2
           - light.tv_leds
           - light.sofa_leds
@@ -600,7 +600,7 @@ views:
           - sensor.zfs_zmain_health
           - sensor.zfs_zmain_size
       - entities:
-          - sensor.bedroom_corner_remote
+          - sensor.bedroom_corner_remote_2
           - sensor.bedroom_remote_ceiling
           - sensor.hallway_remote
           - sensor.kitchen_remote
@@ -662,6 +662,34 @@ views:
         entities:
           - zone.home
           - device_tracker.sm_n9500
+      - type: entities
+        entities:
+          - sensor.active_kilocalories
+          - sensor.active_time
+          - sensor.activity_stress_duration
+          - sensor.avg_stress_level
+          - sensor.awake_duration
+          - sensor.bmr_kilocalories
+          - sensor.daily_step_goal
+          - sensor.floors_ascended
+          - sensor.floors_ascended_goal
+          - sensor.floors_descended
+          - sensor.high_stress_duration
+          - sensor.low_stress_duration
+          - sensor.max_heart_rate
+          - sensor.max_stress_level
+          - sensor.medium_stress_duration
+          - sensor.min_heart_rate
+          - sensor.rest_stress_duration
+          - sensor.resting_heart_rate
+          - sensor.sedentary_time
+          - sensor.sleep_duration
+          - sensor.sleeping_time
+          - sensor.total_distance_mtr
+          - sensor.total_kilocalories
+          - sensor.total_steps
+          - sensor.total_stress_duration
+          - sensor.uncat_stress_duration
 
     icon: 'mdi:account-multiple'
     path: people_view
@@ -676,3 +704,8 @@ views:
         filter:
           include:
             - domain: automation
+
+  - title: Floor Plan
+    path: floorplan
+    cards:
+      - !include floorplan.yaml

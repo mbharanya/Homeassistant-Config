@@ -2,7 +2,6 @@
   trigger:
     platform: homeassistant
     event: start
-  hide_entity: true
   action:
   - service: switch.turn_on
     entity_id: switch.flux
@@ -260,7 +259,7 @@
 - alias: LG OLED off after playing
   trigger:
   - platform: state
-    entity_id: media_player.lg_4k_oled
+    entity_id: media_player.lg_4k_oled_2
     to: 'off'
   condition:
   - condition: state
@@ -273,7 +272,7 @@
 - alias: LG OLED on
   trigger:
   - platform: state
-    entity_id: media_player.lg_4k_oled
+    entity_id: media_player.lg_4k_oled_2
     to: 'on'
   condition:
   - condition: state
@@ -340,7 +339,6 @@
   - entity_id: scene.bedroom_wake_up
     service: scene.turn_on
 - alias: bed set
-  hide_entity: true
   trigger:
     platform: state
     entity_id: sensor.bed_mass
@@ -359,7 +357,6 @@
     entity_id: input_boolean.in_bed
   id: a94c73122e7f4449bd600945188a3459
 - alias: bed clear
-  hide_entity: true
   trigger:
     platform: state
     entity_id: sensor.bed_mass
@@ -423,11 +420,11 @@
     entity_id: group.non_living_room_lights
   condition:
   - condition: state
-    entity_id: media_player.lg_4k_oled
+    entity_id: media_player.lg_4k_oled_2
     state: playing
   action:
     service: media_player.media_pause
-    entity_id: media_player.lg_4k_oled
+    entity_id: media_player.lg_4k_oled_2
   id: 104f6a021bae401391dfca5248b5096a
 - alias: Set HA theme for day and night
   trigger:
@@ -544,7 +541,7 @@
 - id: '1578244945400'
   alias: Subwoofer on if TV is turned on before 22:00
   trigger:
-  - entity_id: media_player.lg_4k_oled
+  - entity_id: media_player.lg_4k_oled_2
     platform: state
     to: playing
   condition:

@@ -1,3 +1,5 @@
+      type: 'custom:floorplan-card'
+      entity: nothing
       name: Demo Floorplan
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/floorplan.css
@@ -5,6 +7,8 @@
       last_motion_entity: sensor.template_last_motion
       last_motion_class: last-motion
       warnings:
+
+
 
       groups:
         - name: temperatures
@@ -93,22 +97,21 @@
             - state: 'off'
               class: 'doorbell-off'
           action:
-            domain: switch
-            service: toggle
+            service: switch.toggle
 
         - name: Lights
           entities:
             - light.hallway_panel
             - light.kitchen_panel
             - light.kitchen_grower
-            - light.pc_room_panel_2
+            - light.pc_room_panel_3
             - light.pc_room_monitors_2
             - light.hydro_2700k
             - light.desk_leds
             - light.pc_room_3d_printer_2
             - light.plants
             - light.living_room_panel_2
-            - light.living_room_sofa
+            - light.living_room_sofa_2
             - light.living_room_dinner_table
             - light.bedroom_panel
             - light.bedroom_corner_3
@@ -119,7 +122,7 @@
             - state: 'off'
               class: 'light-off'
           action: 
-            service: toggle
+            service: homeassistant.toggle
 
         - name: Configurable Lights
           entities:

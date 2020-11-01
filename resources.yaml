@@ -14,3 +14,5 @@
   type: module
 - url: /local/upcoming-media-card/upcoming-media-card.js?v=0.1.1
   type: js
+- url: /local/floorplan-card.js
+  type: js

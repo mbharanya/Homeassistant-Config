@@ -45,7 +45,6 @@ http:
   # Secrets are defined in the file secrets.yaml
   # api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  base_url: "hass.xmb.li"
   use_x_forwarded_for: true
   ssl_certificate: /config/fullchain.pem
   ssl_key: /config/privkey.pem
@@ -107,7 +106,7 @@ panel_iframe:
     url: http://xmb.li:1880
   vscode:
     title: VSCode
-    icon: mdi:visual-studio-code
+    icon: mdi:microsoft-visual-studio-code
     url: https://code.xmb.li
 # Weather prediction
 sensor:
@@ -554,9 +553,9 @@ switch:
       - light.hallway_panel
       - light.kitchen_panel
       - light.living_room_panel_2
-      - light.living_room_sofa
+      - light.living_room_sofa_2
       - light.pc_room_monitors_2
-      - light.pc_room_panel_2
+      - light.pc_room_panel_3
       - light.pc_room_3d_printer_2
 
 ffmpeg:
@@ -612,12 +611,12 @@ input_boolean:
     name: Disable Dustbin Notification
     initial: 'off'
 
-
 panel_custom:
   - name: floorplan
     sidebar_title: Floorplan
-    sidebar_icon: mdi:home
+    sidebar_icon: mdi:floor-plan
     url_path: floorplan
+    module_url: /local/custom_ui/floorplan/ha-floorplan.html
     config: !include floorplan.yaml
 
 scene: !include scenes.yaml
