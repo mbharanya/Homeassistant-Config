@@ -20,7 +20,7 @@ MAX_HUE = 240
 MIDDLE_TEMP = 20
 SENSITIVITY = 2
 
-TARGET_ID = "sensor.weather_now_temperature"
+TARGET_ID = "sensor.dark_sky_temperature"
 
 async def async_setup(hass, config):
     async def async_set_color(service):

@@ -110,6 +110,18 @@ panel_iframe:
     url: https://code.xmb.li
 # Weather prediction
 sensor:
+  - platform: darksky
+    api_key: !secret darksky
+    forecast:
+      - 0
+    hourly_forecast:
+      - 0
+      - 1
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+      - humidity
   - platform: qbittorrent
     url: 'http://192.168.1.22:9111'
     username: !secret qbittorrent_user
@@ -153,12 +165,6 @@ sensor:
     unit_of_measurement: "%"
     command: 'nc 192.168.1.8 7779'
     scan_interval: 30
-  - platform: yr
-    name: Weather now
-    monitored_conditions:
-      - symbol
-      - temperature
-      - precipitation
   - platform: time_date
     display_options:
       - 'time'
@@ -255,25 +261,25 @@ sensor:
     name: Living Room Mold Chance
     indoor_temp_sensor: sensor.living_room_temperature
     indoor_humidity_sensor: sensor.living_room_humidity
-    outdoor_temp_sensor: sensor.weather_now_temperature
+    outdoor_temp_sensor: sensor.dark_sky_temperature
     calibration_factor: 1.157894737
   - platform: mold_indicator
     name: PC Room Mold Chance
     indoor_temp_sensor: sensor.pc_room_temperature
     indoor_humidity_sensor: sensor.pc_room_humidity
-    outdoor_temp_sensor: sensor.weather_now_temperature
+    outdoor_temp_sensor: sensor.dark_sky_temperature
     calibration_factor: 1.481481481
   - platform: mold_indicator
     name: Kitchen Mold Chance
     indoor_temp_sensor: sensor.kitchen_temperature
     indoor_humidity_sensor: sensor.kitchen_humidity
-    outdoor_temp_sensor: sensor.weather_now_temperature
+    outdoor_temp_sensor: sensor.dark_sky_temperature
     calibration_factor: 1.371428571
   - platform: mold_indicator
     name: Bedroom Mold Chance
     indoor_temp_sensor: sensor.bedroom_temperature
     indoor_humidity_sensor: sensor.bedroom_humidity
-    outdoor_temp_sensor: sensor.weather_now_temperature
+    outdoor_temp_sensor: sensor.dark_sky_temperature
     calibration_factor: 1.480769231 
   - platform: mqtt
     state_topic: "/weight/bed/load"
@@ -552,8 +558,8 @@ switch:
       - light.bedroom_panel
       - light.hallway_panel
       - light.kitchen_panel
-      - light.living_room_panel_2
-      - light.living_room_sofa_2
+      - light.living_room_panel_3
+      - light.living_room_sofa_3
       - light.pc_room_monitors_2
       - light.pc_room_panel_3
       - light.pc_room_3d_printer_2

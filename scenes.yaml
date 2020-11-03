@@ -1,6 +1,6 @@
 - name: Living Room normal
   entities:
-    light.living_room_sofa_2:
+    light.living_room_sofa_3:
         state: on
         transition: 2
         brightness_pct: 60
@@ -8,7 +8,7 @@
         state: on
 - name: Living Room dim
   entities:
-    light.living_room_sofa_2:
+    light.living_room_sofa_3:
         state: on
         transition: 2
         brightness_pct: 1
@@ -16,13 +16,13 @@
         state: off
 - name: Living Room Dinner
   entities:
-    light.living_room_sofa_2:
+    light.living_room_sofa_3:
         state: on
         transition: 2
         brightness_pct: 60
     light.living_room_dinner_table:
         state: on
-    light.living_room_panel_2:
+    light.living_room_panel_3:
         state: off
     light.tv_leds:
         state: off
@@ -39,12 +39,12 @@
       transition: 10
       # brightness_pct: 100
       white_value: 100
-    light.living_room_panel_2:
+    light.living_room_panel_3:
       state: off
       transition: 10
     light.living_room_dinner_table:
       state: off
-    light.living_room_sofa_2:
+    light.living_room_sofa_3:
       state: off
       transition: 10
 - name: Bedroom Wake Up

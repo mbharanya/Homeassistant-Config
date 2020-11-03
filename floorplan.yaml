@@ -110,8 +110,8 @@
             - light.desk_leds
             - light.pc_room_3d_printer_2
             - light.plants
-            - light.living_room_panel_2
-            - light.living_room_sofa_2
+            - light.living_room_panel_3
+            - light.living_room_sofa_3
             - light.living_room_dinner_table
             - light.bedroom_panel
             - light.bedroom_corner_3

@@ -7,7 +7,7 @@ default_view:
     - sensor.dogecoin
     - sensor.garlicoin
     - sun.sun
-    - sensor.weather_now_symbol
+    - sensor.dark_sky_symbol
     - group.weather
     - group.pc_room_lights
     - group.pc_room_sensors
@@ -54,8 +54,8 @@ automation_view:
 weather:
   name: Weather
   entities:
-    - sensor.weather_now_precipitation
-    - sensor.weather_now_temperature
+    - sensor.dark_sky_precipitation
+    - sensor.dark_sky_temperature
     - sun.sun
 
 pc_room_lights:
@@ -120,8 +120,8 @@ kitchen_sensors:
 living_room_lights:
   name: Living Room Lights
   entities:
-    - light.living_room_panel_2
-    - light.living_room_sofa_2
+    - light.living_room_panel_3
+    - light.living_room_sofa_3
     - light.living_room_dinner_table
     - light.tv_leds
     - light.sofa_leds
@@ -150,8 +150,8 @@ non_automatic_lights:
     - light.desk_leds
     - light.hallway_panel
     - light.kitchen_panel
-    - light.living_room_panel_2
-    - light.living_room_sofa_2
+    - light.living_room_panel_3
+    - light.living_room_sofa_3
     - light.living_room_dinner_table
     - light.pc_room_monitors_2
     - light.pc_room_panel_3

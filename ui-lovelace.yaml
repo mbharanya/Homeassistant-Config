@@ -284,8 +284,8 @@ views:
           - light.desk_leds
           - light.hallway_panel
           - light.kitchen_panel
-          - light.living_room_panel_2
-          - light.living_room_sofa_2
+          - light.living_room_panel_3
+          - light.living_room_sofa_3
           - light.living_room_dinner_table
           - light.pc_room_monitors_2
           - light.pc_room_panel_3
@@ -300,7 +300,7 @@ views:
     cards:
       - type: horizontal-stack
         cards:
-          - entity: light.living_room_panel_2
+          - entity: light.living_room_panel_3
             type: light
           - entity: light.living_room_dinner_table
             type: light
@@ -311,7 +311,7 @@ views:
           - entity: light.tv_leds
             type: light
       - type: light
-        entity: light.living_room_sofa_2
+        entity: light.living_room_sofa_3
       - type: sensor
         entity: sensor.living_room_temperature
         graph: line
@@ -481,8 +481,8 @@ views:
           - light.desk_leds
           - light.hallway_panel
           - light.kitchen_panel
-          - light.living_room_panel_2
-          - light.living_room_sofa_2
+          - light.living_room_panel_3
+          - light.living_room_sofa_3
           - light.living_room_dinner_table
           - light.pc_room_monitors_2
           - light.pc_room_panel_3
