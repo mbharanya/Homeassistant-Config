@@ -601,6 +601,14 @@ input_datetime:
     name: Hydro off
     has_date: false
     has_time: true
+  living_room_plants_on:
+    name: Plant wall on
+    has_date: false
+    has_time: true
+  living_room_plants_off:
+    name: Plant wall off
+    has_date: false
+    has_time: true
 
 input_boolean:
   in_bed:

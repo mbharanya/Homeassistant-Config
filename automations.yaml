@@ -14,28 +14,6 @@
     service: scene.turn_on
     entity_id: scene.bedroom_wake_up
   id: f93d16b45e3845afb9c7733d86cb9f5f
-- action:
-  - alias: Plant Light on
-    data:
-      entity_id: light.plants
-    service: light.turn_on
-  alias: Sunrise Plants on
-  condition: []
-  id: '1509791350740'
-  trigger:
-  - event: sunrise
-    platform: sun
-- action:
-  - alias: Plant Light off
-    data:
-      entity_id: light.plants
-    service: light.turn_off
-  alias: Sunset Plants off
-  condition: []
-  id: '1509791350741'
-  trigger:
-  - platform: sun
-    event: sunset
 - alias: Turn PC room lights on, on weekdays after pc started
   trigger:
   - platform: state
@@ -551,3 +529,27 @@
   - data:
       entity_id: switch.subwoofer
     service: switch.turn_on
+- alias: Living Room Plants on
+  trigger:
+  - platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.living_room_plants_on.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.plants
+    service: light.turn_on
+  id: bab9c47155a54b7ebbee5f58d7ba90eb
+- alias: Living Room Plants off
+  trigger:
+  - platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.living_room_plants_off.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.plants
+    service: light.turn_off
+  id: 2a508e9e53344e35bd4accb6fec1caba
