@@ -48,6 +48,7 @@
       state: off
       transition: 10
 - name: Bedroom Wake Up
+  id: '1000'
   entities:
     light.bedroom_corner_3:
         state: on

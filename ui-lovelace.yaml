@@ -389,6 +389,13 @@ views:
           - switch.hydro_bubbler
           - light.hydro_2700k
           - script.evening_pc_lights
+          - sensor.xiaomi_button_action
+          - sensor.xiaomi_button_battery
+          - sensor.xiaomi_button_click
+          - sensor.xiaomi_button_linkquality
+          - sensor.xiaomi_presence_1_battery
+          - sensor.xiaomi_presence_1_linkquality
+          - binary_sensor.xiaomi_presence_1_occupancy
   - title: bedroom
     icon: 'mdi:bed'
     path: bedroom

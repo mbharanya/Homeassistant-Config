@@ -180,18 +180,15 @@ sensor:
   - platform: bitcoin
     display_options:
       - exchangerate
-  # - platform: coinmarketcap
-  #   currency_id: 1
-  #   display_currency: CHF
-  # - platform: coinmarketcap
-  #   currency_id: 1027
-  #   display_currency: CHF
-  # - platform: coinmarketcap
-  #   currency_id: 2
-  #   display_currency: CHF
-  # - platform: coinmarketcap
-  #   currency_id: 74
-  #   display_currency: CHF
+  - platform: coinmarketcap
+    currency_id: 1027
+    display_currency: CHF
+  - platform: coinmarketcap
+    currency_id: 2
+    display_currency: CHF
+  - platform: coinmarketcap
+    currency_id: 74
+    display_currency: CHF
   - platform: mqtt
     name: "Living Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
@@ -424,7 +421,6 @@ media_player:
 mqtt:
   broker: 192.168.1.22
   discovery: true
-  discovery_prefix: homeassistant
 
 device_tracker:
   # - platform: unifi
@@ -627,7 +623,7 @@ input_boolean:
 
 panel_custom:
   - name: floor-panel-v2
-    sidebar_title: Floor Panel
+    sidebar_title: Floor Plan
     sidebar_icon: mdi:floor-plan
     module_url: /local/custom-floor-panel.js
     config: !include floorplan.yaml

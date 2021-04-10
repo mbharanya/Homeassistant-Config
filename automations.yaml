@@ -553,3 +553,112 @@
       - light.plants
     service: light.turn_off
   id: 2a508e9e53344e35bd4accb6fec1caba
+- id: '1605386824155'
+  alias: Turn on lights, if presence at pc
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 63b1500f3f877a0a4a87a58dd2744db2
+    entity_id: binary_sensor.xiaomi_presence_1_occupancy
+    domain: binary_sensor
+  condition:
+  - condition: sun
+    before: sunrise
+    after: sunset
+  action:
+  - service: light.turn_on
+    data: {}
+    entity_id: light.pc_room_monitors_2
+  - service: light.turn_on
+    data: {}
+    entity_id: light.pc_room_3d_printer_2
+  mode: single
+- id: '1605389094590'
+  alias: turn pc lights off if no presence at pc
+  description: ''
+  trigger:
+  - type: no_motion
+    platform: device
+    device_id: 63b1500f3f877a0a4a87a58dd2744db2
+    entity_id: binary_sensor.xiaomi_presence_1_occupancy
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id: light.pc_room_3d_printer_2
+  - service: light.turn_off
+    data: {}
+    entity_id: light.pc_room_monitors_2
+  mode: single
+- id: '1606404248721'
+  alias: Xiaomi PC Lights
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 88fc3353d582c26c430a39496536310f
+    type: click
+    subtype: single
+    discovery_id: 0x00158d0002c72127 click_single
+  condition: []
+  action:
+  - service: script.turn_on
+    data: {}
+    entity_id: script.evening_pc_lights
+  mode: single
+- id: '1606861930443'
+  alias: Bedroom Corner off if phone plugged in
+  description: ''
+  trigger:
+  - type: plugged_in
+    platform: device
+    device_id: 3d7f4c9917094fa3b091ebc779db3dc8
+    entity_id: binary_sensor.sm_n9500_is_charging
+    domain: binary_sensor
+  condition:
+  - condition: state
+    entity_id: input_boolean.in_bed
+    state: 'on'
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id: light.bedroom_corner_3
+  mode: single
+- id: '1608219310603'
+  alias: Tag Coffee table is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: c8d7eda1-274f-48a7-9ad1-07e1ed0961c1
+  condition: []
+  action:
+  - service: scene.turn_on
+    data: {}
+    entity_id: scene.watching_tv
+  mode: single
+- id: '1608219449528'
+  alias: Tag Dinner table is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 7616ecb6-eb12-43b8-a240-73de6203a5c5
+  condition: []
+  action:
+  - service: scene.turn_on
+    data: {}
+    entity_id: scene.living_room_dinner
+  mode: single
+- id: '1608332601177'
+  alias: Tag Bed is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: baeb6db6-1808-476b-9c8a-a4f3f1fca634
+  condition: []
+  action:
+  - service: scene.turn_on
+    data: {}
+    entity_id: scene.sex_lighting
+  mode: single
