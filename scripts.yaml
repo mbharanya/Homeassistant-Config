@@ -13,7 +13,7 @@ all_lights_off_except_bedroom:
       data:
         entity_id: group.non_automatic_lights
         transition: 1
-    - delay: 00:00:01
+    - delay: 00:00:02
     - service: light.turn_on
       data:
         entity_id: light.bedroom_corner_3
@@ -25,7 +25,7 @@ watching_tv_all_lights_off:
       data:
         entity_id: group.non_automatic_lights
         transition: 1
-    - delay: 00:00:01
+    - delay: 00:00:02
     - service: scene.turn_on
       data:
         entity_id: scene.watching_tv
@@ -37,7 +37,7 @@ evening_pc_lights:
       data:
         entity_id: group.non_automatic_lights
         transition: 1
-    - delay: 00:00:01
+    - delay: 00:00:02
     - service: scene.turn_on
       data:
         entity_id: scene.evening_pc_lights

@@ -2,7 +2,7 @@ title: Home
 views:
   - title: Main
     badges: 
-      - device_tracker.sm_n9500
+      - device_tracker.s21
       - sensor.exchange_rate_1_btc
     cards:
       - type: weather-forecast
@@ -640,8 +640,9 @@ views:
   - badges: []
     cards:
       - entities:
-          - device_tracker.sm_n9500
+          - device_tracker.s21
           - device_tracker.milans_note_8
+          - device_tracker.s21
         title: Milan Portable Devices
         type: entities
       - entities:
@@ -653,7 +654,7 @@ views:
         default_zoom: 10
         entities:
           - zone.home
-          - device_tracker.sm_n9500
+          - device_tracker.s21
       - type: entities
         entities:
           - sensor.active_kilocalories

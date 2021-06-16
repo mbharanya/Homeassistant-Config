@@ -37,7 +37,7 @@
 - alias: Turn PC TV on, on weekdays after coming home
   trigger:
   - platform: state
-    entity_id: device_tracker.sm_n9500
+    entity_id: device_tracker.s21
     to: home
   condition:
   - condition: sun
@@ -311,7 +311,7 @@
       | int | timestamp_custom(''%H:%M'', False)) }}'
   condition:
   - condition: state
-    entity_id: device_tracker.sm_n9500
+    entity_id: device_tracker.s21
     state: home
   action:
   - entity_id: scene.bedroom_wake_up
@@ -328,7 +328,7 @@
       above: 50
       below: 100
     - condition: state
-      entity_id: device_tracker.sm_n9500
+      entity_id: device_tracker.s21
       state: home
   action:
   - service: input_boolean.turn_on
@@ -345,7 +345,7 @@
       entity_id: sensor.bed_mass
       below: 20
     - condition: state
-      entity_id: device_tracker.sm_n9500
+      entity_id: device_tracker.s21
       state: home
   action:
   - service: input_boolean.turn_off
@@ -383,7 +383,7 @@
 - id: '1541266912468'
   alias: Hydro Bubbler off
   trigger:
-  - entity_id: device_tracker.sm_n9500
+  - entity_id: device_tracker.s21
     platform: state
     to: home
   action:

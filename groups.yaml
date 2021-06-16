@@ -258,7 +258,7 @@ tradfri_remotes:
 milan_portable_devices:
   name: Milan Portable Devices
   entities:
-    - device_tracker.sm_n9500
+    - device_tracker.s21
 
 milan_devices:
   name: Milan Devices
