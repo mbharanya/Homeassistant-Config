@@ -50,17 +50,18 @@ http:
   ssl_key: /config/privkey.pem
   trusted_proxies:
     - 192.168.1.22 #Traefik container IP
-    - 172.21.0.4
+    - 172.18.0.21
+    - 172.18.0.3
 
 
 pi_hole:
     - host: "192.168.1.30"
       verify_ssl: false
 
-vacuum:
-  - platform: xiaomi_miio
-    host: 192.168.1.108
-    token: !secret roborock_token
+      #vacuum:
+      #- platform: xiaomi_miio
+      #host: 192.168.1.108
+      #token: !secret roborock_token
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
@@ -135,14 +136,14 @@ sensor:
     monitored_conditions:
       - upcoming
       - series
-  - platform: sonarr_upcoming_media
-    api_key: !secret sonarr_api_key
-    host: '192.168.1.22'
-    port: 8989
-    days: 7
-    ssl: false
-    max: 10
-  - platform: zfs_sensor
+  # - platform: sonarr_upcoming_media
+  #   api_key: !secret sonarr_api_key
+  #   host: '192.168.1.22'
+  #   port: 8989
+  #   days: 7
+  #   ssl: false
+  #   max: 10
+  # - platform: zfs_sensor
   - platform: systemmonitor
     resources:
       - type: processor_use
@@ -180,15 +181,15 @@ sensor:
   - platform: bitcoin
     display_options:
       - exchangerate
-  - platform: coinmarketcap
-    currency_id: 1027
-    display_currency: CHF
-  - platform: coinmarketcap
-    currency_id: 2
-    display_currency: CHF
-  - platform: coinmarketcap
-    currency_id: 74
-    display_currency: CHF
+  # - platform: coinmarketcap
+  #   currency_id: 1027
+  #   display_currency: CHF
+  # - platform: coinmarketcap
+  #   currency_id: 2
+  #   display_currency: CHF
+  # - platform: coinmarketcap
+  #   currency_id: 74
+  #   display_currency: CHF
   - platform: mqtt
     name: "Living Room Temperature"
     state_topic: "tele/sonoff/plants/SENSOR"
@@ -282,6 +283,13 @@ sensor:
     state_topic: "/weight/bed/load"
     name: Bed Mass
     unit_of_measurement: "kg"
+  - platform: filter
+    name: "filtered bed mass"
+    entity_id: sensor.bed_mass
+    filters:
+      - filter: time_simple_moving_average
+        window_size: "00:05"
+        precision: 0
   - platform: template
     sensors:
       subwoofer_current_power:
@@ -539,14 +547,14 @@ switch:
     host: 192.168.1.194
     username: admin
     password: kRC9zFHPO1
-  - platform: command_line
-    switches:
-      humidifier:
-        command_on: "curl -X GET 'http://192.168.1.70/relay?state=1'"
-        command_off: "curl -X GET 'http://192.168.1.70/relay?state=0'"
-        command_state: "curl -X GET 'http://192.168.1.70/report'"
-        value_template: '{{ value_json.relay == true }}'
-        friendly_name: Humidifier
+    # - platform: command_line
+    #   switches:
+    #     humidifier:
+    #       command_on: "curl -X GET 'http://192.168.1.70/relay?state=1'"
+    #       command_off: "curl -X GET 'http://192.168.1.70/relay?state=0'"
+    #       command_state: "curl -X GET 'http://192.168.1.70/report'"
+    #       value_template: '{{ value_json.relay == true }}'
+    #       friendly_name: Humidifier
   - platform: flux
     mode: mired
     lights:

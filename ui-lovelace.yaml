@@ -19,13 +19,13 @@ views:
           - automation.alarm_clock_by_time
       - type: entities
         entities:
-          - script.all_lights_off_except_bedroom
+          - scene.before_sleep
           - group.non_automatic_lights
           - scene.living_room_dinner
           - script.evening_pc_lights
-      - title: Sonarr
-        type: custom:upcoming-media-card
-        entity: sensor.sonarr_upcoming_media
+      # - title: Sonarr
+      #   type: custom:upcoming-media-card
+      #   entity: sensor.sonarr_upcoming_media
       - type: vertical-stack
         cards:
         - type: picture-elements
@@ -292,7 +292,6 @@ views:
           - light.pc_room_3d_printer_2
           - light.tv_leds
           - light.sofa_leds
-          - light.tv_monitor_leds
   - badges: []
     icon: 'mdi:sofa'
     path: living_room
@@ -364,8 +363,6 @@ views:
       - type: horizontal-stack
         cards:
           - entity: light.desk_leds
-            type: light
-          - entity: light.tv_monitor_leds
             type: light
       - type: light
         entity: light.pc_room_panel_3
@@ -481,7 +478,6 @@ views:
           - light.pc_room_3d_printer_2
           - light.tv_leds
           - light.sofa_leds
-          - light.tv_monitor_leds
         title: All Lights
         type: entities
     icon: 'mdi:lightbulb'

@@ -6,14 +6,25 @@
   - service: switch.turn_on
     entity_id: switch.flux
   id: 06e20ecadc174fe5983f810e9a3ca984
-- alias: MQTT Alarm clock
+- id: f93d16b45e3845afb9c7733d86cb9f5f
+  alias: MQTT Alarm clock
   trigger:
-    platform: mqtt
-    topic: alarm_clock
+  - platform: mqtt
+    topic: SleepAsAndroid
+    payload: alarm_alert_start
+    value_template: '{{ value_json.event }}'
   action:
-    service: scene.turn_on
+  - service: scene.turn_on
     entity_id: scene.bedroom_wake_up
-  id: f93d16b45e3845afb9c7733d86cb9f5f
+  - delay:
+      hours: 0
+      minutes: 15
+      seconds: 0
+      milliseconds: 0
+  - service: light.turn_off
+    target:
+      area_id: a5b25a8cbbee4848b656bfd74e35d6a0
+  mode: single
 - alias: Turn PC room lights on, on weekdays after pc started
   trigger:
   - platform: state
@@ -319,12 +330,12 @@
 - alias: bed set
   trigger:
     platform: state
-    entity_id: sensor.bed_mass
+    entity_id: sensor.filtered_bed_mass
   condition:
     condition: and
     conditions:
     - condition: numeric_state
-      entity_id: sensor.bed_mass
+      entity_id: sensor.filtered_bed_mass
       above: 50
       below: 100
     - condition: state
@@ -337,12 +348,12 @@
 - alias: bed clear
   trigger:
     platform: state
-    entity_id: sensor.bed_mass
+    entity_id: sensor.filtered_bed_mass
   condition:
     condition: and
     conditions:
     - condition: numeric_state
-      entity_id: sensor.bed_mass
+      entity_id: sensor.filtered_bed_mass
       below: 20
     - condition: state
       entity_id: device_tracker.s21
@@ -363,8 +374,8 @@
       after: '22:00:00'
       before: 02:30:00
   action:
-  - service: script.turn_on
-    entity_id: script.all_lights_off_except_bedroom
+  - service: scene.turn_on
+    entity_id: scene.before_sleep
   id: 39542d047c5245e7a008c59c9f1385db
 - id: '1541266912466'
   alias: Hydro Bubbler on
@@ -615,7 +626,7 @@
   - type: plugged_in
     platform: device
     device_id: 3d7f4c9917094fa3b091ebc779db3dc8
-    entity_id: binary_sensor.sm_n9500_is_charging
+    entity_id: binary_sensor.s21_is_charging
     domain: binary_sensor
   condition:
   - condition: state

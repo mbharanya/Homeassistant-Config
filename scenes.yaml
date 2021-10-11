@@ -79,3 +79,33 @@
       state: on
     light.pc_room_3d_printer_2:
       state: on
+- name: before sleep
+  entities:
+    light.bed_leds:
+      state: off
+    light.bedroom_corner_3:
+      state: on
+    light.bedroom_panel:
+      state: off
+    light.desk_leds:
+      state: off
+    light.hallway_panel:
+      state: off
+    light.kitchen_panel:
+      state: off
+    light.living_room_panel_3:
+      state: off
+    light.living_room_sofa_3:
+      state: off
+    light.living_room_dinner_table:
+      state: off
+    light.pc_room_monitors_2:
+      state: off
+    light.pc_room_panel_3:
+      state: off
+    light.pc_room_3d_printer_2:
+      state: off
+    light.tv_leds:
+      state: off
+    light.sofa_leds:
+      state: off
